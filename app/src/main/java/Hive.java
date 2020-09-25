@@ -13,8 +13,9 @@ public class Hive {
     private ArrayList<String> equipmentInventory;
     private int losses;
     private int gains;
+    private int hiveID;
 
-    Hive() {
+    Hive(int hiveID) { //TODO should we alway require at least an ID is entered upon object construction
         health = 0;
         inspectionDates = new ArrayList<>();
         inspectionResults = new ArrayList<>();
@@ -24,9 +25,10 @@ public class Hive {
         equipmentInventory = new ArrayList<>();
         losses = 0;
         gains = 0;
+        this.hiveID = hiveID;
     }
 
-    Hive(int health, ArrayList<Date> inspectionDates, ArrayList<Integer> inspectionResults,
+    Hive(int hiveID, int health, ArrayList<Date> inspectionDates, ArrayList<Integer> inspectionResults,
          int honeyStores, int queenProduction, ArrayList<String> hiveEquipment,
          ArrayList<String> equipmentInventory, int losses, int gains) {
         this.health = health;
@@ -38,6 +40,7 @@ public class Hive {
         this.equipmentInventory = equipmentInventory;
         this.losses = losses;
         this.gains = gains;
+        this.hiveID = hiveID;
     }
 
     public void inspectionComplete(Date date, Integer result) {
