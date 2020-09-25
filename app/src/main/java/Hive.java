@@ -67,4 +67,43 @@ public class Hive {
 
     }
 
+    public int getHealth() {
+        return health;
+    }
+
+    public ArrayList<Date> getInspectionDates() {
+        return inspectionDates;
+    }
+
+    public ArrayList<Integer> getInspectionResults() {
+        return inspectionResults;
+    }
+
+    public int getHoneyStores() {
+        return honeyStores;
+    }
+
+    public int getQueenProduction() {
+        return queenProduction;
+    }
+
+    public ArrayList<String> getHiveEquipment() {
+        return hiveEquipment;
+    }
+
+    public ArrayList<String> getEquipmentInventory() {
+        return equipmentInventory;
+    }
+
+    public int getLosses() {
+        return losses;
+    }
+
+    public int getGains() {
+        return gains;
+    }
+
+    public int getHiveID() {
+        return hiveID;
+    }
 }

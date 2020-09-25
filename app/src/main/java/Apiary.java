@@ -4,6 +4,15 @@ public class Apiary {
 
     private ArrayList<Hive> hives;
 
+    Apiary() {
+        hives = new ArrayList<>();
+    }
+
+    Apiary(ArrayList<Hive> hives) {
+        this.hives = hives;
+    }
+
+
     public void addHive(Hive hive) {
 
     }
