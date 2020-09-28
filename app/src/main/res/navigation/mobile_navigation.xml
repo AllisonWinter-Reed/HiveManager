@@ -12,14 +12,20 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.hivemanager.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_profile"
+        android:name="com.example.hivemanager.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.hivemanager.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_hivestatus"
+        android:name="com.example.hivemanager.ui.hivestatus.HiveStatusFragment"
+        android:label="@string/title_hivestatus"
+        tools:layout="@layout/fragment_hivestatus" />
+
+    <fragment
+        android:id="@+id/navigation_managehives"
+        android:name="com.example.hivemanager.ui.managehives.ManageHivesFragment"
+        android:label="@string/title_managehives"
+        tools:layout="@layout/fragment_managehives"/>
 </navigation>
