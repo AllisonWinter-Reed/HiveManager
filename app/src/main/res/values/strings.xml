@@ -4,4 +4,11 @@
     <string name="title_profile">Profile</string>
     <string name="title_hivestatus">Hive Status</string>
     <string name="title_managehives">Manage Hives</string>
+    <string name="label_switch_gainsLosses">Gains/Losses Visible</string>
+    <string name="label_switch_inventoryEquipment">InventoryEquipment</string>
+    <string name="label_switch_honeyStores">Honey Stores</string>
+    <string name="label_switch_hiveEquipment">Hive Equipment</string>
+    <string name="label_switch_overallHealth">Overall Health</string>
+    <string name="label_switch_queenProduction">Queen Production</string>
+    <string name="label_switch_inspectionResults">Inspection Results</string>
 </resources>

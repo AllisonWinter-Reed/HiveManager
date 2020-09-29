@@ -1,9 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileFragment">
+    tools:context=".ui.profile.ProfileFragment"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="10dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/image_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/profile_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/profile_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/profile_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/button_editProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+    <TextView
+        android:id="@+id/profile_hivestatusHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+
+       >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_inspectionResults"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_switch_inspectionResults" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_QueenProduction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:disabledAlpha="1.2"
+                android:text="@string/label_switch_queenProduction" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_overallHealth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_switch_overallHealth" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_hiveEquipment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_switch_hiveEquipment" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_honeyStores"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_switch_honeyStores" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_inventoryEquipment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_switch_inventoryEquipment" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/toggle_gainsLosses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_switch_gainsLosses" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
