@@ -51,59 +51,114 @@ public class Hive {
         return 0;
     }
 
+    /**
+     * @param equipment pieces of equipment to be added to the equipmentInventory.
+     */
     public void addEquipmentToInv(ArrayList<String> equipment) {
+        equipmentInventory.addAll(equipment);
 
     }
 
+    /**
+     * @param equipment pieces of equipment to be removed from the equipmentInventory.
+     */
     public void removeEquipmentInv(ArrayList<String> equipment) {
+        equipmentInventory.removeAll(equipment);
 
     }
 
-    public void removeEquipmentHive(ArrayList<String> equipment) {
-
-    }
-
+    /**
+     * @param equipment pieces of equipment to be added to the hiveEquipment.
+     */
     public void addEquipmentToHive(ArrayList<String> equipment) {
+        hiveEquipment.addAll(equipment);
 
     }
 
+    /**
+     * @param equipment pieces of equipment to be removed from the hiveEquipment.
+     */
+    public void removeEquipmentHive(ArrayList<String> equipment) {
+        hiveEquipment.removeAll(equipment);
+
+    }
+
+    /**
+     * @return health the health of this Hive.
+     */
     public int getHealth() {
         return health;
+
     }
 
+    /**
+     * @return inspectionDates the list of inspectionDates.
+     */
     public ArrayList<Date> getInspectionDates() {
         return inspectionDates;
+
     }
 
+    /**
+     * @return inspectionResults the results of inspections.
+     */
     public ArrayList<Integer> getInspectionResults() {
         return inspectionResults;
+
     }
 
+    /**
+     * @return honeyStores the stores of honey.
+     */
     public int getHoneyStores() {
         return honeyStores;
+
     }
 
+    /**
+     * @return queenProduction.
+     */
     public int getQueenProduction() {
         return queenProduction;
+
     }
 
+    /**
+     * @return hiveEquipment the equipment for this Hive.
+     */
     public ArrayList<String> getHiveEquipment() {
         return hiveEquipment;
+
     }
 
+    /**
+     * @return equipmentInventory the inventory of equipment.
+     */
     public ArrayList<String> getEquipmentInventory() {
         return equipmentInventory;
+
     }
 
+    /**
+     * @return losses.
+     */
     public int getLosses() {
         return losses;
+
     }
 
+    /**
+     * @return gains.
+     */
     public int getGains() {
         return gains;
     }
 
+    /**
+     * @return hiveID the unique ID for this Hive.
+     */
     public int getHiveID() {
         return hiveID;
+
     }
 }
