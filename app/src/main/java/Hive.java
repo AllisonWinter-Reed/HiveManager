@@ -2,8 +2,10 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * This class represents a Hive in the HiveManagement system.
+ */
 public class Hive {
-
     private int health;
     private ArrayList<Date> inspectionDates;
     private ArrayList<Integer> inspectionResults;
@@ -15,7 +17,7 @@ public class Hive {
     private int gains;
     private int hiveID;
 
-    Hive(int hiveID) { //TODO should we alway require at least an ID is entered upon object construction
+    Hive(int hiveID) { //TODO should we always require at least an ID is entered upon object construction
         health = 0;
         inspectionDates = new ArrayList<>();
         inspectionResults = new ArrayList<>();
