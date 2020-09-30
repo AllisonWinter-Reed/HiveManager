@@ -11,4 +11,11 @@
     <string name="label_switch_overallHealth">Overall Health</string>
     <string name="label_switch_queenProduction">Queen Production</string>
     <string name="label_switch_inspectionResults">Inspection Results</string>
+    <string name="label_save_selection">Save Selection</string>
+    <string name="text_hivestatusHeader">Show on Social Page</string>
+    <string name="label_editProfile">Edit Profile</string>
+    <string name="user_profileAddress">13 Campus Dr. Madison, WI</string>
+    <string name="user_userPhone">715-715-7151</string>
+    <string name="user_userEmail">johnsmith@gmail.com</string>
+    <string name="user_profileName">John Smith</string>
 </resources>
