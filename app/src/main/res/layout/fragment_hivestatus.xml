@@ -7,107 +7,44 @@
     android:layout_height="match_parent"
     android:background="@color/colorFragmentBackground"
     tools:context=".ui.hivestatus.HiveStatusFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_gravity="top">
 
 
-    <FrameLayout
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/hiveStatusTabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        >
+        android:background="@color/color_hive_status_background"
+        app:tabTextColor="@color/colorText"
+        app:tabRippleColor="@color/colorAccent"
+        app:tabIndicatorColor="@color/colorPrimaryDark">
 
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:background="@color/colorAccent">
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text="Health"
-                android:background="@drawable/dark_button"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="7dp"
-                android:textSize="@dimen/textsize_button"
-                android:textColor="@color/colorFragmentBackground"
-                />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text="Equipment"
-                android:background="@drawable/dark_button"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="7dp"
-                android:textSize="@dimen/textsize_button"
-                android:textColor="@color/colorFragmentBackground"
-
-                />
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text="Metrics"
-                android:background="@drawable/dark_button"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="7dp"
-                android:textSize="@dimen/textsize_button"
-                android:textColor="@color/colorFragmentBackground"
-
-                />
-        </TableRow>
-    </FrameLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:text="Health"
+            android:onClick="openHealthTab"
+            tools:ignore="OnClick"
+            />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Inspection Notes" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Equipment" />
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Overall Health" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Production" />
+    </com.google.android.material.tabs.TabLayout>
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-        </LinearLayout>
-    </ScrollView>
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/view_pager"/>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="TextView" />
+
 </LinearLayout>
