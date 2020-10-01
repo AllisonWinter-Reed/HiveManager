@@ -7,15 +7,13 @@
     tools:context=".ui.profile.ProfileFragment"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="10dp"
-    android:background="@color/colorFragmentBackground">
+   android:background="@color/colorFragmentBackground">
 
     <ImageView
         android:id="@+id/image_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/danydev"
-        android:padding="5sp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
@@ -29,7 +27,6 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="5dp"
-        android:background="@color/colorTextBackground"
         android:text="@string/user_profileName"
         android:textColor="@color/colorText"
         android:textSize="@dimen/textsize_profile"
@@ -41,7 +38,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/user_userEmail"
-        android:background="@color/colorTextBackground"
         android:textColor="@color/colorText"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -55,7 +51,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/user_userPhone"
-        android:background="@color/colorTextBackground"
         android:textColor="@color/colorText"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -71,7 +66,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/user_profileAddress"
-        android:background="@color/colorTextBackground"
         android:textColor="@color/colorText"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -90,8 +84,9 @@
         android:textSize="@dimen/textsize_button"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="50dp"
-        android:onClick="editProfile"/>
+        android:layout_marginBottom="30dp"
+        android:onClick="editProfile"
+        android:textColor="@color/colorText"/>
 
     <TextView
         android:id="@+id/profile_hivestatusHeader"
@@ -223,5 +218,6 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="5dp"
         android:onClick="saveSelection"
+        android:textColor="@color/colorText"
         />
 </LinearLayout>
