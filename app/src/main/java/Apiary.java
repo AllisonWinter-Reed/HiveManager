@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Apiary {
 
+    private String ApiaryAddress;
     private ArrayList<Hive> hives;
 
     Apiary() {
@@ -27,5 +28,13 @@ public class Apiary {
     public void removeHive(Hive hive) {
         hives.remove(hive);
 
+    }
+
+    public String getApiaryAddress() {
+        return ApiaryAddress;
+    }
+
+    public void setApiaryAddress(String apiaryAddress) {
+        ApiaryAddress = apiaryAddress;
     }
 }

@@ -110,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
 
                      else {
                         status.setText("Login Incorrect");
-                       // Toast.makeText(LoginActivity.this, "Incorrect Username or Passwrd", Toast.LENGTH_LONG).show();
+                       // Toast.makeText(LoginActivity.this, "Incorrect Username or Password", Toast.LENGTH_LONG).show();
                         usernameLogin.setText("");
                         passwordLogin.setText("");
                     }
