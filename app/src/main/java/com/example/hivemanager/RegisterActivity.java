@@ -10,17 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.hivemanager.R;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
-
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -46,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
         password = (EditText)findViewById(R.id.etPassword);
         address = (EditText)findViewById(R.id.etAddress);
         zip = (EditText)findViewById(R.id.etZip);
+        // TODO ppref commented out
 //        ppref = (ImageView)findViewById(R.id.etPPReference);
         registerbtn = (Button)findViewById((R.id.bRegister));
         status = (TextView)findViewById(R.id.regstatus);
@@ -86,46 +84,81 @@ public class RegisterActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
-            status.setText("Registration Successful");
-            userName.setText("");
-            firstName.setText("");
-            lastName.setText("");
-            email.setText("");
-            phoneNumber.setText("");
-            password.setText("");
-            ppref.setText("");
 
+            // TODO make this move to another view
+            if (isSuccess) {
+                status.setText("Registration Successful");
+                userName.setText("");
+                firstName.setText("");
+                lastName.setText("");
+                email.setText("");
+                phoneNumber.setText("");
+                password.setText("");
+                // TODO ppref commented out
+                //ppref.setText("");
+                address.setText("");
+                zip.setText("");
 
+            }
+            // If registration is unsuccessful, prints an appropriate error message.
+            else {
 
+                // If the username was taken, writes "Invalid Username".
+                if (z.contains("Duplicate")) status.setText("Invalid Username");
+                // Otherwise, writes "Unexpected Error".
+                else status.setText("Unexpected Error");
+
+            }
         }
 
         @Override
         protected String doInBackground(String... strings) {
-
-            try{
+            try {
                 con = establishConnection();
-                if (con == null){
+
+                // Exits if connection fails.
+                if (con == null) {
+                    isSuccess = false;
                     z = "Check your Internet Connection";
+
                 }
-                else{
-                    String sql = "INSERT INTO Beekeeper VALUES ('"+userName.getText()+"' , '"+firstName.getText()+"', '"+email.getText()+"','"+lastName.getText()+"','"+phoneNumber.getText()+"','"+ppref.getText()+"', '"+password.getText()+"')";
+                // Attempts to perform a query if connection is successful.
+                else {
 
+                    // Query format string.
+                    // TODO ppref is currently set to null, replace as appropriate
+                    String sql = "INSERT INTO Beekeeper VALUES ('" + userName.getText() + "' , '"
+                            + firstName.getText() + "', '" + email.getText() + "','" + lastName.getText() +
+                            "','" + phoneNumber.getText() + "','" + /*ppref.getText()*/"NULL" + "', '"
+                            + password.getText() + "','" + address.getText()  + "', '" + zip.getText() + "')";
+
+                    // Attempts to execute the query.
                     stmt = con.createStatement();
-
                     stmt.executeUpdate(sql);
 
-
+                    // If the query is successful, will proceed to Apiaries screen.
+                    isSuccess = true;
+                    z = "Success";
 
                 }
             }
-            catch (Exception e){
+            // rints a helpful error message if the query fails.
+            catch (SQLException excpt) {
                 isSuccess = false;
-                z = e.getMessage();
+                z = excpt.getMessage();
 
             }
-            return z;
-        }
+            // If an unexpected exception occurs, returns the error message.
+            catch (Exception excpt) {
+                isSuccess = false;
+                z = excpt.getMessage();
 
+            }
+
+            // Returns status info.
+            return z;
+
+        }
     }
 
 
@@ -147,6 +180,3 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 }
-
-
-
