@@ -20,15 +20,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class RegisterActivity extends AppCompatActivity {
-
     EditText userName,firstName,lastName,email,phoneNumber,password,address,zip,ppref;
     Button registerbtn;
     TextView status, backToLogin;
-
     Connection con;
     Statement stmt;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,17 +50,16 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 new RegisterActivity.registerUser().execute("");
 
-
             }
         });
 
         backToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 {
                     Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
                     startActivity(intent);
+
                 }
             }
         });
@@ -75,7 +70,6 @@ public class RegisterActivity extends AppCompatActivity {
         String z  ="";
         Boolean isSuccess = false;
 
-
         @Override
         protected void onPreExecute() {
             status.setText("Sending Data to Database");
@@ -85,9 +79,10 @@ public class RegisterActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
 
-            // TODO make this move to another view
+            // Upon successful registration, empties text and moves the user to the Main View.
             if (isSuccess) {
-                status.setText("Registration Successful");
+
+                // Empties all text.
                 userName.setText("");
                 firstName.setText("");
                 lastName.setText("");
@@ -98,6 +93,10 @@ public class RegisterActivity extends AppCompatActivity {
                 //ppref.setText("");
                 address.setText("");
                 zip.setText("");
+
+                // Moves the user to the Main View upon successful registration.
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                startActivity(intent);
 
             }
             // If registration is unsuccessful, prints an appropriate error message.
@@ -142,7 +141,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 }
             }
-            // rints a helpful error message if the query fails.
+            // If a SQL exception occurs, returns the error message.
             catch (SQLException excpt) {
                 isSuccess = false;
                 z = excpt.getMessage();
@@ -161,8 +160,6 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-
-
     @SuppressLint("NewApi")
     public Connection establishConnection() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -171,12 +168,14 @@ public class RegisterActivity extends AppCompatActivity {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-
             connection = DriverManager.getConnection("jdbc:mysql://uwhivemanager506.cmnpa3ypkmwq.us-east-2.rds.amazonaws.com:3306/hive_manager", "admin", "Hivemanager123");
+
         } catch (Exception e) {
             Log.e("SQL Connection Error : ", e.getMessage());
-        }
-        return connection;
-    }
 
+        }
+
+        return connection;
+
+    }
 }
