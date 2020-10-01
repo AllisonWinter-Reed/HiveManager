@@ -15,6 +15,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.hivemanager.ui.hivestatus.HiveStatusFragment;
+import com.example.hivemanager.ui.hivestatus.HealthFragment;
 import com.example.hivemanager.ui.home.HomeFragment;
 import com.example.hivemanager.ui.managehives.ManageHivesFragment;
 import com.example.hivemanager.ui.profile.ProfileFragment;
@@ -65,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void openProfile(View view) {
         Fragment fragment = new ProfileFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(((R.id.frag_container_home)), fragment);
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
+    }
+
+    public void openHealthTab(View view) {
+        Fragment fragment = new HealthFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(((R.id.frag_container_home)), fragment);
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
