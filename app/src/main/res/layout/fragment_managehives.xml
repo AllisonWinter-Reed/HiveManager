@@ -17,7 +17,7 @@ tools:context=".ui.managehives.ManageHivesFragment"
     android:layout_height="match_parent" >
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/searchRecycle"
+        android:id="@+id/hiveRecycle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/hive_view">
