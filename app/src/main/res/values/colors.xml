@@ -13,4 +13,6 @@
     <color name="center_yellow">#FFEB3B</color>
     <color name="end_red">#C70000</color>
     <color name="light_cyan">#DDFFF7</color>
+    <color name="color_hive_status_background">#DDFFF7</color>
+    <color name="text_hive_status">#3F0D12</color>
 </resources>

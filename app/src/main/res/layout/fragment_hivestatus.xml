@@ -16,11 +16,10 @@
         android:id="@+id/hiveStatusTabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        app:tabTextColor="@color/colorFragmentBackground"
-        app:tabSelectedTextColor="@color/colorAccent"
+        android:background="@color/color_hive_status_background"
+        app:tabTextColor="@color/colorText"
         app:tabRippleColor="@color/colorAccent"
-        app:tabIndicatorColor="@color/colorAccent">
+        app:tabIndicatorColor="@color/colorPrimaryDark">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"

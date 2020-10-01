@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/color_hive_status_background"
     tools:context=".ui.hivestatus.MetricsFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -15,8 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/header_honey_stores"
-            android:textColor="@color/colorFragmentBackground"
-            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/text_hive_status"
+            android:background="@color/color_hive_status_background"
             android:textSize="20sp"
             android:textStyle="bold"
             android:padding="15dp"/>
@@ -24,13 +24,14 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark">
+            android:background="@color/color_hive_status_background"
+            >
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/value_honey_stores"
-                android:textColor="@color/colorText"
+                android:textColor="@color/text_hive_status"
                 android:background="@color/colorFragmentBackground"
                 android:layout_margin="15dp"
                 android:padding="10dp"
@@ -44,8 +45,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Queen Production"
-            android:textColor="@color/colorFragmentBackground"
-            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/text_hive_status"
+            android:background="@color/color_hive_status_background"
             android:padding="15dp"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -53,14 +54,14 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark">
+            android:background="@color/color_hive_status_background">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/value_queen_production"
                 android:padding="10dp"
-                android:textColor="@color/colorText"
+                android:textColor="@color/text_hive_status"
                 android:background="@color/colorFragmentBackground"
                 android:layout_margin="15dp"
                 android:textSize="20sp"
@@ -73,8 +74,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/header_gains"
-            android:textColor="@color/colorFragmentBackground"
-            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/text_hive_status"
+            android:background="@color/color_hive_status_background"
             android:textSize="20sp"
             android:textStyle="bold"
             android:padding="15dp"/>
@@ -82,14 +83,14 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark">
+            android:background="@color/color_hive_status_background">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/value_gains"
-                android:textColor="@color/colorText"
-                android:background="@color/colorFragmentBackground"
+                android:textColor="@color/text_hive_status"
+                android:background="@color/color_hive_status_background"
                 android:layout_margin="15dp"
                 android:padding="10dp"
                 android:textSize="20sp"
@@ -102,8 +103,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/header_losses"
-            android:textColor="@color/colorFragmentBackground"
-            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/text_hive_status"
+            android:background="@color/color_hive_status_background"
             android:textSize="20sp"
             android:textStyle="bold"
             android:padding="15dp"/>
@@ -111,13 +112,13 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark">
+            android:background="@color/color_hive_status_background">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/value_losses"
-                android:textColor="@color/colorText"
+                android:textColor="@color/text_hive_status"
                 android:background="@color/colorFragmentBackground"
                 android:layout_margin="15dp"
                 android:padding="10dp"
