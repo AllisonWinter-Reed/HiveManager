@@ -1,14 +1,20 @@
 package com.example.hivemanager;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.hivemanager.ui.hivestatus.HiveStatusFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openHiveStatus(View view) {
-
+        Fragment fragment = new HiveStatusFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container_view_tag, fragment);
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
     }
 }
