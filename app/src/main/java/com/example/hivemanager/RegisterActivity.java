@@ -85,9 +85,10 @@ public class RegisterActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
 
-            // TODO make this move to another view
+            // Upon successful registration, empties text and moves the user to the Main View.
             if (isSuccess) {
-                status.setText("Registration Successful");
+
+                // Empties all text.
                 userName.setText("");
                 firstName.setText("");
                 lastName.setText("");
@@ -98,6 +99,10 @@ public class RegisterActivity extends AppCompatActivity {
                 //ppref.setText("");
                 address.setText("");
                 zip.setText("");
+
+                // Moves the user to the Main View upon successful registration.
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                startActivity(intent);
 
             }
             // If registration is unsuccessful, prints an appropriate error message.
@@ -142,7 +147,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 }
             }
-            // rints a helpful error message if the query fails.
+            // If a SQL exception occurs, returns the error message.
             catch (SQLException excpt) {
                 isSuccess = false;
                 z = excpt.getMessage();
