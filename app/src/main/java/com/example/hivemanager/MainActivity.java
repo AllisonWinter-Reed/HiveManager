@@ -47,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
     public void openHiveStatus(View view) {
         Fragment fragment = new HiveStatusFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
