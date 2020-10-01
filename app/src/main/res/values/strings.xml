@@ -4,7 +4,7 @@
     <string name="title_profile">Profile</string>
     <string name="title_hivestatus">Hive Status</string>
     <string name="title_managehives">Manage Hives</string>
-    <string name="label_switch_gainsLosses">Gains/Losses Visible</string>
+    <string name="label_switch_gainsLosses">Gains/Losses</string>
     <string name="label_switch_inventoryEquipment">InventoryEquipment</string>
     <string name="label_switch_honeyStores">Honey Stores</string>
     <string name="label_switch_hiveEquipment">Hive Equipment</string>
@@ -13,7 +13,7 @@
     <string name="label_switch_inspectionResults">Inspection Results</string>
     <string name="label_save_selection">Save Selection</string>
     <string name="text_hivestatusHeader">Show on Social Page</string>
-    <string name="label_editProfile">Edit Profile</string>
+    <string name="label_editProfile">Edit Profile Information</string>
     <string name="user_profileAddress">13 Campus Dr. Madison, WI</string>
     <string name="user_userPhone">715-715-7151</string>
     <string name="user_userEmail">johnsmith@gmail.com</string>

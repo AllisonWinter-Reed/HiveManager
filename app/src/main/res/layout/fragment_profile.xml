@@ -8,68 +8,90 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="10dp"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/colorFragmentBackground">
 
     <ImageView
         android:id="@+id/image_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_home_black_24dp" />
+        android:src="@drawable/danydev"
+        android:padding="5sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="15dp"
+        />
 
     <TextView
         android:id="@+id/profile_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="5dp"
-        android:background="@color/colorAccent"
+        android:background="@color/colorTextBackground"
         android:text="@string/user_profileName"
         android:textColor="@color/colorText"
-        android:textSize="25sp" />
+        android:textSize="@dimen/textsize_profile"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"        />
 
     <TextView
         android:id="@+id/profile_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/user_userEmail"
-        android:background="@color/colorAccent"
+        android:background="@color/colorTextBackground"
         android:textColor="@color/colorText"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="5dp"
+        android:textSize="@dimen/textsize_profile"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"        />
 
     <TextView
         android:id="@+id/profile_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/user_userPhone"
-        android:background="@color/colorAccent"
+        android:background="@color/colorTextBackground"
         android:textColor="@color/colorText"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="5dp"
+
+        android:textSize="@dimen/textsize_profile"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        />
 
     <TextView
         android:id="@+id/profile_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/user_profileAddress"
-        android:background="@color/colorAccent"
+        android:background="@color/colorTextBackground"
         android:textColor="@color/colorText"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="5dp"
+        android:textSize="@dimen/textsize_profile"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"        />
 
     <Button
         android:id="@+id/button_editProfile"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/label_editProfile" />
+        android:layout_width="150dp"
+        android:background="@drawable/rounded_button"
+        android:padding="5sp"
+        android:text="@string/label_editProfile"
+        android:textSize="@dimen/textsize_button"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="50dp"
+        android:onClick="editProfile"/>
 
     <TextView
         android:id="@+id/profile_hivestatusHeader"
@@ -78,19 +100,22 @@
         android:text="@string/text_hivestatusHeader"
         android:layout_margin="5dp"
         android:textColor="@color/colorText"
+        android:padding="5sp"
+        android:textSize="@dimen/textsize_profile"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
         />
 
-    <Button
-        android:id="@+id/button_saveSelection"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_save_selection" />
+
 
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
        >
 
         <TableRow
@@ -101,14 +126,22 @@
                 android:id="@+id/switch_inspectionResults"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label_switch_inspectionResults" />
+                android:text="@string/label_switch_inspectionResults"
+                android:padding="5sp"
+                android:textColor="@color/colorText"
+
+                />
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_QueenProduction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:disabledAlpha="1.2"
-                android:text="@string/label_switch_queenProduction" />
+                android:text="@string/label_switch_queenProduction"
+                android:padding="5sp"
+                android:textColor="@color/colorText"
+
+                />
         </TableRow>
 
         <TableRow
@@ -119,13 +152,21 @@
                 android:id="@+id/switch_overallHealth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label_switch_overallHealth" />
+                android:text="@string/label_switch_overallHealth"
+                android:padding="5sp"
+                android:textColor="@color/colorText"
+
+                />
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_hiveEquipment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label_switch_hiveEquipment" />
+                android:text="@string/label_switch_hiveEquipment"
+                android:padding="5sp"
+                android:textColor="@color/colorText"
+
+                />
         </TableRow>
 
         <TableRow
@@ -136,13 +177,21 @@
                 android:id="@+id/switch_honeyStores"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label_switch_honeyStores" />
+                android:text="@string/label_switch_honeyStores"
+                android:padding="5sp"
+                android:textColor="@color/colorText"
+
+                />
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_inventoryEquipment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label_switch_inventoryEquipment" />
+                android:text="@string/label_switch_inventoryEquipment"
+                android:padding="5sp"
+                android:textColor="@color/colorText"
+
+                />
         </TableRow>
 
         <TableRow
@@ -153,8 +202,26 @@
                 android:id="@+id/toggle_gainsLosses"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label_switch_gainsLosses" />
+                android:text="@string/label_switch_gainsLosses"
+                android:padding="5sp"
+                android:textColor="@color/colorText"
+
+                />
         </TableRow>
     </TableLayout>
 
+    <Button
+        android:id="@+id/button_saveSelection"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_save_selection"
+        android:textSize="@dimen/textsize_button"
+        android:background="@drawable/rounded_button"
+        android:padding="5sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:onClick="saveSelection"
+        />
 </LinearLayout>
