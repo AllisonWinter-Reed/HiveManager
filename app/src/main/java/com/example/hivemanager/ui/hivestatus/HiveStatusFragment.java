@@ -27,6 +27,7 @@ public class HiveStatusFragment extends Fragment {
         mPager = (ViewPager2) view.findViewById(R.id.view_pager);
         mPager.setAdapter(new HiveStatusPagerAdapter(this));
 
+
         TabLayout tabLayout = view.findViewById(R.id.hiveStatusTabs);
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, mPager, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
@@ -47,9 +48,8 @@ public class HiveStatusFragment extends Fragment {
         }
         );
         tabLayoutMediator.attach();
-
-
         return view;
-
     }
+
+
 }

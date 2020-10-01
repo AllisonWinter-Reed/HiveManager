@@ -3,11 +3,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".ui.hivestatus.HealthFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Health"
+            android:textColor="@color/colorFragmentBackground"
+            android:background="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="15dp"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/health_value"
+                android:textColor="@color/colorText"
+                android:background="@color/colorFragmentBackground"
+                android:layout_margin="15dp"
+                android:padding="10dp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Inspection Results"
+            android:textColor="@color/colorFragmentBackground"
+            android:background="@color/colorPrimaryDark"
+            android:padding="15dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Inspection Date and Notes"
+                android:padding="10dp"
+                android:textColor="@color/colorText"
+                android:background="@color/colorFragmentBackground"
+                android:layout_margin="15dp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </FrameLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 </androidx.core.widget.NestedScrollView>

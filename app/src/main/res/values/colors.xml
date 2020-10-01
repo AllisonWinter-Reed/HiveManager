@@ -9,4 +9,7 @@
     <color name="grayColor">#AEAEAE</color>
     <color name="colorTextBackground">#FFFFFF</color>
     <color name="colorFragmentBackground">#FDFFFC</color>
+    <color name="start_green">#65BD00</color>
+    <color name="center_yellow">#FFEB3B</color>
+    <color name="end_red">#C70000</color>
 </resources>
