@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".ui.hivestatus.MetricsFragment">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/header_honey_stores"
+            android:textColor="@color/colorFragmentBackground"
+            android:background="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="15dp"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/value_honey_stores"
+                android:textColor="@color/colorText"
+                android:background="@color/colorFragmentBackground"
+                android:layout_margin="15dp"
+                android:padding="10dp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Queen Production"
+            android:textColor="@color/colorFragmentBackground"
+            android:background="@color/colorPrimaryDark"
+            android:padding="15dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/value_queen_production"
+                android:padding="10dp"
+                android:textColor="@color/colorText"
+                android:background="@color/colorFragmentBackground"
+                android:layout_margin="15dp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/header_gains"
+            android:textColor="@color/colorFragmentBackground"
+            android:background="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="15dp"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/value_gains"
+                android:textColor="@color/colorText"
+                android:background="@color/colorFragmentBackground"
+                android:layout_margin="15dp"
+                android:padding="10dp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/header_losses"
+            android:textColor="@color/colorFragmentBackground"
+            android:background="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="15dp"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/value_losses"
+                android:textColor="@color/colorText"
+                android:background="@color/colorFragmentBackground"
+                android:layout_margin="15dp"
+                android:padding="10dp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </FrameLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+</androidx.core.widget.NestedScrollView>
