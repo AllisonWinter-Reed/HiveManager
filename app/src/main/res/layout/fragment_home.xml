@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,8 +8,54 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="20dp"
+    android:layout_marginBottom="100dp"
     >
-
-
-
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/image_hiveStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bee"
+        android:padding="10dp" />
+    <TextView
+        android:id="@+id/home_hiveStatusLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hive Status"
+        android:gravity="center" />
+    <ImageView
+        android:id="@+id/image_manageHives"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/hive"
+        android:padding="10dp" />
+    <TextView
+        android:id="@+id/home_manageHivesLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Manage Hives"
+        android:gravity="center" />
+    <ImageView
+        android:id="@+id/image_myProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/profile"
+        android:padding="10dp" />
+    <TextView
+        android:id="@+id/home_myProfileLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My Profile"
+        android:gravity="center" />
+    <ImageView
+        android:id="@+id/image_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logout"
+        android:padding="10dp" />
+    <TextView
+        android:id="@+id/home_logOutLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Log Out"
+        android:gravity="center" />
+</LinearLayout>
