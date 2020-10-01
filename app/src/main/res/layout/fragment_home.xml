@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frag_container_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment"
@@ -9,14 +10,16 @@
     android:gravity="center"
     android:padding="20dp"
     android:layout_marginBottom="100dp"
+    android:background="?android:attr/colorBackground"
     >
     <ImageView
         android:id="@+id/image_hiveStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/bee"
+        android:src="@drawable/beebutton"
         android:padding="10dp"
-        android:onClick="openHiveStatus" />
+        android:onClick="openHiveStatus"
+        tools:ignore="OnClick" />
     <TextView
         android:id="@+id/home_hiveStatusLabel"
         android:layout_width="match_parent"
@@ -27,20 +30,25 @@
         android:id="@+id/image_manageHives"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/hive"
-        android:padding="10dp" />
+        android:src="@drawable/hivebutton"
+        android:padding="10dp"
+        android:onClick="openManageHives"
+        tools:ignore="OnClick"  />
     <TextView
         android:id="@+id/home_manageHivesLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Manage Hives"
-        android:gravity="center" />
+        android:gravity="center"
+        />
     <ImageView
         android:id="@+id/image_myProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/profile"
-        android:padding="10dp" />
+        android:src="@drawable/profilebutton"
+        android:padding="10dp"
+        android:onClick="openProfile"
+        tools:ignore="OnClick" />
     <TextView
         android:id="@+id/home_myProfileLabel"
         android:layout_width="match_parent"
@@ -51,7 +59,7 @@
         android:id="@+id/image_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/logout"
+        android:src="@drawable/logoutbutton"
         android:padding="10dp" />
     <TextView
         android:id="@+id/home_logOutLabel"
