@@ -20,30 +20,54 @@
         android:id="@+id/profile_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/colorAccent"
         android:text="@string/user_profileName"
-        android:background="@color/colorAccent"/>
+        android:textColor="@color/colorText"
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/profile_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/user_userEmail" />
+        android:text="@string/user_userEmail"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorText"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"/>
 
     <TextView
         android:id="@+id/profile_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/user_userPhone" />
+        android:text="@string/user_userPhone"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorText"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"/>
 
     <TextView
         android:id="@+id/profile_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/user_profileAddress" />
+        android:text="@string/user_profileAddress"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorText"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"/>
 
     <Button
         android:id="@+id/button_editProfile"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label_editProfile" />
 
@@ -51,11 +75,14 @@
         android:id="@+id/profile_hivestatusHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/text_hivestatusHeader" />
+        android:text="@string/text_hivestatusHeader"
+        android:layout_margin="5dp"
+        android:textColor="@color/colorText"
+        />
 
     <Button
         android:id="@+id/button_saveSelection"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label_save_selection" />
 
