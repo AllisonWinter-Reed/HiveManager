@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
             con = establishConnection();
             if(con == null){
                 status.setText("Check internet connection");
-                Toast.makeText(LoginActivity.this, "Check internet connection", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(LoginActivity.this, "Check internet connection", Toast.LENGTH_LONG).show();
 
             }
             else {
@@ -98,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                     ResultSet rs = stmt.executeQuery(sql);
 
                     if (rs.next()) {
-                       // Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
+                      // Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_LONG).show();
 
                         status.setText("Login Success");
                         if (status.getText() == "Login Success") {
@@ -110,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
 
                      else {
                         status.setText("Login Incorrect");
-                        Toast.makeText(LoginActivity.this, "Incorrect Username or Passwrd", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(LoginActivity.this, "Incorrect Username or Passwrd", Toast.LENGTH_LONG).show();
                         usernameLogin.setText("");
                         passwordLogin.setText("");
                     }

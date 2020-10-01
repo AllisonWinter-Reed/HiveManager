@@ -85,7 +85,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="30dp"
-        android:onClick="editProfile"/>
+        android:onClick="editProfile"
+        android:textColor="@color/colorText"/>
 
     <TextView
         android:id="@+id/profile_hivestatusHeader"
@@ -217,5 +218,6 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="5dp"
         android:onClick="saveSelection"
+        android:textColor="@color/colorText"
         />
 </LinearLayout>
