@@ -25,27 +25,27 @@ public class HomeFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
-//    public void openHiveStatus(View view) {
-//        Fragment fragment = new HiveStatusFragment();
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.replace(((R.id.frag_container_home)), fragment);
-//        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-//        transaction.commit();
-//    }
-//
-//    public void openManageHives(View view) {
-//        Fragment fragment = new ManageHivesFragment();
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.replace(((R.id.frag_container_home)), fragment);
-//        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-//        transaction.commit();
-//    }
-//
-//    public void openProfile(View view) {
-//        Fragment fragment = new ProfileFragment();
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.replace(((R.id.frag_container_home)), fragment);
-//        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-//        transaction.commit();
-//    }
+    public void openHiveStatus(View view) {
+        Fragment fragment = new HiveStatusFragment();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(((R.id.frag_container_home)), fragment);
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
+    }
+
+    public void openManageHives(View view) {
+        Fragment fragment = new ManageHivesFragment();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(((R.id.frag_container_home)), fragment);
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
+    }
+
+    public void openProfile(View view) {
+        Fragment fragment = new ProfileFragment();
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace(((R.id.frag_container_home)), fragment);
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
+    }
 }
