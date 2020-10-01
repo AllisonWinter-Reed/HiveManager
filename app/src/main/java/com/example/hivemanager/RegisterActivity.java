@@ -54,17 +54,16 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 new RegisterActivity.registerUser().execute("");
 
-
             }
         });
 
         backToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 {
                     Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
                     startActivity(intent);
+
                 }
             }
         });
@@ -74,7 +73,6 @@ public class RegisterActivity extends AppCompatActivity {
     public class registerUser extends AsyncTask<String,String,String> {
         String z  ="";
         Boolean isSuccess = false;
-
 
         @Override
         protected void onPreExecute() {
@@ -166,8 +164,6 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-
-
     @SuppressLint("NewApi")
     public Connection establishConnection() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -176,12 +172,14 @@ public class RegisterActivity extends AppCompatActivity {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-
             connection = DriverManager.getConnection("jdbc:mysql://uwhivemanager506.cmnpa3ypkmwq.us-east-2.rds.amazonaws.com:3306/hive_manager", "admin", "Hivemanager123");
+
         } catch (Exception e) {
             Log.e("SQL Connection Error : ", e.getMessage());
-        }
-        return connection;
-    }
 
+        }
+
+        return connection;
+
+    }
 }
