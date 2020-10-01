@@ -57,21 +57,20 @@
                 android:textSize="20sp"
                 android:padding="10dp" />
 
-            <EditText
-                android:id="@+id/etCity"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="City"
                 android:textSize="20sp"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:text="Madison, WI"/>
 
             <EditText
-                android:id="@+id/etState"
+                android:id="@+id/etZip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="State"
+                android:hint="Zip Code"
                 android:textSize="20sp"
-                android:padding="10dp" />
+                android:padding="10dp"/>
 
             <EditText
                 android:id="@+id/etPhoneNumber"
@@ -115,7 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Register"
+                android:text="Register Status"
                 android:textSize="20sp" />
 
             <TextView

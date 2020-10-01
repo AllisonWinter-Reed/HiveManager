@@ -8,6 +8,8 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="?android:attr/colorBackground"
+    android:clickable="true"
+    android:focusable="true"
     android:padding="20dp"
     >
     <!--test image remove upon implementation-->

@@ -24,7 +24,7 @@ import java.sql.Statement;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText userName,firstName,lastName,email,phoneNumber,password,ppref;
+    EditText userName,firstName,lastName,email,phoneNumber,password,address,zip,ppref;
     Button registerbtn;
     TextView status, backToLogin;
 
@@ -44,6 +44,8 @@ public class RegisterActivity extends AppCompatActivity {
         email = (EditText)findViewById(R.id.etEmail);
         phoneNumber = (EditText)findViewById(R.id.etPhoneNumber);
         password = (EditText)findViewById(R.id.etPassword);
+        address = (EditText)findViewById(R.id.etAddress);
+        zip = (EditText)findViewById(R.id.etZip);
 //        ppref = (ImageView)findViewById(R.id.etPPReference);
         registerbtn = (Button)findViewById((R.id.bRegister));
         status = (TextView)findViewById(R.id.regstatus);
