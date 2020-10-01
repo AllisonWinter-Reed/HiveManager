@@ -9,7 +9,7 @@
     <EditText
         android:id="@+id/etUsernameLogin"
 
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Username"
         android:textSize="25dp"
