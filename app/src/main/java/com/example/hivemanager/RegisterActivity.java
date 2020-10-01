@@ -19,9 +19,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-// TODO remove later
-import static java.lang.System.exit;
-
 public class RegisterActivity extends AppCompatActivity {
 
     EditText userName,firstName,lastName,email,phoneNumber,password,address,zip,ppref;
