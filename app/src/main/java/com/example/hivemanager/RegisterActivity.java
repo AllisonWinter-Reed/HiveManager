@@ -1,6 +1,7 @@
 package com.example.hivemanager;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -25,7 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     EditText userName,firstName,lastName,email,phoneNumber,password,ppref;
     Button registerbtn;
-    TextView status;
+    TextView status, backToLogin;
 
     Connection con;
     Statement stmt;
@@ -46,6 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
         ppref = (EditText)findViewById(R.id.etPPReference);
         registerbtn = (Button)findViewById((R.id.bRegister));
         status = (TextView)findViewById(R.id.regstatus);
+        backToLogin = (TextView) findViewById(R.id.tvToLogin);
 
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +57,18 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         });
+
+        backToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                {
+                    Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
     }
 
     public class registerUser extends AsyncTask<String,String,String> {
