@@ -44,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
         email = (EditText)findViewById(R.id.etEmail);
         phoneNumber = (EditText)findViewById(R.id.etPhoneNumber);
         password = (EditText)findViewById(R.id.etPassword);
-        ppref = (EditText)findViewById(R.id.etPPReference);
+//        ppref = (ImageView)findViewById(R.id.etPPReference);
         registerbtn = (Button)findViewById((R.id.bRegister));
         status = (TextView)findViewById(R.id.regstatus);
         backToLogin = (TextView) findViewById(R.id.tvToLogin);

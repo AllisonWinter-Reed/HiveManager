@@ -9,11 +9,12 @@
     tools:context=".RegisterActivity"
     tools:ignore="MissingConstraints">
 <!--change to image view, clickable to add picture-->
-    <EditText
+    <ImageView
         android:id="@+id/etPPReference"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="PPReference"
+        android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/addprofilepic"
         android:textSize="25sp" />
 
     <EditText
@@ -23,7 +24,7 @@
         android:hint="Username"
         android:textSize="20sp"
         android:padding="10dp"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="10dp" />
 
     <EditText
         android:id="@+id/etFirstName"
