@@ -93,6 +93,7 @@ public class LoginActivity extends AppCompatActivity {
             }
             else {
                 try {
+
                     String sql = "SELECT * FROM Beekeeper WHERE Username = '"+usernameLogin.getText()+"' AND password = '"+passwordLogin.getText()+"'";
                     stmt = con.createStatement();
                     ResultSet rs = stmt.executeQuery(sql);
