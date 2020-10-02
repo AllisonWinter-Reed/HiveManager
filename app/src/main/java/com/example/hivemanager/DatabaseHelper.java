@@ -1,29 +1,36 @@
 package com.example.hivemanager;
 
+import android.os.StrictMode;
+import android.util.Log;
+
 import java.sql.*;
 import java.util.ArrayList;
 
 public class DatabaseHelper {
-    static Connection con;
 
     //connects to Database
-    public static Connection establishConnection() {
-        con = null;
+    private static Connection establishConnection() {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        Connection connection = null;
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://uwhivemanager506.cmnpa3ypkmwq.us-east-2.rds.amazonaws.com:3306/hive_manager", "admin", "Hivemanager123");
 
-            con = DriverManager.getConnection("jdbc:mysql://uwhivemanager506.cmnpa3ypkmwq.us-east-2.rds.amazonaws.com:3306/hive_manager", "admin", "Hivemanager123");
         } catch (Exception e) {
-            System.out.println("error");
+            Log.e("SQL Connection Error : ", e.getMessage());
+
         }
-        return con;
+
+        return connection;
+
     }
 
     //returns an ArrayList of all the user fields in the format[username,firstname,email,lastname,phone_number,ppr,password,address,zipcode]
     public static ArrayList getUserData(String userName) throws SQLException {
         Statement stmt;
-        con = establishConnection();
+        Connection con = establishConnection();
 
         String sql = "SELECT * FROM Beekeeper WHERE Username = '" + userName.toString() + "'";
         stmt = con.createStatement();
@@ -74,7 +81,9 @@ public class DatabaseHelper {
         Statement stmt;
         ResultSet results;
         ArrayList<Apiary> apiaries = new ArrayList<>();
-        con = establishConnection();
+        Connection con = establishConnection();
+
+        System.out.println("TOBY : " + con);
 
         // Issues a SQL query to find all Apiaries associated with user.
         sql = "SELECT * " +
@@ -110,7 +119,7 @@ public class DatabaseHelper {
         Statement stmt;
         ResultSet results;
         ArrayList<Hive> hives = new ArrayList<Hive>();
-        con = establishConnection();
+        Connection con = establishConnection();
 
         // Issues a SQL query to find all Hives associated with address.
         sql = "SELECT * " +
@@ -139,10 +148,11 @@ public class DatabaseHelper {
 
     }
 
-    //return a list of hives with the same address i.e. same Apiary
+    //return a list of hive IDs
+    // with the same address i.e. same Apiary
     public static ArrayList getHives(String addr) throws SQLException {
         Statement stmt;
-        con = establishConnection();
+        Connection con = establishConnection();
 
         String sql = "SELECT * FROM Hive WHERE Address = '" + addr.toString() + "'";
         stmt = con.createStatement();
@@ -165,7 +175,7 @@ public class DatabaseHelper {
 
     public static ArrayList getHiveInfo(int hiveID) throws SQLException {
         Statement stmt;
-        con = establishConnection();
+        Connection con = establishConnection();
 
         String sql = "SELECT * FROM Hive WHERE HiveId = '" + hiveID + "'";
         stmt = con.createStatement();
@@ -202,7 +212,7 @@ public class DatabaseHelper {
     //adds an apiary into the database, CANNOT ADD INTO APIARY IF THERE IS NO USER WITH THE SAME USERNAME
     public static void addApiary(String username, String address,  String zipcode) throws SQLException {
         Statement stmt;
-        con = establishConnection();
+        Connection con = establishConnection();
 
         String sql = "INSERT INTO Apiary VALUES ('" + address + "','" + username + "','" + zipcode + "')";
 
@@ -244,4 +254,20 @@ public class DatabaseHelper {
 
 
     }
+
+    public static void deleteApiary(String Address) throws SQLException {
+
+        Connection con;
+        Statement stmt;
+
+        con = establishConnection();
+        String sql = "DELETE FROM Apiary WHERE Address = '"+ Address +"'";
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
+
+    }
+
+
+
+
 }

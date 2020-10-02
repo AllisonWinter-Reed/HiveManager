@@ -134,11 +134,16 @@ public class MainActivity extends AppCompatActivity {
         try {
 
             // Associates apiaries with the user.
-            user.getApiaries().addAll(DatabaseHelper.getApiaries(user.getUsername()));
+            Log.d("PROBLEM", userName.toString());
+            user.getApiaries().addAll(DatabaseHelper.getApiaries(userName.toString()));
+
+            Log.d("PROBLEM", "AFTERAP");
 
             // Associates Hives with each Apiary.
             for (Apiary apiary : user.getApiaries())
                 apiary.setHives(DatabaseHelper.getHives(apiary.getAddress()));
+
+            Log.d("PROBLEM", "AFTERHIVES");
 
             // TODO DEBUG REMOVE prints contents of this User's hives
             for (Apiary currApiary : user.getApiaries()) {
@@ -164,28 +169,4 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
-    /**
-     * TODO remove when helper created
-     *
-     * @return
-     */
-    private Connection establishConnection() {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        Connection connection = null;
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://uwhivemanager506.cmnpa3ypkmwq.us-east-2.rds.amazonaws.com:3306/hive_manager", "admin", "Hivemanager123");
-
-        } catch (Exception e) {
-            Log.e("SQL Connection Error : ", e.getMessage());
-
-        }
-
-        return connection;
-
-    }
-
 }
