@@ -25,6 +25,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.hivemanager.ui.hivestatus.HiveStatusFragment;
 import com.example.hivemanager.ui.hivestatus.HealthFragment;
 import com.example.hivemanager.ui.home.HomeFragment;
+import com.example.hivemanager.ui.managehives.AddApiary;
 import com.example.hivemanager.ui.managehives.ManageApiaries;
 import com.example.hivemanager.ui.managehives.ManageHivesFragment;
 import com.example.hivemanager.ui.profile.ProfileFragment;
@@ -110,6 +111,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addApiary(View view) {
+        Fragment fragment = new AddApiary();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.nav_host_fragment, fragment);
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
     }
 
     // TODO DEBUG REMOVE

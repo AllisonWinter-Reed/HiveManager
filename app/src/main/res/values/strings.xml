@@ -30,4 +30,7 @@
     <string name="value_gains">50</string>
     <string name="header_losses">Losses</string>
     <string name="value_losses">50</string>
+    <string name="address">Address</string>
+    <string name="zip_code">Zip Code</string>
+    <string name="madison_wi">Madison, WI</string>
 </resources>
