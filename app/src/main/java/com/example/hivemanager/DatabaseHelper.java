@@ -4,29 +4,25 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class DatabaseHelper {
-
+    static Connection con;
 
     //connects to Database
     public static Connection establishConnection() {
-
-        Connection connection = null;
+        con = null;
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            connection = DriverManager.getConnection("jdbc:mysql://uwhivemanager506.cmnpa3ypkmwq.us-east-2.rds.amazonaws.com:3306/hive_manager", "admin", "Hivemanager123");
+            con = DriverManager.getConnection("jdbc:mysql://uwhivemanager506.cmnpa3ypkmwq.us-east-2.rds.amazonaws.com:3306/hive_manager", "admin", "Hivemanager123");
         } catch (Exception e) {
             System.out.println("error");
         }
-        return connection;
+        return con;
     }
 
     //returns an ArrayList of all the user fields in the format[username,firstname,email,lastname,phone_number,ppr,password,address,zipcode]
     public static ArrayList getUserData(String userName) throws SQLException {
-
-        Connection con;
         Statement stmt;
-
         con = establishConnection();
 
         String sql = "SELECT * FROM Beekeeper WHERE Username = '" + userName.toString() + "'";
@@ -63,17 +59,93 @@ public class DatabaseHelper {
 
     }
 
+    /**
+     * Returns a list of Apiaries associated with the inputed user.
+     *
+     * The Apiaries will be initialised with Address and Zipcode, Hives and Equipment will be left
+     * empty.
+     *
+     * @param user the user to retrieve Apiaries for.
+     * @return a list of Apiaries associated with the inputed user.
+     * @throws SQLException if a SQL query fails.
+     */
+    public static ArrayList<Apiary> getApiaries(String user) throws SQLException {
+        String sql;
+        Statement stmt;
+        ResultSet results;
+        ArrayList<Apiary> apiaries = new ArrayList<>();
+        con = establishConnection();
+
+        // Issues a SQL query to find all Apiaries associated with user.
+        sql = "SELECT * " +
+                "FROM Apiary " +
+                "WHERE Username = \"" + user + "\""
+        ;
+        stmt = con.createStatement();
+        results = stmt.executeQuery(sql);
+
+        // Fills the Arraylist of Apiaries.
+        while (results.next()) {
+            apiaries.add(new Apiary(results.getString("Address"),
+                    results.getString("Zipcode")));
+
+        }
+
+        // Returns the list of apiaries associated with user.
+        return apiaries;
+
+    }
+
+    /**
+     * Returns a list of Hives associated with the inputed address.
+     *
+     * The Hives will be initialised with all data except equipment and inspection dates.
+     *
+     * @param address the address to retrieve Hives for.
+     * @return the hives associated with the inputed address.
+     * @throws SQLException if a SQL query fails.
+     */
+    public static ArrayList<Hive> getHivesAddr(String address) throws SQLException {
+        String sql;
+        Statement stmt;
+        ResultSet results;
+        ArrayList<Hive> hives = new ArrayList<Hive>();
+        con = establishConnection();
+
+        // Issues a SQL query to find all Hives associated with address.
+        sql = "SELECT * " +
+                "FROM Hive " +
+                "WHERE Address = \"" + address + "\""
+        ;
+        stmt = con.createStatement();
+        results = stmt.executeQuery(sql);
+
+        // Fills the Arraylist of Hives.
+        while (results.next()) {
+            hives.add(new Hive(
+                    Integer.parseInt(results.getString("HiveId")),
+                    Integer.parseInt(results.getString("Health")),
+                    null, null, // TODO inspections not in database
+                    Integer.parseInt(results.getString("Honey_stores")),
+                    Integer.parseInt(results.getString("Queen_Production")),
+                    null,
+                    Integer.parseInt(results.getString("Losses")),
+                    Integer.parseInt(results.getString("Gains"))));
+
+        }
+
+        // Returns the ArrayList of Hives associated with address.
+        return hives;
+
+    }
 
     //return a list of hives with the same address i.e. same Apiary
     public static ArrayList getHives(String addr) throws SQLException {
-
-        Connection conn;
         Statement stmt;
-
-        conn = establishConnection();
+        con = establishConnection();
 
         String sql = "SELECT * FROM Hive WHERE Address = '" + addr.toString() + "'";
-        stmt = conn.createStatement();
+        stmt = con.createStatement();
 
         ResultSet rs = stmt.executeQuery(sql);
         ArrayList hivelist = new ArrayList();
@@ -92,9 +164,7 @@ public class DatabaseHelper {
 
 
     public static ArrayList getHiveInfo(int hiveID) throws SQLException {
-        Connection con;
         Statement stmt;
-
         con = establishConnection();
 
         String sql = "SELECT * FROM Hive WHERE HiveId = '" + hiveID + "'";
@@ -131,11 +201,7 @@ public class DatabaseHelper {
 
     //adds an apiary into the database, CANNOT ADD INTO APIARY IF THERE IS NO USER WITH THE SAME USERNAME
     public static void addApiary(String username, String address,  String zipcode) throws SQLException {
-
-        Connection con;
         Statement stmt;
-
-
         con = establishConnection();
 
         String sql = "INSERT INTO Apiary VALUES ('" + address + "','" + username + "','" + zipcode + "')";
@@ -178,5 +244,4 @@ public class DatabaseHelper {
 
 
     }
-
 }

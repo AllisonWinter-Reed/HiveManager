@@ -35,6 +35,11 @@ public class Apiary {
     public ArrayList<Hive> getHives() { return hives; }
 
     /**
+     * @param hives the Hives to add to this Apiary.
+     */
+    public void setHives(ArrayList<Hive> hives) { this.hives = hives; }
+
+    /**
      * @param hive the Hive to remove from this Apiary.
      */
     public void removeHive(Hive hive) {
