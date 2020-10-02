@@ -11,10 +11,13 @@ import android.view.ViewGroup;
 import com.example.hivemanager.R;
 
 public class EquipmentFragment extends Fragment {
+    private int apiaryPosition;
+    private int hivePosition;
 
 
-    public EquipmentFragment() {
-        // Required empty public constructor
+    public EquipmentFragment(int apiaryPosition, int hivePosition) {
+        this.apiaryPosition = apiaryPosition;
+        this.hivePosition = hivePosition;
     }
 
     @Override

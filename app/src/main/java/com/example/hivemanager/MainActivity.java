@@ -98,13 +98,13 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
     }
 
-    public void openHealthTab(View view) {
-        Fragment fragment = new HealthFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.nav_host_fragment, fragment);
-        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-        transaction.commit();
-    }
+//    public void openHealthTab(View view) {
+//        Fragment fragment = new HealthFragment();
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        transaction.replace(R.id.nav_host_fragment, fragment);
+//        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+//        transaction.commit();
+//    }
 
     public void openManageApiaries(View view) {
         Fragment fragment = new ManageApiaries();

@@ -12,9 +12,12 @@ import com.example.hivemanager.R;
 
 
 public class MetricsFragment extends Fragment {
+    private int apiaryPosition;
+    private int hivePosition;
 
-    public MetricsFragment() {
-        // Required empty public constructor
+    public MetricsFragment(int apiaryPosition, int hivePosition) {
+        this.apiaryPosition = apiaryPosition;
+        this.hivePosition = hivePosition;
     }
 
 

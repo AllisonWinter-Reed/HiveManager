@@ -5,9 +5,15 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 public class HiveStatusPagerAdapter extends FragmentStateAdapter {
-    public HiveStatusPagerAdapter(@NonNull Fragment fragment) {
+    private int apiaryPosition;
+    private int hivePosition;
+
+
+    public HiveStatusPagerAdapter(@NonNull Fragment fragment, int apiaryPosition, int hivePosition) {
         super(fragment);
 
+        this.apiaryPosition = apiaryPosition;
+        this.hivePosition = hivePosition;
     }
 
     @NonNull
@@ -15,11 +21,11 @@ public class HiveStatusPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
        switch(position) {
            case 1:
-               return new EquipmentFragment();
+               return new EquipmentFragment(apiaryPosition, hivePosition);
            case 2:
-               return new MetricsFragment();
+               return new MetricsFragment(apiaryPosition, hivePosition);
            default:
-               return new HealthFragment();
+               return new HealthFragment(apiaryPosition, hivePosition);
 
        }
     }

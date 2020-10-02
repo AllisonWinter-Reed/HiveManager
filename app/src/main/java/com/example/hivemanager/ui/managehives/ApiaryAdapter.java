@@ -3,6 +3,7 @@ package com.example.hivemanager.ui.managehives;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,21 +16,46 @@ import java.util.ArrayList;
 
 public class ApiaryAdapter extends RecyclerView.Adapter<ApiaryAdapter.ApiaryNote> {
     ArrayList<Apiary> mApiary;
+    private onItemClickListener mListener;
 
     ApiaryAdapter(ArrayList<Apiary> mApiary) {
         this.mApiary = mApiary;
     }
 
+    public interface onItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(onItemClickListener listener) {
+        mListener = listener;
+    }
+
+
+
     public static class ApiaryNote extends RecyclerView.ViewHolder {
         private TextView apiaryName;
         private TextView apiaryAddress;
         private TextView numberHives;
+        private Button deleteApiaryButton;
 
-        public ApiaryNote(@NonNull View itemView) {
+        public ApiaryNote(@NonNull View itemView, final onItemClickListener listener) {
             super(itemView);
             apiaryName = itemView.findViewById(R.id.apiaryName);
             apiaryAddress = itemView.findViewById(R.id.apiaryLocation);
             numberHives = itemView.findViewById(R.id.numberHives);
+            deleteApiaryButton = itemView.findViewById(R.id.deleteApiary_button);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 
@@ -37,7 +63,7 @@ public class ApiaryAdapter extends RecyclerView.Adapter<ApiaryAdapter.ApiaryNote
     @Override
     public ApiaryAdapter.ApiaryNote onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.apiary_view, parent, false);
-        return new ApiaryNote(itemView);
+        return new ApiaryNote(itemView, mListener);
     }
 
     @Override
@@ -48,6 +74,9 @@ public class ApiaryAdapter extends RecyclerView.Adapter<ApiaryAdapter.ApiaryNote
         holder.apiaryName.setText(String.format("Apiary %d", position + 1));
         holder.apiaryAddress.setText(holderA.getAddress());
         holder.numberHives.setText(String.format("Number of Hives: %d", holderA.getHives().size()));
+        if(holderA.getHives().size() == 0) {
+            holder.deleteApiaryButton.setVisibility(View.VISIBLE);
+        }
 
     }
 

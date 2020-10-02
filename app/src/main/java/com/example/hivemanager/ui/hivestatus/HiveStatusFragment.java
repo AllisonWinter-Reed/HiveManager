@@ -19,13 +19,24 @@ public class HiveStatusFragment extends Fragment {
     private static final int NUM_TABS = 3;
     private ViewPager2 mPager;
     private PagerAdapter pagerAdapter;
+    private int apiaryPositon;
+    private int hivePosition;
+
+    public HiveStatusFragment() {
+
+    }
+
+    public HiveStatusFragment(int apiaryPositon, int hivePosition) {
+        this.apiaryPositon = apiaryPositon;
+        this.hivePosition = hivePosition;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_hivestatus, container, false);
         mPager = (ViewPager2) view.findViewById(R.id.view_pager);
-        mPager.setAdapter(new HiveStatusPagerAdapter(this));
+        mPager.setAdapter(new HiveStatusPagerAdapter(this, apiaryPositon, hivePosition));
 
 
         TabLayout tabLayout = view.findViewById(R.id.hiveStatusTabs);
