@@ -169,13 +169,18 @@ public class MainActivity extends AppCompatActivity {
             for (Apiary apiary : user.getApiaries())
                 apiary.setHives(DatabaseHelper.getHivesAddr(apiary.getAddress()));
 
-            // Associates Equipment with each Hive.
+            // Associates Equipment and Inspections with each Hive.
             for (Apiary apiary : user.getApiaries()) {
                 for (Hive hive : apiary.getHives()) {
                     hive.setEquipment(DatabaseHelper.getHiveEquipment(String.valueOf(hive.getHiveID())));
+                    hive.setInspections(DatabaseHelper.getHiveInspections(String.valueOf(hive.getHiveID())));
 
                 }
             }
+
+
+            // TODO DEBUG REMOVE prints inspections.
+
         }
         // If a SQL exception occurs, logs the error message.
         catch (SQLException excpt) {
