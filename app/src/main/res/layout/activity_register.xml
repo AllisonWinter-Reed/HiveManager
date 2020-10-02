@@ -53,7 +53,7 @@
                 android:id="@+id/etAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Address"
+                android:hint="@string/address"
                 android:textSize="20sp"
                 android:padding="10dp" />
 
@@ -62,13 +62,13 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:padding="10dp"
-                android:text="Madison, WI"/>
+                android:text="@string/madison_wi"/>
 
             <EditText
                 android:id="@+id/etZip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Zip Code"
+                android:hint="@string/zip_code"
                 android:textSize="20sp"
                 android:padding="10dp"/>
 
