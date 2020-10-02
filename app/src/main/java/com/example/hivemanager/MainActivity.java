@@ -134,11 +134,16 @@ public class MainActivity extends AppCompatActivity {
         try {
 
             // Associates apiaries with the user.
-            user.getApiaries().addAll(DatabaseHelper.getApiaries(user.getUsername()));
+            Log.d("PROBLEM", userName.toString());
+            user.getApiaries().addAll(DatabaseHelper.getApiaries(userName.toString()));
+
+            Log.d("PROBLEM", "AFTERAP");
 
             // Associates Hives with each Apiary.
             for (Apiary apiary : user.getApiaries())
                 apiary.setHives(DatabaseHelper.getHives(apiary.getAddress()));
+
+            Log.d("PROBLEM", "AFTERHIVES");
 
             // TODO DEBUG REMOVE prints contents of this User's hives
             for (Apiary currApiary : user.getApiaries()) {

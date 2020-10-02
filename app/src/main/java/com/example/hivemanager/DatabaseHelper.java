@@ -4,11 +4,10 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class DatabaseHelper {
-    static Connection con;
 
     //connects to Database
     public static Connection establishConnection() {
-        con = null;
+        Connection con = null;
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -23,7 +22,7 @@ public class DatabaseHelper {
     //returns an ArrayList of all the user fields in the format[username,firstname,email,lastname,phone_number,ppr,password,address,zipcode]
     public static ArrayList getUserData(String userName) throws SQLException {
         Statement stmt;
-        con = establishConnection();
+        Connection con = establishConnection();
 
         String sql = "SELECT * FROM Beekeeper WHERE Username = '" + userName.toString() + "'";
         stmt = con.createStatement();
@@ -74,7 +73,7 @@ public class DatabaseHelper {
         Statement stmt;
         ResultSet results;
         ArrayList<Apiary> apiaries = new ArrayList<>();
-        con = establishConnection();
+        Connection con = establishConnection();
 
         // Issues a SQL query to find all Apiaries associated with user.
         sql = "SELECT * " +
@@ -110,7 +109,7 @@ public class DatabaseHelper {
         Statement stmt;
         ResultSet results;
         ArrayList<Hive> hives = new ArrayList<Hive>();
-        con = establishConnection();
+        Connection con = establishConnection();
 
         // Issues a SQL query to find all Hives associated with address.
         sql = "SELECT * " +
@@ -143,7 +142,7 @@ public class DatabaseHelper {
     // with the same address i.e. same Apiary
     public static ArrayList getHives(String addr) throws SQLException {
         Statement stmt;
-        con = establishConnection();
+        Connection con = establishConnection();
 
         String sql = "SELECT * FROM Hive WHERE Address = '" + addr.toString() + "'";
         stmt = con.createStatement();
@@ -166,7 +165,7 @@ public class DatabaseHelper {
 
     public static ArrayList getHiveInfo(int hiveID) throws SQLException {
         Statement stmt;
-        con = establishConnection();
+        Connection con = establishConnection();
 
         String sql = "SELECT * FROM Hive WHERE HiveId = '" + hiveID + "'";
         stmt = con.createStatement();
@@ -203,7 +202,7 @@ public class DatabaseHelper {
     //adds an apiary into the database, CANNOT ADD INTO APIARY IF THERE IS NO USER WITH THE SAME USERNAME
     public static void addApiary(String username, String address,  String zipcode) throws SQLException {
         Statement stmt;
-        con = establishConnection();
+        Connection con = establishConnection();
 
         String sql = "INSERT INTO Apiary VALUES ('" + address + "','" + username + "','" + zipcode + "')";
 
