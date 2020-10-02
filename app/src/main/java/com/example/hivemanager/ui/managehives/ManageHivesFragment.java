@@ -33,7 +33,7 @@ public class ManageHivesFragment extends Fragment {
         ArrayList<Hive> Hives = new ArrayList<Hive>();
         try {
 
-            // Connects to the database TODO remove.
+            // Connects to the database.
             Statement stmt;
             Connection con = establishConnection();
 
@@ -41,7 +41,7 @@ public class ManageHivesFragment extends Fragment {
             // TODO replace this with Samraaj database helper.
             // TODO exception handling? But it should not fail when the helper is done...
             if (con == null);
-                // Attempts to perform a query if connection is successful.
+            // Attempts to perform a query if connection is successful.
             else {
 
                 // TODO there should be a better way of doing this
@@ -53,7 +53,7 @@ public class ManageHivesFragment extends Fragment {
                         "WHERE Address IN (" +
                         "SELECT Address " +
                         "FROM Apiary " +
-                        "WHERE Username = " + "\"test\"" + ")"
+                        "WHERE Username = \"" + name + "\")"
                         ;
                 stmt = con.createStatement();
                 ResultSet results = stmt.executeQuery(sql);
@@ -75,37 +75,24 @@ public class ManageHivesFragment extends Fragment {
 
                 }
 
-                /* TODO DEBUG REMOVE
-                String str = "";
-                str = results.getString("Address");
-                Log.d("BOPER", str);
-
-                Statement st;
-                // Finds all Hives.
-                String pql = "SELECT * " +
-                        "FROM Hive " +
-                        "WHERE Address IN (" +
-                        "SELECT Address " +
-                        "FROM Apiary " +
-                        "WHERE Username = " + "\"test\"" + ")"
-                        ;
-                st = con.createStatement();
-                ResultSet results = st.executeQuery(pql);
-                results.next();
-
-                String str = "";
-                str = results.getString("Address");
-                Log.d("BOPER", str);*/
-
+                // TODO DEBUG REMOVE prints contents of this User's hives
+                /*for (int i = 0; i < Hives.size(); ++i) {
+                    Hive hive = Hives.get(i);
+                    Log.d( "TEST",
+                            "HiveID : " + String.valueOf(hive.getHiveID()) + "\n" +
+                            "health : " + String.valueOf(hive.getHealth()) + "\nhoneyStores : " + String.valueOf(hive.getHoneyStores()) +
+                            "\nQueen Production : " + String.valueOf(hive.getQueenProduction()) + "\nLosses : " + String.valueOf(hive.getLosses())
+                                    + "\ngains : " + String.valueOf(hive.getGains()));
+                }*/
             }
         }
-        // If a SQL exception occurs, returns the error message.
+        // If a SQL exception occurs, logs the error message.
         catch (SQLException excpt) {
             // TODO DEBUG REMOVE
             Log.d("EXCEPTION:", excpt.getMessage());
 
         }
-        // If an unexpected exception occurs, returns the error message.
+        // If an unexpected exception occurs, logs the error message.
         catch (Exception excpt) {
             // TODO DEBUG REMOVE
             Log.d("EXCEPTION:", excpt.getMessage());
