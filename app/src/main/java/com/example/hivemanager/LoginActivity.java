@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hivemanager.ui.home.HomeFragment;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -104,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                         status.setText("Login Success");
                         if (status.getText() == "Login Success") {
 
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, HomeFragment.class);
                             startActivity(intent);
                         }
                     }

@@ -23,7 +23,7 @@ public class DatabaseHelper {
 
     //returns an ArrayList of all the user fields in the format
     // [username , firstname , email , lastname , phone_number , ppr , password , address,  zipcode]
-    
+
     public ArrayList getUserData(String userName) throws SQLException {
 
         Connection con;
