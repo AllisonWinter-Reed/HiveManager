@@ -5,12 +5,10 @@
     android:id="@+id/frag_container_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment"
+    tools:context=".MainActivity"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="20dp"
-    android:layout_marginBottom="100dp"
-    android:background="?android:attr/colorBackground"
+    android:background="@color/color_hive_status_background"
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,8 +22,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/beebutton"
         android:padding="10dp"
-        android:onClick="openHiveStatus"
-        tools:ignore="OnClick" />
+        android:onClick="openHiveStatus" />
     <TextView
         android:id="@+id/home_hiveStatusLabel"
         android:layout_width="match_parent"
@@ -38,8 +35,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/hivebutton"
         android:padding="10dp"
-        android:onClick="openManageHives"
-        tools:ignore="OnClick"  />
+        android:onClick="openManageHives" />
     <TextView
         android:id="@+id/home_manageHivesLabel"
         android:layout_width="match_parent"
@@ -53,8 +49,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/profilebutton"
         android:padding="10dp"
-        android:onClick="openProfile"
-        tools:ignore="OnClick" />
+        android:onClick="openProfile" />
     <TextView
         android:id="@+id/home_myProfileLabel"
         android:layout_width="match_parent"

@@ -1,8 +1,12 @@
 package com.example.hivemanager;
 
+import androidx.fragment.app.FragmentContainer;
+import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.fragment.app.Fragment;
+
+import android.app.Activity;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.Editable;
@@ -24,6 +28,8 @@ import com.example.hivemanager.ui.profile.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private FragmentManager fragmentManager;
     public static Editable userName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
                 R.id.navigation_home, R.id.navigation_profile, R.id.navigation_managehives, R.id.navigation_managehives)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupActionBarWithNavController(this,
+                navController,
+                appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
 
@@ -50,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     public void openHiveStatus(View view) {
         Fragment fragment = new HiveStatusFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(((R.id.frag_container_home)), fragment);
+        transaction.replace(R.id.nav_host_fragment, fragment);
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
         transaction.commit();
     }
@@ -58,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     public void openManageHives(View view) {
         Fragment fragment = new ManageHivesFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(((R.id.frag_container_home)), fragment);
+        transaction.replace(R.id.nav_host_fragment, fragment);
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
         transaction.commit();
     }
@@ -66,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     public void openProfile(View view) {
         Fragment fragment = new ProfileFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(((R.id.frag_container_home)), fragment);
+        transaction.replace(R.id.nav_host_fragment, fragment);
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
         transaction.commit();
     }
@@ -74,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
     public void openHealthTab(View view) {
         Fragment fragment = new HealthFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(((R.id.frag_container_home)), fragment);
+        transaction.replace(R.id.nav_host_fragment, fragment);
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
         transaction.commit();
     }
