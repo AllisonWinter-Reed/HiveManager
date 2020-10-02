@@ -169,7 +169,7 @@ public class RegisterActivity extends AppCompatActivity {
         Boolean isSuccess = false;
         @Override
         protected void onPreExecute() {
-            status.setText("Sending Data to Database");
+            status.setText("Registering");
         }
         @Override
         protected void onPostExecute(String s) {
@@ -210,17 +210,10 @@ public class RegisterActivity extends AppCompatActivity {
                 // Attempts to perform a query if connection is successful.
                 else {
 
-                   // DatabaseHelper.createUser(userName.getText().toString(),firstName.getText().toString(),email.getText().toString() ,lastName.getText().toString()
-                            //,phoneNumber.getText().toString(), password.getText().toString() , address.getText().toString(), zip.getText().toString(), "NULL" );
-                    // Query format string.
-                    // TODO ppref is currently set to null, replace as appropriate
-                    String sql = "INSERT INTO Beekeeper VALUES ('" + userName.getText() + "' , '"
-                            + firstName.getText() + "', '" + email.getText() + "','" + lastName.getText() +
-                            "','" + phoneNumber.getText() + "','" + /*ppref.getText()*/ppUrl + "', '"
-                            + password.getText() + "','" + address.getText()  + "', '" + zip.getText() + "')";
-                    // Attempts to execute the query.
-                    stmt = con.createStatement();
-                    stmt.executeUpdate(sql);
+                   DatabaseHelper.createUser(userName.getText().toString(),firstName.getText().toString(),email.getText().toString() ,lastName.getText().toString()
+                            ,phoneNumber.getText().toString(), password.getText().toString() , address.getText().toString(), zip.getText().toString(), "NULL" );
+
+
                     // If the query is successful, will proceed to Home screen.
                     isSuccess = true;
                     z = "Success";
