@@ -175,8 +175,20 @@ public class DatabaseHelper {
         stmt2.executeUpdate(sql2);
 
 
+    }
 
+    public static void deleteApiary(String Address) throws SQLException {
+
+        Connection con;
+        Statement stmt;
+
+        con = establishConnection();
+        String sql = "DELETE FROM Apiary WHERE Address = '"+ Address +"'";
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
 
     }
+
+
 
 }
