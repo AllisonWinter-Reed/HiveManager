@@ -146,16 +146,12 @@ public class MainActivity extends AppCompatActivity {
                 stmt = con.createStatement();
                 results = stmt.executeQuery(sql);
 
-                Log.d("BOPER", "BEGAPIARY");
-
                 // Fills the arraylist of Apiaries.
                 while (results.next()) {
                     user.getApiaries().add(new Apiary(results.getString("Address"),
                             results.getString("Zipcode")));
 
                 }
-
-                Log.d("BOPER", "BEGHIVES");
 
                 // Finds all Hives for each apiary.
                 for (Apiary currApiary : user.getApiaries()) {
@@ -185,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 // TODO DEBUG REMOVE prints contents of this User's hives
-                for (Apiary currApiary : user.getApiaries()) {
+                /*for (Apiary currApiary : user.getApiaries()) {
                     Log.d("Apiary", "address : " + currApiary.getAddress() + "zipcode : " + currApiary.getZip());
                     for (Hive hive : currApiary.getHives()) {
                         Log.d("Hive",
@@ -195,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
                                         + "\ngains : " + String.valueOf(hive.getGains()));
 
                     }
-                }
+                }*/
             }
         }
         // If a SQL exception occurs, logs the error message.
