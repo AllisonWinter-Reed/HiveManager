@@ -43,14 +43,16 @@ public class ApiaryAdapter extends RecyclerView.Adapter<ApiaryAdapter.ApiaryNote
     @Override
     public void onBindViewHolder(@NonNull ApiaryAdapter.ApiaryNote holder, int position) {
 
-        holder.apiaryName.setText("");  //TODO
-        holder.apiaryAddress.setText("");   //TODO
-        holder.numberHives.setText(String.format("Number of Hives: %d", 0)); //TODO
+        Apiary holderA = mApiary.get(position);
+
+        holder.apiaryName.setText(String.format("Apiary %d", position));
+        holder.apiaryAddress.setText(holderA.getAddress());
+        holder.numberHives.setText(String.format("Number of Hives: %d", holderA.getHives().size()));
 
     }
 
     @Override
     public int getItemCount() {
-        return 0; //TODO
+        return mApiary.size(); //TODO
     }
 }
