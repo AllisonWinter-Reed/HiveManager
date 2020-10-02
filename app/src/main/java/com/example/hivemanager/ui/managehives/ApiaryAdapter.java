@@ -7,10 +7,18 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.hivemanager.Apiary;
 import com.example.hivemanager.R;
 
-public class ApiaryAdapter extends RecyclerView.Adapter<ApiaryAdapter.ApiaryNote> {
+import java.util.ArrayList;
 
+public class ApiaryAdapter extends RecyclerView.Adapter<ApiaryAdapter.ApiaryNote> {
+    ArrayList<Apiary> mApiary;
+
+    ApiaryAdapter(ArrayList<Apiary> mApiary) {
+        this.mApiary = mApiary;
+    }
 
     public static class ApiaryNote extends RecyclerView.ViewHolder {
         private TextView apiaryName;
@@ -35,14 +43,17 @@ public class ApiaryAdapter extends RecyclerView.Adapter<ApiaryAdapter.ApiaryNote
     @Override
     public void onBindViewHolder(@NonNull ApiaryAdapter.ApiaryNote holder, int position) {
 
-        holder.apiaryName.setText("");  //TODO
-        holder.apiaryAddress.setText("");   //TODO
-        holder.numberHives.setText(String.format("Number of Hives: %d", 0)); //TODO
+        Apiary holderA = mApiary.get(position);
+
+        holder.apiaryName.setText(String.format("Apiary %d", position + 1));
+        holder.apiaryAddress.setText(holderA.getAddress());
+        holder.numberHives.setText(String.format("Number of Hives: %d", holderA.getHives().size()));
 
     }
 
     @Override
     public int getItemCount() {
-        return 0; //TODO
+        return mApiary.size();
+        //TODO
     }
 }

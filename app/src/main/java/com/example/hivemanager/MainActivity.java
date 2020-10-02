@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager;
     public static Editable userName;
-    private Profile user;
+    private static Profile user;
 
-    Profile getUser() {
+    public static Profile getUser() {
         return user;
     }
 
@@ -67,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
                 navController,
                 appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+        user = new Profile();
+        initApiaries();
 
     }
 
@@ -120,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
 
     // TODO DEBUG REMOVE
     private void initApiaries() {
-        ArrayList<Apiary> apiaries = new ArrayList<Apiary>();
         try {
 
             // Connects to the database.
@@ -130,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
             Connection con = establishConnection();
 
             // Exits if connection fails.
-            // TODO replace this with Samraaj database helper.
+            // TODO replace con with Samraaj database helper.
             // TODO exception handling? But it should not fail when the helper is done...
             if (con == null);
                 // Attempts to perform a query if connection is successful.
@@ -139,23 +141,23 @@ public class MainActivity extends AppCompatActivity {
                 // Finds all Apiaries.
                 sql = "SELECT * " +
                         "FROM Apiary " +
-                        "WHERE Username = \"" + userName.toString() + "\")"
+                        "WHERE Username = \"" + userName.toString() + "\""
                 ;
                 stmt = con.createStatement();
                 results = stmt.executeQuery(sql);
 
                 // Fills the arraylist of Apiaries.
                 while (results.next()) {
-                    apiaries.add(new Apiary(results.getString("Address"),
+                    user.getApiaries().add(new Apiary(results.getString("Address"),
                             results.getString("Zipcode")));
 
                 }
 
                 // Finds all Hives for each apiary.
-                for (Apiary currApiary : apiaries) {
+                for (Apiary currApiary : user.getApiaries()) {
                     sql = "SELECT * " +
                             "FROM Hive " +
-                            "WHERE Address = \"" + currApiary.getAddress() + "\")"
+                            "WHERE Address = \"" + currApiary.getAddress() + "\""
                     ;
                     stmt = con.createStatement();
                     results = stmt.executeQuery(sql);
@@ -179,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 // TODO DEBUG REMOVE prints contents of this User's hives
-                for (Apiary currApiary : apiaries) {
+                /*for (Apiary currApiary : user.getApiaries()) {
                     Log.d("Apiary", "address : " + currApiary.getAddress() + "zipcode : " + currApiary.getZip());
                     for (Hive hive : currApiary.getHives()) {
                         Log.d("Hive",
@@ -187,20 +189,21 @@ public class MainActivity extends AppCompatActivity {
                                         "health : " + String.valueOf(hive.getHealth()) + "\nhoneyStores : " + String.valueOf(hive.getHoneyStores()) +
                                         "\nQueen Production : " + String.valueOf(hive.getQueenProduction()) + "\nLosses : " + String.valueOf(hive.getLosses())
                                         + "\ngains : " + String.valueOf(hive.getGains()));
+
                     }
-                }
+                }*/
             }
         }
         // If a SQL exception occurs, logs the error message.
         catch (SQLException excpt) {
             // TODO DEBUG REMOVE
-            Log.d("EXCEPTION:", excpt.getMessage());
+            Log.d("PROBLEM:", excpt.getMessage());
 
         }
         // If an unexpected exception occurs, logs the error message.
         catch (Exception excpt) {
             // TODO DEBUG REMOVE
-            Log.d("EXCEPTION:", excpt.getMessage());
+            Log.d("PROBLEM:", excpt.getMessage());
 
         }
     }
@@ -227,4 +230,5 @@ public class MainActivity extends AppCompatActivity {
         return connection;
 
     }
+
 }

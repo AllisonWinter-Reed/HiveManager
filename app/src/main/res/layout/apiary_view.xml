@@ -89,6 +89,7 @@
                     android:background="@drawable/rounded_button"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
+                    android:onClick="openManageHives"
                     android:text="Manage Hives" />
             </LinearLayout>
 
