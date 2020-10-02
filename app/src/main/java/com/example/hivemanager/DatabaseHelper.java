@@ -303,8 +303,8 @@ public class DatabaseHelper {
 
     }
 
-    //adds an hive in to the database, increments HiveId by 1
-    public static void addHive(String Health, String Honey_stores, String Queen_production, String Gains, String Losses, String Address, String zipcode) throws SQLException {
+    //adds an hive in to the database, increments HiveId by 1, returns the hiveId of the added hive as an integer
+    public static int addHive(String Health, String Honey_stores, String Queen_production, String Gains, String Losses, String Address, String zipcode) throws SQLException {
 
         Connection con1;
         Connection con2;
@@ -324,16 +324,16 @@ public class DatabaseHelper {
             currMax = rs.getInt(1);
         }
 
-        int newIndex;
-        newIndex  = currMax + 1;
+        int nextIndex;
+        nextIndex  = currMax + 1;
 
         con2 = establishConnection();
-        String sql2 = "INSERT INTO Hive VALUES ('"+newIndex+"','" + Health + "','" + Honey_stores + "','"+ Queen_production +"','"+ Gains +"','"+Losses+"','"+Address+"','"+zipcode+"')";
+        String sql2 = "INSERT INTO Hive VALUES ('"+nextIndex+"','" + Health + "','" + Honey_stores + "','"+ Queen_production +"','"+ Gains +"','"+Losses+"','"+Address+"','"+zipcode+"')";
         stmt2 = con1.createStatement();
         stmt2.executeUpdate(sql2);
 
 
-
+        return nextIndex;
 
     }
 

@@ -24,6 +24,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import static java.sql.Types.NULL;
+
 public class RegisterActivity extends AppCompatActivity {
     EditText userName,firstName,lastName,email,phoneNumber,password,address,zip,ppref;
     Button registerbtn;
@@ -161,8 +163,7 @@ public class RegisterActivity extends AppCompatActivity {
                     // TODO ppref is currently set to null, replace as appropriate
                     String sql = "INSERT INTO Beekeeper VALUES ('" + userName.getText() + "' , '"
                             + firstName.getText() + "', '" + email.getText() + "','" + lastName.getText() +
-                            "','" + phoneNumber.getText() + "','" + /*ppref.getText()*/"NULL" + "', '"
-                            + password.getText() + "','" + address.getText()  + "', '" + zip.getText() + "')";
+                            "','" + phoneNumber.getText() + "', '" + password.getText() + "','" + address.getText()  + "', '" + zip.getText() + "','"+ /*ppref.getText()*/ NULL+"')";
 
                     // Attempts to execute the query.
                     stmt = con.createStatement();
