@@ -139,7 +139,8 @@ public class DatabaseHelper {
 
     }
 
-    //return a list of hives with the same address i.e. same Apiary
+    //return a list of hive IDs
+    // with the same address i.e. same Apiary
     public static ArrayList getHives(String addr) throws SQLException {
         Statement stmt;
         con = establishConnection();
@@ -244,4 +245,20 @@ public class DatabaseHelper {
 
 
     }
+
+    public static void deleteApiary(String Address) throws SQLException {
+
+        Connection con;
+        Statement stmt;
+
+        con = establishConnection();
+        String sql = "DELETE FROM Apiary WHERE Address = '"+ Address +"'";
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
+
+    }
+
+
+
+
 }
