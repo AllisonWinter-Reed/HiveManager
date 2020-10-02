@@ -7,17 +7,19 @@ public class DatabaseHelper {
 
     //connects to Database
     public static Connection establishConnection() {
-        Connection con = null;
+
+        Connection connection = null;
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            con = DriverManager.getConnection("jdbc:mysql://uwhivemanager506.cmnpa3ypkmwq.us-east-2.rds.amazonaws.com:3306/hive_manager", "admin", "Hivemanager123");
+            connection = DriverManager.getConnection("jdbc:mysql://uwhivemanager506.cmnpa3ypkmwq.us-east-2.rds.amazonaws.com:3306/hive_manager", "admin", "Hivemanager123");
         } catch (Exception e) {
             System.out.println("error");
         }
-        return con;
+        return connection;
     }
+
 
     //returns an ArrayList of all the user fields in the format[username,firstname,email,lastname,phone_number,ppr,password,address,zipcode]
     public static ArrayList getUserData(String userName) throws SQLException {
@@ -60,14 +62,15 @@ public class DatabaseHelper {
 
     /**
      * Returns a list of Apiaries associated with the inputed user.
-     *
+     * <p>
      * The Apiaries will be initialised with Address and Zipcode, Hives and Equipment will be left
      * empty.
      *
      * @param user the user to retrieve Apiaries for.
      * @return a list of Apiaries associated with the inputed user.
      * @throws SQLException if a SQL query fails.
-     */
+     **/
+
     public static ArrayList<Apiary> getApiaries(String user) throws SQLException {
         String sql;
         Statement stmt;
@@ -95,15 +98,17 @@ public class DatabaseHelper {
 
     }
 
+
     /**
      * Returns a list of Hives associated with the inputed address.
-     *
+     * <p>
      * The Hives will be initialised with all data except equipment and inspection dates.
      *
      * @param address the address to retrieve Hives for.
      * @return the hives associated with the inputed address.
      * @throws SQLException if a SQL query fails.
-     */
+     **/
+
     public static ArrayList<Hive> getHivesAddr(String address) throws SQLException {
         String sql;
         Statement stmt;
@@ -138,6 +143,7 @@ public class DatabaseHelper {
 
     }
 
+
     //return a list of hive IDs
     // with the same address i.e. same Apiary
     public static ArrayList getHives(String addr) throws SQLException {
@@ -151,7 +157,7 @@ public class DatabaseHelper {
         ArrayList hivelist = new ArrayList();
 
 
-        while(rs.next()){
+        while (rs.next()) {
 
             String hiveid = rs.getString(("HiveId"));
             hivelist.add(hiveid);
@@ -161,6 +167,7 @@ public class DatabaseHelper {
         return hivelist;
 
     }
+
 
 
     public static ArrayList getHiveInfo(int hiveID) throws SQLException {
@@ -200,7 +207,7 @@ public class DatabaseHelper {
     }
 
     //adds an apiary into the database, CANNOT ADD INTO APIARY IF THERE IS NO USER WITH THE SAME USERNAME
-    public static void addApiary(String username, String address,  String zipcode) throws SQLException {
+    public static void addApiary(String username, String address, String zipcode) throws SQLException {
         Statement stmt;
         Connection con = establishConnection();
 
@@ -220,7 +227,6 @@ public class DatabaseHelper {
         Statement stmt2;
 
 
-
         con1 = establishConnection();
         String sql1 = "SELECT MAX(HiveId) FROM Hive";
         stmt1 = con1.createStatement();
@@ -228,19 +234,17 @@ public class DatabaseHelper {
 
         int currMax = 0;
 
-        while(rs.next()) {
+        while (rs.next()) {
             currMax = rs.getInt(1);
         }
 
         int newIndex;
-        newIndex  = currMax + 1;
+        newIndex = currMax + 1;
 
         con2 = establishConnection();
-        String sql2 = "INSERT INTO Hive VALUES ('"+newIndex+"','" + Health + "','" + Honey_stores + "','"+ Queen_production +"','"+ Gains +"','"+Losses+"','"+Address+"','"+zipcode+"')";
+        String sql2 = "INSERT INTO Hive VALUES ('" + newIndex + "','" + Health + "','" + Honey_stores + "','" + Queen_production + "','" + Gains + "','" + Losses + "','" + Address + "','" + zipcode + "')";
         stmt2 = con1.createStatement();
         stmt2.executeUpdate(sql2);
-
-
 
 
     }
@@ -251,7 +255,7 @@ public class DatabaseHelper {
         Statement stmt;
 
         con = establishConnection();
-        String sql = "DELETE FROM Apiary WHERE Address = '"+ Address +"'";
+        String sql = "DELETE FROM Apiary WHERE Address = '" + Address + "'";
         stmt = con.createStatement();
         stmt.executeUpdate(sql);
 
