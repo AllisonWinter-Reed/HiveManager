@@ -85,6 +85,7 @@ public class LoginActivity extends AppCompatActivity {
 
         protected void onPreExecute() {
 
+
         }
 
         @Override
@@ -96,15 +97,9 @@ public class LoginActivity extends AppCompatActivity {
 
             }
             else {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        MainActivity.userName = usernameLogin.getText().toString();
-                        Log.d("USERNAME", MainActivity.userName); //TODO delete
-                    }
-                });
+
                 try {
-                    String sql = "SELECT * FROM Beekeeper WHERE Username = '"+MainActivity.userName+"' AND password = '"+passwordLogin.getText()+"'";
+                    String sql = "SELECT * FROM Beekeeper WHERE Username = '"+usernameLogin.getText()+"' AND password = '"+passwordLogin.getText()+"'";
                     stmt = con.createStatement();
                     ResultSet rs = stmt.executeQuery(sql);
 
@@ -145,7 +140,15 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
+
             super.onPostExecute(s);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    MainActivity.userName = usernameLogin.getText().toString();
+                    Log.d("USERNAME", MainActivity.userName); //TODO delete
+                }
+            });
         }
 
 
