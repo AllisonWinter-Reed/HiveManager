@@ -39,12 +39,10 @@ public class HealthFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        inspections.setText(inspectionString);
-
         View view = inflater.inflate(R.layout.fragment_health, container, false);
 
-        healthValue = getView().findViewById(R.id.health_value);
-        inspections = getView().findViewById(R.id.inspections_value);
+        healthValue = view.findViewById(R.id.health_value);
+        inspections = view.findViewById(R.id.inspections_value);
         healthValue.setText(String.format("%d", MainActivity.getUser().getApiaries().get(apiaryPosition).getHives().get(hivePosition).getHealth()));
 
         //TODO loop through inspection data in the data base to populate inspection string
