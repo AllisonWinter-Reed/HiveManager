@@ -135,10 +135,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // TODO DEBUG REMOVE
+    /**
+     * Initializes all Apiaries (including associated Hives and Equipment) associated with the
+     * userName of the current user. Does so via use of the DatabaseHelper class.
+     */
     private void initApiaries() {
         try {
 
+            // Establishes a connection with the database.
+            DatabaseHelper.establishConnection();
 
             // Associates apiaries with the user.
             user.getApiaries().addAll(DatabaseHelper.getApiaries(userName.toString()));
@@ -147,10 +152,8 @@ public class MainActivity extends AppCompatActivity {
             for (Apiary apiary : user.getApiaries())
                 apiary.setHives(DatabaseHelper.getHivesAddr(apiary.getAddress()));
 
-            // Associates Equipment with each Apiary and Hive.
+            // Associates Equipment with each Hive.
             for (Apiary apiary : user.getApiaries()) {
-
-                // Adds equipment to each Hive in the Apiary.
                 for (Hive hive : apiary.getHives()) {
                     hive.setEquipment(DatabaseHelper.getHiveEquipment(String.valueOf(hive.getHiveID())));
 

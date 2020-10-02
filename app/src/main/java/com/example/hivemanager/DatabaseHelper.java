@@ -7,23 +7,38 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class DatabaseHelper {
+    static Connection con;
 
-    //connects to Database
-    private static Connection establishConnection() {
+    /**
+     * Connects to the database. Should be initialized exactly once.
+     * If called when connection is already initialized, will return the existing connection.
+     *
+     * @return con a connection to the database.
+     */
+    public static Connection establishConnection() {
+
+        // Returns con if it already exists.
+        if (con != null) return con;
+
+        // Thread policy.
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        Connection connection = null;
 
+        // Establishes a connection with the SQL server.
+        con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://uwhivemanager506.cmnpa3ypkmwq.us-east-2.rds.amazonaws.com:3306/hive_manager", "admin", "Hivemanager123");
+            con = DriverManager.getConnection("jdbc:mysql://uwhivemanager506.cmnpa3ypkmwq.us-east-2.rds.amazonaws.com:3306/hive_manager", "admin", "Hivemanager123");
 
-        } catch (Exception e) {
+        }
+        // Returns an error message if connection fails.
+        catch (Exception e) {
             Log.e("SQL Connection Error : ", e.getMessage());
 
         }
 
-        return connection;
+        // Returns the connection.
+        return con;
 
     }
 
@@ -107,9 +122,6 @@ public class DatabaseHelper {
         Statement stmt;
         ResultSet results;
         ArrayList<Apiary> apiaries = new ArrayList<>();
-        Connection con = establishConnection();
-
-        System.out.println("TOBY : " + con);
 
         // Issues a SQL query to find all Apiaries associated with user.
         sql = "SELECT * " +
@@ -145,7 +157,6 @@ public class DatabaseHelper {
         Statement stmt;
         ResultSet results;
         ArrayList<Hive> hives = new ArrayList<Hive>();
-        Connection con = establishConnection();
 
         // Issues a SQL query to find all Hives associated with address.
         sql = "SELECT * " +
@@ -186,7 +197,6 @@ public class DatabaseHelper {
         Statement stmt;
         ResultSet results;
         ArrayList<Equipment> equipment = new ArrayList<Equipment>();
-        Connection con = establishConnection();
 
         // Issues a SQL query to find all Equipment associated with address.
         sql = "SELECT * " +
@@ -230,7 +240,6 @@ public class DatabaseHelper {
         return hivelist;
 
     }
-
 
     public static ArrayList getHiveInfo(int hiveID) throws SQLException {
         Statement stmt;
