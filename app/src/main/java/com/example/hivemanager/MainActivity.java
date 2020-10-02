@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.ContactsContract;
@@ -14,6 +15,8 @@ import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -46,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
     public static String userName;
     private static Profile user;
 
+    ImageView img_logout;
+
     public static Profile getUser() {
         return user;
     }
@@ -55,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         //TODO check for user authentication
+
+
 
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
@@ -77,7 +84,16 @@ public class MainActivity extends AppCompatActivity {
         }
         initApiaries();
 
+
+
+
     }
+
+
+
+
+
+
 
     public void openHiveStatus(View view) {
         Fragment fragment = new HiveStatusFragment();
@@ -199,7 +215,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void addHive(View view) {
 
-    }
 }
