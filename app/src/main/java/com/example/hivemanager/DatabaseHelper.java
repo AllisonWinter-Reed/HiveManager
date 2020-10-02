@@ -42,44 +42,44 @@ public class DatabaseHelper {
 
     }
 
-    //returns an ArrayList of all the user fields in the format[username,firstname,email,lastname,phone_number,ppr,password,address,zipcode]
-    public static ArrayList getUserData(String userName) throws SQLException {
-        Statement stmt;
-        Connection con = establishConnection();
-
-        String sql = "SELECT * FROM Beekeeper WHERE Username = '" + userName.toString() + "'";
-        stmt = con.createStatement();
-
-        ResultSet rs = stmt.executeQuery(sql);
-        ArrayList userlist = new ArrayList();
-        while (rs.next()) {
-
-            String username = rs.getString("Username");
-            userlist.add(username);
-            String firstname = rs.getString("First_Name");
-            userlist.add(firstname);
-            String email = rs.getString("Email");
-            userlist.add(email);
-            String lastname = rs.getString("Last_name");
-            userlist.add(lastname);
-            String phone_number = rs.getString("Phone_Number");
-            userlist.add(phone_number);
-            String ppr = rs.getString("ProfilePicReference");
-            userlist.add(ppr);
-            String password = rs.getString("password");
-            userlist.add(password);
-            String address = rs.getString("Address");
-            userlist.add(address);
-            String zipcode = rs.getString("Zipcode");
-            userlist.add(zipcode);
-
-
-        }
-
-
-        return userlist;
-
-    }
+//    //returns an ArrayList of all the user fields in the format[username,firstname,email,lastname,phone_number,ppr,password,address,zipcode]
+//    public static ArrayList getUserData(String userName) throws SQLException {
+//        Statement stmt;
+//        Connection con = establishConnection();
+//
+//        String sql = "SELECT * FROM Beekeeper WHERE Username = '" + userName.toString() + "'";
+//        stmt = con.createStatement();
+//
+//        ResultSet rs = stmt.executeQuery(sql);
+//        ArrayList userlist = new ArrayList();
+//        while (rs.next()) {
+//
+//            String username = rs.getString("Username");
+//            userlist.add(username);
+//            String firstname = rs.getString("First_Name");
+//            userlist.add(firstname);
+//            String email = rs.getString("Email");
+//            userlist.add(email);
+//            String lastname = rs.getString("Last_name");
+//            userlist.add(lastname);
+//            String phone_number = rs.getString("Phone_Number");
+//            userlist.add(phone_number);
+//            String ppr = rs.getString("ProfilePicReference");
+//            userlist.add(ppr);
+//            String password = rs.getString("password");
+//            userlist.add(password);
+//            String address = rs.getString("Address");
+//            userlist.add(address);
+//            String zipcode = rs.getString("Zipcode");
+//            userlist.add(zipcode);
+//
+//
+//        }
+//
+//
+//        return userlist;
+//
+//    }
 
     public static Profile initUser(String userName) throws SQLException {
         Profile user = new Profile();
@@ -335,7 +335,7 @@ public class DatabaseHelper {
 
     }
 
-//TODO is this right??????????????
+
     public static void deleteHive(Integer hiveID) throws SQLException {
         Connection con;
         Statement stmt;

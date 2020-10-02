@@ -30,6 +30,7 @@ import com.example.hivemanager.ui.hivestatus.HiveStatusFragment;
 import com.example.hivemanager.ui.hivestatus.HealthFragment;
 import com.example.hivemanager.ui.home.HomeFragment;
 import com.example.hivemanager.ui.managehives.AddApiary;
+import com.example.hivemanager.ui.managehives.AddHive;
 import com.example.hivemanager.ui.managehives.ManageApiaries;
 import com.example.hivemanager.ui.managehives.ManageHivesFragment;
 import com.example.hivemanager.ui.profile.EditProfileFragment;
@@ -209,5 +210,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void addHive(View view) {
+        Fragment fragment = new AddHive();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.nav_host_fragment, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 
 }
