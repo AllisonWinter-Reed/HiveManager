@@ -5,69 +5,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_gravity="center"
+    android:gravity="center"
     tools:context=".LoginActivity">
 
-    <EditText
-        android:id="@+id/etUsernameLogin"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Username"
-        android:textSize="25sp"
-        android:layout_marginTop="150dp"
-        android:padding="10dp" />
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
+        android:orientation="vertical"
+        android:gravity="center"
+
+        >
+
+        <EditText
+            android:id="@+id/etUsernameLogin"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:padding="10dp"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/etPasswordLogin"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_button"
+            android:text="Login"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/tvregisterhere"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_button"
+            android:text="Register"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/logstatus"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Status"
+            android:gravity="center"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintHorizontal_bias="1.0"-->
 <!--        app:layout_constraintStart_toStartOf="parent" />-->
 <!--        tools:layout_editor_absoluteY="201dp"-->
 
-    <EditText
-        android:id="@+id/etPasswordLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:textSize="25sp"
-        android:inputType="textPassword"
-        android:padding="10dp" />
-<!--    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--    app:layout_constraintEnd_toEndOf="parent"-->
 <!--    app:layout_constraintStart_toStartOf="parent"-->
 <!--    app:layout_constraintTop_toBottomOf="@+id/etUsernameLogin"-->
 <!--    tools:ignore="MissingConstraints"-->
 
-    <Button
-        android:id="@+id/buttonLogin"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        android:background="@drawable/rounded_button" />
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintHorizontal_bias="1.0"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toBottomOf="@+id/etPasswordLogin" />-->
 
-    <Button
-        android:id="@+id/tvregisterhere"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:text="Register"
-        android:background="@drawable/rounded_button"
-        android:textSize="20sp" />
-<!--    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--    app:layout_constraintEnd_toEndOf="parent"-->
 <!--    app:layout_constraintStart_toStartOf="parent"-->
 <!--    app:layout_constraintTop_toBottomOf="@+id/logstatus"-->
-
-    <TextView
-        android:id="@+id/logstatus"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Status"
-        android:layout_marginTop="10dp"
-        android:textSize="20sp" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

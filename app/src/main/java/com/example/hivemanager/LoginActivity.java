@@ -112,6 +112,7 @@ public class LoginActivity extends AppCompatActivity {
                       // Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_LONG).show();
 
                         status.setText("Login Success");
+                        status.setTextColor(getResources().getColor(R.color.start_green));
                         if (status.getText() == "Login Success") {
 
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -120,7 +121,13 @@ public class LoginActivity extends AppCompatActivity {
                     }
 
                      else {
-                        status.setText("Login Incorrect");
+                         runOnUiThread(new Runnable() {
+                             @Override
+                             public void run() {
+                                 status.setText("Login Incorrect");
+                                 status.setTextColor(getResources().getColor(R.color.end_red));
+                             }
+                         });
                        // Toast.makeText(LoginActivity.this, "Incorrect Username or Password", Toast.LENGTH_LONG).show();
                         usernameLogin.setText("");
                         passwordLogin.setText("");
