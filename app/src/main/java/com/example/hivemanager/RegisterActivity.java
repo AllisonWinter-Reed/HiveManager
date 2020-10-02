@@ -1,5 +1,10 @@
 package com.example.hivemanager;
 
+import java.io.*;
+import java.lang.*;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.graphics.Bitmap;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -25,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     TextView status, backToLogin;
     Connection con;
     Statement stmt;
+    public static final int GET_FROM_GALLERY = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +70,30 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void registerProfilePic(View view) {
+        startActivityForResult(new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI), GET_FROM_GALLERY);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+
+        //Detects request codes
+        if(requestCode==GET_FROM_GALLERY && resultCode == RegisterActivity.RESULT_OK) {
+            Uri selectedImage = data.getData();
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
     }
 
     public class registerUser extends AsyncTask<String,String,String> {
