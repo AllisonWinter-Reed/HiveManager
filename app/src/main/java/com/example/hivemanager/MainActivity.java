@@ -133,84 +133,33 @@ public class MainActivity extends AppCompatActivity {
     private void initApiaries() {
         try {
 
-            // Connects to the database.
-            String sql;
-            Statement stmt;
-            ResultSet results;
-            Connection con = establishConnection();
+            // Associates apiaries with the user.
+            user.getApiaries().addAll(DatabaseHelper.getApiaries(user.getUsername()));
 
-            // Exits if connection fails.
-            // TODO replace con with Samraaj database helper.
-            // TODO exception handling? But it should not fail when the helper is done...
-            if (con == null);
-                // Attempts to perform a query if connection is successful.
-            else {
+            // Associates Hives with each Apiary.
+            for (Apiary apiary : user.getApiaries())
+                apiary.setHives(DatabaseHelper.getHives(apiary.getAddress()));
 
-                // Finds all Apiaries.
-                sql = "SELECT * " +
-                        "FROM Apiary " +
-                        "WHERE Username = \"" + userName.toString() + "\""
-                ;
-                stmt = con.createStatement();
-                results = stmt.executeQuery(sql);
-
-                // Fills the arraylist of Apiaries.
-                while (results.next()) {
-                    user.getApiaries().add(new Apiary(results.getString("Address"),
-                            results.getString("Zipcode")));
+            // TODO DEBUG REMOVE prints contents of this User's hives
+            for (Apiary currApiary : user.getApiaries()) {
+                Log.d("Apiary", "address : " + currApiary.getAddress() + "zipcode : " + currApiary.getZip());
+                for (Hive hive : currApiary.getHives()) {
+                    Log.d("Hive",
+                            "HiveID : " + String.valueOf(hive.getHiveID()) + "\n" +
+                                    "health : " + String.valueOf(hive.getHealth()) + "\nhoneyStores : " + String.valueOf(hive.getHoneyStores()) +
+                                    "\nQueen Production : " + String.valueOf(hive.getQueenProduction()) + "\nLosses : " + String.valueOf(hive.getLosses())
+                                    + "\ngains : " + String.valueOf(hive.getGains()));
 
                 }
-
-                // Finds all Hives for each apiary.
-                for (int i = 0; i < user.getApiaries().size(); ++i) {
-                    sql = "SELECT * " +
-                            "FROM Hive " +
-                            "WHERE Address = \"" + user.getApiaries().get(i).getAddress() + "\""
-                    ;
-                    stmt = con.createStatement();
-                    results = stmt.executeQuery(sql);
-
-                    // Fills the arraylist of Hives.
-                    // TODO null values
-                    while (results.next()) {
-                        user.getApiaries().get(i).addHive(new Hive(
-                                Integer.parseInt(results.getString("HiveId")),
-                                Integer.parseInt(results.getString("Health")),
-                                null, null, // TODO inspections not in database
-                                Integer.parseInt(results.getString("Honey_stores")),
-                                Integer.parseInt(results.getString("Queen_Production")),
-                                null, // TODO equipment
-                                null, // TODO two equipment variables?
-                                Integer.parseInt(results.getString("Losses")),
-                                Integer.parseInt(results.getString("Gains"))));
-                        // TODO no zipcode in Hive
-
-                    }
-                }
-
-                // TODO DEBUG REMOVE prints contents of this User's hives
-                /*for (Apiary currApiary : user.getApiaries()) {
-                    Log.d("Apiary", "address : " + currApiary.getAddress() + "zipcode : " + currApiary.getZip());
-                    for (Hive hive : currApiary.getHives()) {
-                        Log.d("Hive",
-                                "HiveID : " + String.valueOf(hive.getHiveID()) + "\n" +
-                                        "health : " + String.valueOf(hive.getHealth()) + "\nhoneyStores : " + String.valueOf(hive.getHoneyStores()) +
-                                        "\nQueen Production : " + String.valueOf(hive.getQueenProduction()) + "\nLosses : " + String.valueOf(hive.getLosses())
-                                        + "\ngains : " + String.valueOf(hive.getGains()));
-
-                    }
-                }*/
             }
         }
         // If a SQL exception occurs, logs the error message.
         catch (SQLException excpt) {
-            // TODO DEBUG REMOVE
             Log.d("PROBLEM:", excpt.getMessage());
 
         }
         // If an unexpected exception occurs, logs the error message.
         catch (Exception excpt) {
-            // TODO DEBUG REMOVE
             Log.d("PROBLEM:", excpt.getMessage());
 
         }
