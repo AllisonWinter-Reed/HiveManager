@@ -140,7 +140,7 @@ public class Profile {
         hives.remove(hive);
 
         try {
-            DatabaseHelper.deleteHive(hive);
+            DatabaseHelper.deleteHive(hive.getHiveID());
         } catch (SQLException e) {
             e.printStackTrace();
         }

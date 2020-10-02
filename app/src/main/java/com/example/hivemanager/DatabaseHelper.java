@@ -294,14 +294,13 @@ public class DatabaseHelper {
     }
 
 //TODO is this right??????????????
-    public static void deleteHive(Hive hive) throws SQLException {
+    public static void deleteHive(Integer hiveID) throws SQLException {
         Connection con;
         Statement stmt;
 
         con = establishConnection();
-        String sql = "DELETE FROM Hive WHERE HiveId = '"+ hive.getHiveID() +"'";
+        String sql = "DELETE FROM Hive WHERE HiveId = '"+ hiveID +"'";
         stmt = con.createStatement();
         stmt.executeUpdate(sql);
-
     }
 }
