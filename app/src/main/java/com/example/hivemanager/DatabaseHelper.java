@@ -209,7 +209,8 @@ public class DatabaseHelper {
 
         // Fills the ArrayList of Equipment.
         while (results.next()) {
-            equipment.add(new Equipment(results.getString("Equipment_name")));
+            equipment.add(new Equipment(results.getInt("EquipmentId"),
+                    results.getString("Equipment_name")));
 
         }
 
@@ -376,12 +377,19 @@ public class DatabaseHelper {
     }
 
     /**
+     * Removes a piece of Equipment from the database.
      *
-     * @param name
-     * @throws SQLException
+     * @param ID the ID of the piece of Equipment to be removed.
+     * @throws SQLException if a SQL query fails.
      */
-    public static void deleteEquipment(String name) throws SQLException {
+    public static void deleteEquipment(int ID) throws SQLException {
+        String sql;
+        Statement stmt;
+
+        // Issues a SQL query to remove the piece of Equipment from the database.
+        sql = "DELETE FROM Equipment WHERE EquipmentId = " + ID;
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
 
     }
-
 }
