@@ -209,7 +209,8 @@ public class DatabaseHelper {
 
         // Fills the ArrayList of Equipment.
         while (results.next()) {
-            equipment.add(new Equipment(results.getString("Equipment_name")));
+            equipment.add(new Equipment(results.getInt("EquipmentId"),
+                    results.getString("Equipment_name")));
 
         }
 
@@ -290,6 +291,18 @@ public class DatabaseHelper {
 
     }
 
+    public static void deleteApiary(String Address) throws SQLException {
+
+        Connection con;
+        Statement stmt;
+
+        con = establishConnection();
+        String sql = "DELETE FROM Apiary WHERE Address = '"+ Address +"'";
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
+
+    }
+
     //adds an hive in to the database, increments HiveId by 1
     public static void addHive(String Health, String Honey_stores, String Queen_production, String Gains, String Losses, String Address, String zipcode) throws SQLException {
 
@@ -324,19 +337,6 @@ public class DatabaseHelper {
 
     }
 
-    public static void deleteApiary(String Address) throws SQLException {
-
-        Connection con;
-        Statement stmt;
-
-        con = establishConnection();
-        String sql = "DELETE FROM Apiary WHERE Address = '"+ Address +"'";
-        stmt = con.createStatement();
-        stmt.executeUpdate(sql);
-
-    }
-
-//TODO is this right??????????????
     public static void deleteHive(Integer hiveID) throws SQLException {
         Connection con;
         Statement stmt;
@@ -345,6 +345,52 @@ public class DatabaseHelper {
         String sql = "DELETE FROM Hive WHERE HiveId = '"+ hiveID +"'";
         stmt = con.createStatement();
         stmt.executeUpdate(sql);
+    }
+
+    /**
+     * Places a piece of equipment into the database.
+     *
+     * @param hiveID the hive that this equipment is attached to.
+     * @param address the address where this equipment is stored.
+     * @param name the name of this piece of equipment.
+     * @throws SQLException if a SQL query fails.
+     */
+    public static void addEquipment(String hiveID, String address, String name) throws SQLException {
+        int maxID;
+        String sql;
+        Statement stmt;
+        ResultSet results;
+
+        // Finds the appropriate ID for the new piece of equipment.
+        sql = "SELECT MAX(EquipmentId) FROM Equipment";
+        stmt = con.createStatement();
+        results = stmt.executeQuery(sql);
+        results.next();
+        maxID = results.getInt(1) + 1;
+
+        // Issues a SQL query to add the piece of Equipment to the database.
+        sql = "INSERT INTO Equipment " +
+                "Values (" + maxID + ", " + hiveID + ", \"" + address + "\", \"" + name + "\")";
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
+
+    }
+
+    /**
+     * Removes a piece of Equipment from the database.
+     *
+     * @param ID the ID of the piece of Equipment to be removed.
+     * @throws SQLException if a SQL query fails.
+     */
+    public static void deleteEquipment(int ID) throws SQLException {
+        String sql;
+        Statement stmt;
+
+        // Issues a SQL query to remove the piece of Equipment from the database.
+        sql = "DELETE FROM Equipment WHERE EquipmentId = " + ID;
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
+
     }
 
     public static void editApiary(String username, String address, String zipcode) throws SQLException {

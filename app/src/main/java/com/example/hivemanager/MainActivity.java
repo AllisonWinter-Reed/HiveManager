@@ -30,6 +30,7 @@ import com.example.hivemanager.ui.hivestatus.HiveStatusFragment;
 import com.example.hivemanager.ui.hivestatus.HealthFragment;
 import com.example.hivemanager.ui.home.HomeFragment;
 import com.example.hivemanager.ui.managehives.AddApiary;
+import com.example.hivemanager.ui.managehives.AddHive;
 import com.example.hivemanager.ui.managehives.ManageApiaries;
 import com.example.hivemanager.ui.managehives.ManageHivesFragment;
 import com.example.hivemanager.ui.profile.EditProfileFragment;
@@ -152,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Initializes all Apiaries (including associated Hives and Equipment) associated with the
+     * Initializes all Apiaries (including related Hives and Equipment) associated with the
      * userName of the current user. Does so via use of the DatabaseHelper class.
      */
     private void initApiaries() {
@@ -175,39 +176,25 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             }
-
-            // TODO DEBUG REMOVE prints contents of this User's hives
-            /*for (Apiary currApiary : user.getApiaries()) {
-                Log.d("Apiary", "address : " + currApiary.getAddress() + "zipcode : " + currApiary.getZip());
-
-                // Hives.
-                for (Hive hive : currApiary.getHives()) {
-                    Log.d("Hive",
-                            "HiveID : " + String.valueOf(hive.getHiveID()) + "\n"
-                                    //+
-                                    //"health : " + String.valueOf(hive.getHealth()) + "\nhoneyStores : " + String.valueOf(hive.getHoneyStores()) +
-                                    //"\nQueen Production : " + String.valueOf(hive.getQueenProduction()) + "\nLosses : " + String.valueOf(hive.getLosses())
-                                    //+ "\ngains : " + String.valueOf(hive.getGains()));
-
-                    // Hive equipment.
-                    for (Equipment equipment : hive.getEquipment()) {
-                        Log.d("HiveEquipment", equipment.getName());
-
-                    }
-                }
-            }*/
         }
         // If a SQL exception occurs, logs the error message.
         catch (SQLException excpt) {
-            Log.d("ERROR:", excpt.getMessage());
+            Log.e("ERROR:", excpt.getMessage());
 
         }
         // If an unexpected exception occurs, logs the error message.
         catch (Exception excpt) {
-            Log.d("ERROR:", excpt.getMessage());
+            Log.e("ERROR:", excpt.getMessage());
 
         }
     }
 
+    public void addHive(View view) {
+        Fragment fragment = new AddHive();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.nav_host_fragment, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 
 }
