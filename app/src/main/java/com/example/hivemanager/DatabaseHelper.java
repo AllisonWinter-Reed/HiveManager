@@ -129,4 +129,54 @@ public class DatabaseHelper {
 
     }
 
+    //adds an apiary into the database, CANNOT ADD INTO APIARY IF THERE IS NO USER WITH THE SAME USERNAME
+    public static void addApiary(String username, String address,  String zipcode) throws SQLException {
+
+        Connection con;
+        Statement stmt;
+
+
+        con = establishConnection();
+
+        String sql = "INSERT INTO Apiary VALUES ('" + address + "','" + username + "','" + zipcode + "')";
+
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
+
+    }
+
+    //adds an hive in to the database, increments HiveId by 1
+    public static void addHive(String Health, String Honey_stores, String Queen_production, String Gains, String Losses, String Address, String zipcode) throws SQLException {
+
+        Connection con1;
+        Connection con2;
+        Statement stmt1;
+        Statement stmt2;
+
+
+
+        con1 = establishConnection();
+        String sql1 = "SELECT MAX(HiveId) FROM Hive";
+        stmt1 = con1.createStatement();
+        ResultSet rs = stmt1.executeQuery(sql1);
+
+        int currMax = 0;
+
+        while(rs.next()) {
+            currMax = rs.getInt(1);
+        }
+
+        int newIndex;
+        newIndex  = currMax + 1;
+
+        con2 = establishConnection();
+        String sql2 = "INSERT INTO Hive VALUES ('"+newIndex+"','" + Health + "','" + Honey_stores + "','"+ Queen_production +"','"+ Gains +"','"+Losses+"','"+Address+"','"+zipcode+"')";
+        stmt2 = con1.createStatement();
+        stmt2.executeUpdate(sql2);
+
+
+
+
+    }
+
 }
