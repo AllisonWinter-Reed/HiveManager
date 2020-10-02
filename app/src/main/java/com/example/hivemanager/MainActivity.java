@@ -199,12 +199,12 @@ public class MainActivity extends AppCompatActivity {
         }
         // If a SQL exception occurs, logs the error message.
         catch (SQLException excpt) {
-            Log.d("ERROR:", excpt.getMessage());
+            Log.e("ERROR:", excpt.getMessage());
 
         }
         // If an unexpected exception occurs, logs the error message.
         catch (Exception excpt) {
-            Log.d("ERROR:", excpt.getMessage());
+            Log.e("ERROR:", excpt.getMessage());
 
         }
     }
