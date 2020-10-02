@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorPrimary"
-    tools:context=".ui.managehives.ManageApiaries"
+    tools:context=".MainActivity"
     >
 
         <androidx.recyclerview.widget.RecyclerView
@@ -28,8 +28,8 @@
             android:src="@drawable/ic_baseline_add_24"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="68dp"
-
-            android:onClick="addApiary"/>
+            android:onClick="addApiary"
+            app:backgroundTint="@color/light_cyan"/>
 
 
 </RelativeLayout>

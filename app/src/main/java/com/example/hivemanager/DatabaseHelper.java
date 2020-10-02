@@ -66,6 +66,32 @@ public class DatabaseHelper {
 
     }
 
+    public static Profile initUser(String userName) throws SQLException {
+        Profile user = new Profile();
+        Statement stmt;
+        Connection con = establishConnection();
+
+        String sql = "SELECT * FROM Beekeeper WHERE Username = '" + userName.toString() + "'";
+        stmt = con.createStatement();
+
+        ResultSet rs = stmt.executeQuery(sql);
+        while (rs.next()) {
+
+            user.setUsername(rs.getString("Username"));
+            user.setFirstname(rs.getString("First_Name"));
+            user.setEmail(rs.getString("Email"));
+            user.setLastname(rs.getString("Last_name"));
+            user.setPhone(rs.getString("Phone_Number"));
+           // user.setProfilePhoto(rs.getString("ProfilePicReference")); //TODO ask about this
+            user.setAddress(rs.getString("Address"));
+            user.setZipcode(rs.getString("Zipcode"));
+
+            //String password = rs.getString("password");
+
+        }
+        return user;
+    }
+
     /**
      * Returns a list of Apiaries associated with the inputed user.
      *

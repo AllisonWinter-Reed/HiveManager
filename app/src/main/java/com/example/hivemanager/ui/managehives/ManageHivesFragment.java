@@ -88,7 +88,7 @@ public class ManageHivesFragment extends Fragment {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int position) {
-                        //TODO connect to database and delete and below line
+                        MainActivity.getUser().deleteHive(MainActivity.getUser().getApiaries().get(apiaryPosition).getHives().get(position));
                         hiveAdapter.notifyItemRemoved(position);
                     }
                 })

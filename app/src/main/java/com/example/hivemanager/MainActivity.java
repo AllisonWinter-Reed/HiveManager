@@ -42,7 +42,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager;
-    public static Editable userName;
+    public static String userName;
     private static Profile user;
 
     public static Profile getUser() {
@@ -68,7 +68,12 @@ public class MainActivity extends AppCompatActivity {
                 appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        user = new Profile();
+        try {
+            user = DatabaseHelper.initUser(userName);
+        } catch (SQLException e) {
+            Log.e("SQL", "Error with initUser");
+            e.printStackTrace();
+        }
         initApiaries();
 
     }
@@ -168,5 +173,9 @@ public class MainActivity extends AppCompatActivity {
             Log.d("PROBLEM:", excpt.getMessage());
 
         }
+    }
+
+    public void addHive(View view) {
+
     }
 }

@@ -13,6 +13,8 @@ public class Profile {
     private ArrayList<Hive> hives;
     private ArrayList<Apiary> apiaries;
     private ArrayList<Profile> friends;
+    private String address;
+    private String zipcode;
 
     Profile() {
         username = null;
@@ -25,6 +27,8 @@ public class Profile {
         hives = new ArrayList<>();
         apiaries = new ArrayList<>();
         friends = new ArrayList<>();
+        address = null;
+        zipcode = null;
 
     }
 
@@ -66,7 +70,7 @@ public class Profile {
 
     Profile(String username, String password, String firstname, String lastname, String phone,
             String email, String profilePhoto, ArrayList<Hive> hives, ArrayList<Apiary> apiaries,
-            ArrayList<Profile> friends) {
+            ArrayList<Profile> friends, String address, String zipcode) {
         this.username = username;
         this.password = password;
         this.firstname = firstname;
@@ -77,6 +81,8 @@ public class Profile {
         this.hives = hives;
         this.apiaries = apiaries;
         this.friends = friends;
+        this.address = address;
+        this.zipcode = zipcode;
 
     }
 
@@ -123,13 +129,6 @@ public class Profile {
 
     }
 
-    /**
-     * @param user the friend to be removed from friends.
-     */
-    public void deleteFriend(Profile user) {
-        friends.remove(user);
-
-    }
 
     /**
      * @param hive the hive to be removed from hives.
@@ -146,4 +145,55 @@ public class Profile {
         apiaries.remove(apiary);
 
     }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
+    }
+
+    public void setHives(ArrayList<Hive> hives) {
+        this.hives = hives;
+    }
+
+    public void setApiaries(ArrayList<Apiary> apiaries) {
+        this.apiaries = apiaries;
+    }
+
+    public void setAddress(String address){
+        this.address = address;
+    }
+
+    public void setZipcode(String zipcode){
+        this.zipcode = zipcode;
+    }
+
+    public String getAddress() {
+        return this.address;
+    }
+
+    public String getZipcode() {return this.zipcode;}
+
 }

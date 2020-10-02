@@ -77,7 +77,7 @@ public class ManageApiaries extends Fragment {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int position) {
-                        //TODO connect to database and delete and below line
+                        MainActivity.getUser().deleteApiary(MainActivity.getUser().getApiaries().get(position));
                         apiaryAdapter.notifyItemRemoved(position);
                     }
                 })
