@@ -16,6 +16,7 @@ public class Apiary {
     }
 
     public Apiary(String addr, String zip) {
+        hives = new ArrayList<>();
         address = addr;
         zipcode = zip;
 

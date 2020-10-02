@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
             Connection con = establishConnection();
 
             // Exits if connection fails.
-            // TODO replace this with Samraaj database helper.
+            // TODO replace con with Samraaj database helper.
             // TODO exception handling? But it should not fail when the helper is done...
             if (con == null);
                 // Attempts to perform a query if connection is successful.
@@ -141,10 +141,12 @@ public class MainActivity extends AppCompatActivity {
                 // Finds all Apiaries.
                 sql = "SELECT * " +
                         "FROM Apiary " +
-                        "WHERE Username = \"" + userName.toString() + "\")"
+                        "WHERE Username = \"" + userName.toString() + "\""
                 ;
                 stmt = con.createStatement();
                 results = stmt.executeQuery(sql);
+
+                Log.d("BOPER", "BEGAPIARY");
 
                 // Fills the arraylist of Apiaries.
                 while (results.next()) {
@@ -153,11 +155,13 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
+                Log.d("BOPER", "BEGHIVES");
+
                 // Finds all Hives for each apiary.
                 for (Apiary currApiary : user.getApiaries()) {
                     sql = "SELECT * " +
                             "FROM Hive " +
-                            "WHERE Address = \"" + currApiary.getAddress() + "\")"
+                            "WHERE Address = \"" + currApiary.getAddress() + "\""
                     ;
                     stmt = con.createStatement();
                     results = stmt.executeQuery(sql);
@@ -189,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
                                         "health : " + String.valueOf(hive.getHealth()) + "\nhoneyStores : " + String.valueOf(hive.getHoneyStores()) +
                                         "\nQueen Production : " + String.valueOf(hive.getQueenProduction()) + "\nLosses : " + String.valueOf(hive.getLosses())
                                         + "\ngains : " + String.valueOf(hive.getGains()));
+
                     }
                 }
             }
@@ -196,13 +201,13 @@ public class MainActivity extends AppCompatActivity {
         // If a SQL exception occurs, logs the error message.
         catch (SQLException excpt) {
             // TODO DEBUG REMOVE
-            Log.d("EXCEPTION:", excpt.getMessage());
+            Log.d("PROBLEM:", excpt.getMessage());
 
         }
         // If an unexpected exception occurs, logs the error message.
         catch (Exception excpt) {
             // TODO DEBUG REMOVE
-            Log.d("EXCEPTION:", excpt.getMessage());
+            Log.d("PROBLEM:", excpt.getMessage());
 
         }
     }
