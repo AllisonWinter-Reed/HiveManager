@@ -5,7 +5,7 @@ package com.example.hivemanager;
  * by being placed within them.
  */
 public class Equipment {
-    String name;
+    private String name;
 
     /**
      * Constructor for Equipment.
@@ -13,5 +13,15 @@ public class Equipment {
      * @param name the name for this piece of equipment.
      */
     public Equipment(String name) { this.name = name; }
+
+    /**
+     * @return name the name of this piece of Equipment.
+     */
+    public String getName() { return name; }
+
+    /**
+     * @param name the new name of this piece of Equipment.
+     */
+    public void setName(String name) { this.name = name; }
 
 }
