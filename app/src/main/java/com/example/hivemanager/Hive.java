@@ -32,9 +32,9 @@ public class Hive {
         this.hiveID = hiveID;
     }
 
-    Hive(int hiveID, int health, ArrayList<Date> inspectionDates, ArrayList<Integer> inspectionResults,
-         int honeyStores, int queenProduction, ArrayList<String> hiveEquipment,
-         ArrayList<String> equipmentInventory, int losses, int gains) {
+    public Hive(int hiveID, int health, ArrayList<Date> inspectionDates, ArrayList<Integer> inspectionResults,
+                int honeyStores, int queenProduction, ArrayList<String> hiveEquipment,
+                ArrayList<String> equipmentInventory, int losses, int gains) {
         this.health = health;
         this.inspectionDates = inspectionDates;
         this.inspectionResults = inspectionResults;

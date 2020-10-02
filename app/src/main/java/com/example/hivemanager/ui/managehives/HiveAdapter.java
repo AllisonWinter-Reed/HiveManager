@@ -34,6 +34,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class HiveAdapter extends RecyclerView.Adapter<HiveAdapter.HiveNote> {
     ArrayList<Hive> Hives;
@@ -85,13 +86,29 @@ public class HiveAdapter extends RecyclerView.Adapter<HiveAdapter.HiveNote> {
                 ;
                 stmt = con.createStatement();
                 ResultSet results = stmt.executeQuery(sql);
-                results.next();
 
+                // Fills the arraylist of Hives.
+                // TODO null values
+                while (results.next()) {
+                    Hives.add(new Hive(
+                            Integer.parseInt(results.getString("HiveId")),
+                            Integer.parseInt(results.getString("Health")),
+                            null, null, // TODO inspections not in database
+                            Integer.parseInt(results.getString("Honey_stores")),
+                            Integer.parseInt(results.getString("Queen_Production")),
+                            null, // TODO equipment
+                            null, // TODO two equipment variables?
+                            Integer.parseInt(results.getString("Losses")),
+                            Integer.parseInt(results.getString("Gains"))));
+                        // TODO no zipcode in Hive
+
+                }
+
+                /* TODO DEBUG REMOVE
                 String str = "";
                 str = results.getString("Address");
                 Log.d("BOPER", str);
 
-                /* TODO DEBUG REMOVE
                 Statement st;
                 // Finds all Hives.
                 String pql = "SELECT * " +
@@ -113,13 +130,14 @@ public class HiveAdapter extends RecyclerView.Adapter<HiveAdapter.HiveNote> {
         }
         // If a SQL exception occurs, returns the error message.
         catch (SQLException excpt) {
-            // TODO
-            Log.d("BOPER", excpt.getMessage());
+            // TODO DEBUG REMOVE
+            Log.d("EXCEPTION:", excpt.getMessage());
 
         }
         // If an unexpected exception occurs, returns the error message.
         catch (Exception excpt) {
-            // TODO
+            // TODO DEBUG REMOVE
+            Log.d("EXCEPTION:", excpt.getMessage());
 
         }
 

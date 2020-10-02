@@ -149,15 +149,11 @@ public class RegisterActivity extends AppCompatActivity {
                 isSuccess = false;
                 z = excpt.getMessage();
 
-                Log.d("BOPER", excpt.getMessage()); // tODO REMOVE
-
             }
             // If an unexpected exception occurs, returns the error message.
             catch (Exception excpt) {
                 isSuccess = false;
                 z = excpt.getMessage();
-
-                Log.d("BOPER", excpt.getMessage()); // tODO REMOVE
 
             }
 
