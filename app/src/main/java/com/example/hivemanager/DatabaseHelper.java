@@ -199,7 +199,7 @@ public class DatabaseHelper {
         ResultSet results;
         ArrayList<Equipment> equipment = new ArrayList<Equipment>();
 
-        // Issues a SQL query to find all Equipment associated with address.
+        // Issues a SQL query to find all Equipment associated with hiveID.
         sql = "SELECT * " +
                 "FROM Equipment " +
                 "WHERE HiveId = \"" + hiveID + "\""
@@ -214,8 +214,42 @@ public class DatabaseHelper {
 
         }
 
-        // Returns the ArrayList of Equipment associated with address.
+        // Returns the ArrayList of Equipment associated with hiveID.
         return equipment;
+
+    }
+
+    /**
+     * Returns a list of inspections associated with the inputed hiveID.
+     *
+     * @param hiveID the Hive to retrieve inspections for.
+     * @return the inspections associated with the inputed Hive.
+     * @throws SQLException if a SQL query fails.
+     */
+    public static ArrayList<Inspection> getHiveInspections(String hiveID) throws SQLException {
+        String sql;
+        Statement stmt;
+        ResultSet results;
+        ArrayList<Inspection> inspections = new ArrayList<Inspection>();
+
+        // Issues a SQL query to find all Inspections associated with hiveID.
+        sql = "SELECT * " +
+                "FROM Inspections " +
+                "WHERE HiveId = \"" + hiveID + "\""
+        ;
+        stmt = con.createStatement();
+        results = stmt.executeQuery(sql);
+
+        // Fills the ArrayList of Inspections.
+        while (results.next()) {
+            inspections.add(new Inspection(results.getInt("InspectionId"),
+                    results.getInt("HiveId"), results.getString("Inspection_notes"),
+                    results.getString("Inspection_date")));
+
+        }
+
+        // Returns the ArrayList of Inspections associated with hiveID.
+        return inspections;
 
     }
 

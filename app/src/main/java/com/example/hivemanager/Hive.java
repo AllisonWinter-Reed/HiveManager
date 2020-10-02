@@ -81,6 +81,21 @@ public class Hive {
     }
 
     /**
+     * @param inspection the inspection to be added.
+     */
+    public void addInspection(Inspection inspection) { inspections.add(inspection); }
+
+    /**
+     * @param inspection the inspection to be deleted.
+     */
+    public void deleteInspection(Inspection inspection) { inspections.remove(inspection); }
+
+    /**
+     * @param inspections the new results of inspections.
+     */
+    public void setInspections(ArrayList<Inspection> inspections) { this.inspections = inspections; }
+
+    /**
      * @return inspections the results of inspections.
      */
     public ArrayList<Inspection> getInspections() {
