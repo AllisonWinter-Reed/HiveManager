@@ -1,5 +1,8 @@
 package com.example.hivemanager;
 
+import android.provider.ContactsContract;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Profile {
@@ -136,6 +139,12 @@ public class Profile {
     public void deleteHive(Hive hive) {
         hives.remove(hive);
 
+        try {
+            DatabaseHelper.deleteHive(hive);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
@@ -143,6 +152,12 @@ public class Profile {
      */
     public void deleteApiary(Apiary apiary) {
         apiaries.remove(apiary);
+
+        try {
+            DatabaseHelper.deleteApiary(apiary.getAddress());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
