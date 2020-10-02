@@ -1,22 +1,30 @@
 package com.example.hivemanager;
 
+import android.os.StrictMode;
+import android.util.Log;
+
 import java.sql.*;
 import java.util.ArrayList;
 
 public class DatabaseHelper {
 
     //connects to Database
-    public static Connection establishConnection() {
-        Connection con = null;
+    private static Connection establishConnection() {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        Connection connection = null;
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://uwhivemanager506.cmnpa3ypkmwq.us-east-2.rds.amazonaws.com:3306/hive_manager", "admin", "Hivemanager123");
 
-            con = DriverManager.getConnection("jdbc:mysql://uwhivemanager506.cmnpa3ypkmwq.us-east-2.rds.amazonaws.com:3306/hive_manager", "admin", "Hivemanager123");
         } catch (Exception e) {
-            System.out.println("error");
+            Log.e("SQL Connection Error : ", e.getMessage());
+
         }
-        return con;
+
+        return connection;
+
     }
 
     //returns an ArrayList of all the user fields in the format[username,firstname,email,lastname,phone_number,ppr,password,address,zipcode]
@@ -74,6 +82,8 @@ public class DatabaseHelper {
         ResultSet results;
         ArrayList<Apiary> apiaries = new ArrayList<>();
         Connection con = establishConnection();
+
+        System.out.println("TOBY : " + con);
 
         // Issues a SQL query to find all Apiaries associated with user.
         sql = "SELECT * " +

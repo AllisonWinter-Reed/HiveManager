@@ -169,28 +169,4 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
-    /**
-     * TODO remove when helper created
-     *
-     * @return
-     */
-    private Connection establishConnection() {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        Connection connection = null;
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://uwhivemanager506.cmnpa3ypkmwq.us-east-2.rds.amazonaws.com:3306/hive_manager", "admin", "Hivemanager123");
-
-        } catch (Exception e) {
-            Log.e("SQL Connection Error : ", e.getMessage());
-
-        }
-
-        return connection;
-
-    }
-
 }
