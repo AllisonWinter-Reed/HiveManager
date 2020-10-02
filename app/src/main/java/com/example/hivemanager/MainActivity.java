@@ -151,10 +151,7 @@ public class MainActivity extends AppCompatActivity {
             // Associates Equipment with each Apiary and Hive.
             for (Apiary apiary : user.getApiaries()) {
 
-                // Adds equipment to the Apiary.
-                apiary.setEquipment(DatabaseHelper.getApiaryEquipment(apiary.getAddress()));
-
-                // Addsd equipment to each Hive in the Apiary.
+                // Adds equipment to each Hive in the Apiary.
                 for (Hive hive : apiary.getHives()) {
                     hive.setEquipment(DatabaseHelper.getHiveEquipment(String.valueOf(hive.getHiveID())));
 
@@ -162,30 +159,25 @@ public class MainActivity extends AppCompatActivity {
             }
 
             // TODO DEBUG REMOVE prints contents of this User's hives
-            for (Apiary currApiary : user.getApiaries()) {
+            /*for (Apiary currApiary : user.getApiaries()) {
                 Log.d("Apiary", "address : " + currApiary.getAddress() + "zipcode : " + currApiary.getZip());
-
-                // Apiary equipment.
-                for (Equipment equipment : currApiary.getEquipment()) {
-                    Log.d("ApiaryEquipment", equipment.getName());
-                }
 
                 // Hives.
                 for (Hive hive : currApiary.getHives()) {
                     Log.d("Hive",
                             "HiveID : " + String.valueOf(hive.getHiveID()) + "\n"
-                                    /*+
-                                    "health : " + String.valueOf(hive.getHealth()) + "\nhoneyStores : " + String.valueOf(hive.getHoneyStores()) +
-                                    "\nQueen Production : " + String.valueOf(hive.getQueenProduction()) + "\nLosses : " + String.valueOf(hive.getLosses())
-                                    + "\ngains : " + String.valueOf(hive.getGains())*/);
+                                    //+
+                                    //"health : " + String.valueOf(hive.getHealth()) + "\nhoneyStores : " + String.valueOf(hive.getHoneyStores()) +
+                                    //"\nQueen Production : " + String.valueOf(hive.getQueenProduction()) + "\nLosses : " + String.valueOf(hive.getLosses())
+                                    //+ "\ngains : " + String.valueOf(hive.getGains()));
 
                     // Hive equipment.
                     for (Equipment equipment : hive.getEquipment()) {
-                        Log.d("ApiaryEquipment", equipment.getName());
-                    }
+                        Log.d("HiveEquipment", equipment.getName());
 
+                    }
                 }
-            }
+            }*/
         }
         // If a SQL exception occurs, logs the error message.
         catch (SQLException excpt) {

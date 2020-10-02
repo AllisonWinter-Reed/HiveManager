@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Apiary {
     private ArrayList<Hive> hives;
-    private ArrayList<Equipment> equipment;
     private String address;
     private String zipcode;
 
@@ -18,7 +17,6 @@ public class Apiary {
 
     public Apiary(String addr, String zip) {
         hives = new ArrayList<Hive>();
-        equipment = new ArrayList<Equipment>();
         address = addr;
         zipcode = zip;
 
@@ -46,35 +44,6 @@ public class Apiary {
         hives.remove(hive);
 
     }
-
-    /**
-     * @param equip a piece of equipment to be added to this Hive.
-     */
-    public void addEquipment(Equipment equip) {
-        equipment.add(equip);
-
-    }
-
-    /**
-     * @param equip a piece of equipment to be removed from this Hive.
-     */
-    public void removeEquipment(Equipment equip) {
-        equipment.remove(equip);
-
-    }
-
-    /**
-     * @param equip a filled ArrayList of equipment to be added to this Hive.
-     */
-    public void setEquipment(ArrayList<Equipment> equip) {
-        equipment = equip;
-
-    }
-
-    /**
-     * @return equipment the ArrayList of pieces of Equipment for this Apiary.
-     */
-    public ArrayList<Equipment> getEquipment() { return equipment; }
 
     /**
      * @param addr the new address for this Apiary.

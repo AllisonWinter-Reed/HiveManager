@@ -175,39 +175,6 @@ public class DatabaseHelper {
     }
 
     /**
-     * Returns a list of pieces of Equipment associated with the inputed address.
-     *
-     * @param address the address to retrieve Equipment for.
-     * @return the Equipment associated with the inputed address.
-     * @throws SQLException if a SQL query fails.
-     */
-    public static ArrayList<Equipment> getApiaryEquipment(String address) throws SQLException {
-        String sql;
-        Statement stmt;
-        ResultSet results;
-        ArrayList<Equipment> equipment = new ArrayList<Equipment>();
-        Connection con = establishConnection();
-
-        // Issues a SQL query to find all Equipment associated with address.
-        sql = "SELECT * " +
-                "FROM Equipment " +
-                "WHERE Address = \"" + address + "\""
-        ;
-        stmt = con.createStatement();
-        results = stmt.executeQuery(sql);
-
-        // Fills the ArrayList of Equipment.
-        while (results.next()) {
-            equipment.add(new Equipment(results.getString("Equipment_name")));
-
-        }
-
-        // Returns the ArrayList of Equipment associated with address.
-        return equipment;
-
-    }
-
-    /**
      * Returns a list of pieces of Equipment associated with the inputed Hive.
      *
      * @param hiveID the Hive to retrieve Equipment for.
