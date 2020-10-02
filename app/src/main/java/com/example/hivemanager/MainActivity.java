@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Initializes all Apiaries (including associated Hives and Equipment) associated with the
+     * Initializes all Apiaries (including related Hives and Equipment) associated with the
      * userName of the current user. Does so via use of the DatabaseHelper class.
      */
     private void initApiaries() {
@@ -176,27 +176,6 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             }
-
-            // TODO DEBUG REMOVE prints contents of this User's hives
-            /*for (Apiary currApiary : user.getApiaries()) {
-                Log.d("Apiary", "address : " + currApiary.getAddress() + "zipcode : " + currApiary.getZip());
-
-                // Hives.
-                for (Hive hive : currApiary.getHives()) {
-                    Log.d("Hive",
-                            "HiveID : " + String.valueOf(hive.getHiveID()) + "\n"
-                                    //+
-                                    //"health : " + String.valueOf(hive.getHealth()) + "\nhoneyStores : " + String.valueOf(hive.getHoneyStores()) +
-                                    //"\nQueen Production : " + String.valueOf(hive.getQueenProduction()) + "\nLosses : " + String.valueOf(hive.getLosses())
-                                    //+ "\ngains : " + String.valueOf(hive.getGains()));
-
-                    // Hive equipment.
-                    for (Equipment equipment : hive.getEquipment()) {
-                        Log.d("HiveEquipment", equipment.getName());
-
-                    }
-                }
-            }*/
         }
         // If a SQL exception occurs, logs the error message.
         catch (SQLException excpt) {
