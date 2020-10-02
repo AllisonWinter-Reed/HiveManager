@@ -17,8 +17,7 @@ public class AddApiary extends Fragment {
     private Button addApiaryBtn;
     private EditText address;
     private EditText zipCode;
-    private String apiaryAddress;
-    private String apiaryZipCode;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,15 +28,18 @@ public class AddApiary extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_add_apiary, container, false);
+
         addApiaryBtn = (Button) view.findViewById(R.id.addApiaryButton);
         address = (EditText) view.findViewById(R.id.newApiaryAddress);
-        apiaryAddress = address.getText().toString();
+        
+
         zipCode = (EditText) view.findViewById(R.id.newApiaryZipCode);
-        apiaryZipCode = zipCode.getText().toString();
+
+
         addApiaryBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick (View v) {
                 try {
-                    DatabaseHelper.addApiary(MainActivity.userName,apiaryAddress,apiaryZipCode);
+                    DatabaseHelper.addApiary(MainActivity.userName,address.getText().toString(),zipCode.getText().toString());
                 } catch (Exception e) {
                     //TODO: error msg
                 }

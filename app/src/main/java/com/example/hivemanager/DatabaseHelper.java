@@ -1,6 +1,7 @@
 package com.example.hivemanager;
 
 import android.os.StrictMode;
+import android.text.Editable;
 import android.util.Log;
 
 import java.sql.*;
@@ -42,44 +43,44 @@ public class DatabaseHelper {
 
     }
 
-//    //returns an ArrayList of all the user fields in the format[username,firstname,email,lastname,phone_number,ppr,password,address,zipcode]
-//    public static ArrayList getUserData(String userName) throws SQLException {
-//        Statement stmt;
-//        Connection con = establishConnection();
-//
-//        String sql = "SELECT * FROM Beekeeper WHERE Username = '" + userName.toString() + "'";
-//        stmt = con.createStatement();
-//
-//        ResultSet rs = stmt.executeQuery(sql);
-//        ArrayList userlist = new ArrayList();
-//        while (rs.next()) {
-//
-//            String username = rs.getString("Username");
-//            userlist.add(username);
-//            String firstname = rs.getString("First_Name");
-//            userlist.add(firstname);
-//            String email = rs.getString("Email");
-//            userlist.add(email);
-//            String lastname = rs.getString("Last_name");
-//            userlist.add(lastname);
-//            String phone_number = rs.getString("Phone_Number");
-//            userlist.add(phone_number);
-//            String ppr = rs.getString("ProfilePicReference");
-//            userlist.add(ppr);
-//            String password = rs.getString("password");
-//            userlist.add(password);
-//            String address = rs.getString("Address");
-//            userlist.add(address);
-//            String zipcode = rs.getString("Zipcode");
-//            userlist.add(zipcode);
-//
-//
-//        }
-//
-//
-//        return userlist;
-//
-//    }
+    //returns an ArrayList of all the user fields in the format[username,firstname,email,lastname,phone_number,ppr,password,address,zipcode]
+    public static ArrayList getUserData(String userName) throws SQLException {
+        Statement stmt;
+        Connection con = establishConnection();
+
+        String sql = "SELECT * FROM Beekeeper WHERE Username = '" + userName.toString() + "'";
+        stmt = con.createStatement();
+
+        ResultSet rs = stmt.executeQuery(sql);
+        ArrayList userlist = new ArrayList();
+        while (rs.next()) {
+
+            String username = rs.getString("Username");
+            userlist.add(username);
+            String firstname = rs.getString("First_Name");
+            userlist.add(firstname);
+            String email = rs.getString("Email");
+            userlist.add(email);
+            String lastname = rs.getString("Last_name");
+            userlist.add(lastname);
+            String phone_number = rs.getString("Phone_Number");
+            userlist.add(phone_number);
+            String ppr = rs.getString("ProfilePicReference");
+            userlist.add(ppr);
+            String password = rs.getString("password");
+            userlist.add(password);
+            String address = rs.getString("Address");
+            userlist.add(address);
+            String zipcode = rs.getString("Zipcode");
+            userlist.add(zipcode);
+
+
+        }
+
+
+        return userlist;
+
+    }
 
     public static Profile initUser(String userName) throws SQLException {
         Profile user = new Profile();
@@ -278,12 +279,24 @@ public class DatabaseHelper {
     }
 
     //adds an apiary into the database, CANNOT ADD INTO APIARY IF THERE IS NO USER WITH THE SAME USERNAME
-    public static void addApiary(String username, String address,  String zipcode) throws SQLException {
+    public static void addApiary(String username, String address, String zipcode) throws SQLException {
         Statement stmt;
         Connection con = establishConnection();
 
         String sql = "INSERT INTO Apiary VALUES ('" + address + "','" + username + "','" + zipcode + "')";
 
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
+
+    }
+
+    public static void deleteApiary(String Address) throws SQLException {
+
+        Connection con;
+        Statement stmt;
+
+        con = establishConnection();
+        String sql = "DELETE FROM Apiary WHERE Address = '"+ Address +"'";
         stmt = con.createStatement();
         stmt.executeUpdate(sql);
 
@@ -323,19 +336,6 @@ public class DatabaseHelper {
 
     }
 
-    public static void deleteApiary(String Address) throws SQLException {
-
-        Connection con;
-        Statement stmt;
-
-        con = establishConnection();
-        String sql = "DELETE FROM Apiary WHERE Address = '"+ Address +"'";
-        stmt = con.createStatement();
-        stmt.executeUpdate(sql);
-
-    }
-
-
     public static void deleteHive(Integer hiveID) throws SQLException {
         Connection con;
         Statement stmt;
@@ -345,4 +345,43 @@ public class DatabaseHelper {
         stmt = con.createStatement();
         stmt.executeUpdate(sql);
     }
+
+    /**
+     * Places a piece of equipment into the database.
+     *
+     * @param hiveID the hive that this equipment is attached to.
+     * @param address the address where this equipment is stored.
+     * @param name the name of this piece of equipment.
+     * @throws SQLException if a SQL query fails.
+     */
+    public static void addEquipment(String hiveID, String address, String name) throws SQLException {
+        int maxID;
+        String sql;
+        Statement stmt;
+        ResultSet results;
+
+        // Finds the appropriate ID for the new piece of equipment.
+        sql = "SELECT MAX(EquipmentId) FROM Equipment";
+        stmt = con.createStatement();
+        results = stmt.executeQuery(sql);
+        results.next();
+        maxID = results.getInt(1) + 1;
+
+        // Issues a SQL query to add the piece of Equipment to the database.
+        sql = "INSERT INTO Equipment " +
+                "Values (" + maxID + ", " + hiveID + ", \"" + address + "\", \"" + name + "\")";
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
+
+    }
+
+    /**
+     *
+     * @param name
+     * @throws SQLException
+     */
+    public static void deleteEquipment(String name) throws SQLException {
+
+    }
+
 }
