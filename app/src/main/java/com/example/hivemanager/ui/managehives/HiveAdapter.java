@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hivemanager.Apiary;
 import com.example.hivemanager.MainActivity;
 import com.example.hivemanager.Hive;
 import com.example.hivemanager.R;
@@ -40,6 +41,19 @@ import java.util.Date;
 
 public class HiveAdapter extends RecyclerView.Adapter<HiveAdapter.HiveNote> {
     static ArrayList<Hive> hives;
+    private HiveAdapter.onItemClickListener mListener;
+
+    public interface onItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(HiveAdapter.onItemClickListener listener) {
+        mListener = listener;
+    }
+
+    public HiveAdapter(ArrayList<Hive> hives) {
+        this.hives = hives;
+    }
 
     //pass and connect to the database somehow
 
@@ -49,47 +63,52 @@ public class HiveAdapter extends RecyclerView.Adapter<HiveAdapter.HiveNote> {
        private TextView honeyStored;
        private TextView queenProduction;
 
-       public HiveNote(View itemView) {
+       public HiveNote(View itemView, final onItemClickListener listener) {
            super(itemView);
            hiveName = itemView.findViewById(R.id.hiveName);
            hiveHealth = itemView.findViewById(R.id.hiveHealth);
            honeyStored = itemView.findViewById(R.id.honeyStores);
            queenProduction = itemView.findViewById(R.id.queenProduction);
 
+           itemView.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View view) {
+                   if (listener != null) {
+                       int position = getAdapterPosition();
+                       if(position != RecyclerView.NO_POSITION) {
+                           listener.onItemClick(position);
+                       }
+                   }
+               }
+           });
+
         }
     }
 
-    public HiveAdapter(ArrayList<Hive> hives) {
-       this.hives = hives;
-    }
+
 
     @NonNull
     @Override
     public HiveNote onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.hive_view, parent, false);
-        return new HiveNote(itemView);
-
-    }
-
-    static public void initHives(ArrayList<Hive> inputHives) {
-       hives = inputHives;
+        return new HiveNote(itemView, mListener);
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull HiveAdapter.HiveNote holder, int position) {
 
-       ///TODO connect to database and fill in the information below
-        holder.hiveName.setText(""); //TODO set name
-        holder.hiveHealth.setText(String.format("Health: %d", 0)); //TODO change 0
-        holder.honeyStored.setText(String.format("Honey Stored: %d", 0)); //TODO change 0
-        holder.queenProduction.setText(String.format("Queen Production: %d", 0)); //TODO chage 0
+        Hive holderH = hives.get(position);
+
+        holder.hiveName.setText(String.format("Hive %d", holderH.getHiveID()));
+        holder.hiveHealth.setText(String.format("Health: %d", holderH.getHealth()));
+        holder.honeyStored.setText(String.format("Honey Stored: %d", holderH.getHoneyStores()));
+        holder.queenProduction.setText(String.format("Queen Production: %d", holderH.getQueenProduction()));
 
     }
 
     @Override
     public int getItemCount() {
-       ///TODO return hive count size (pull from database?)
-        return 0;
+        return hives.size();
     }
 }

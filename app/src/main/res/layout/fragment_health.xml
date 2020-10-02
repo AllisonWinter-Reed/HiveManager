@@ -27,6 +27,7 @@
             android:background="@color/color_hive_status_background">
 
             <TextView
+                android:id="@+id/health_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/health_value"
@@ -56,6 +57,7 @@
             android:background="@color/color_hive_status_background">
 
             <TextView
+                android:id="@+id/inspections_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Inspection Date and Notes"
