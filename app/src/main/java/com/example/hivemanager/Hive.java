@@ -9,19 +9,17 @@ import java.util.Date;
  */
 public class Hive {
     private int health;
-    private ArrayList<Date> inspectionDates;
-    private ArrayList<Integer> inspectionResults;
     private int honeyStores;
     private int queenProduction;
-    private ArrayList<Equipment> hiveEquipment;
     private int losses;
     private int gains;
     private int hiveID;
+    private ArrayList<Inspection> inspections;
+    private ArrayList<Equipment> hiveEquipment;
 
     public Hive(int hiveID) { //TODO should we always require at least an ID is entered upon object construction
         health = 0;
-        inspectionDates = new ArrayList<>();
-        inspectionResults = new ArrayList<>();
+        inspections = new ArrayList<>();
         honeyStores = 0;
         queenProduction = 0;
         hiveEquipment = new ArrayList<>();
@@ -30,11 +28,10 @@ public class Hive {
         this.hiveID = hiveID;
     }
 
-    public Hive(int hiveID, int health, ArrayList<Date> inspectionDates, ArrayList<Integer> inspectionResults,
+    public Hive(int hiveID, int health, ArrayList<Inspection> inspections,
                 int honeyStores, int queenProduction, ArrayList<Equipment> hiveEquipment, int losses, int gains) {
         this.health = health;
-        this.inspectionDates = inspectionDates;
-        this.inspectionResults = inspectionResults;
+        this.inspections = inspections;
         this.honeyStores = honeyStores;
         this.queenProduction = queenProduction;
         this.hiveEquipment = hiveEquipment;
@@ -84,18 +81,10 @@ public class Hive {
     }
 
     /**
-     * @return inspectionDates the list of inspectionDates.
+     * @return inspections the results of inspections.
      */
-    public ArrayList<Date> getInspectionDates() {
-        return inspectionDates;
-
-    }
-
-    /**
-     * @return inspectionResults the results of inspections.
-     */
-    public ArrayList<Integer> getInspectionResults() {
-        return inspectionResults;
+    public ArrayList<Inspection> getInspections() {
+        return inspections;
 
     }
 

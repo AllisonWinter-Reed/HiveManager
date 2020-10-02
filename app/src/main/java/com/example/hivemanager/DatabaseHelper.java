@@ -147,7 +147,7 @@ public class DatabaseHelper {
     /**
      * Returns a list of Hives associated with the inputed address.
      *
-     * The Hives will be initialised with all data except equipment and inspection dates.
+     * The Hives will be initialised with all data except equipment and inspections.
      *
      * @param address the address to retrieve Hives for.
      * @return the Hives associated with the inputed address.
@@ -172,7 +172,7 @@ public class DatabaseHelper {
             hives.add(new Hive(
                     Integer.parseInt(results.getString("HiveId")),
                     Integer.parseInt(results.getString("Health")),
-                    null, null, // TODO inspections not in database
+                    null,
                     Integer.parseInt(results.getString("Honey_stores")),
                     Integer.parseInt(results.getString("Queen_Production")),
                     null,
