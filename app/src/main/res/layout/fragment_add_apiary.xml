@@ -38,7 +38,8 @@
         android:layout_gravity="center"
         android:textSize="20sp"
         android:text="Add"
-        android:background="@drawable/rounded_button" />
+        android:background="@drawable/rounded_button"
+        android:onClick="addApiaryToDB"/>
 
 
 </LinearLayout>
