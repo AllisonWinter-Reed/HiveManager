@@ -44,6 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
     public static final int GET_FROM_GALLERY = 3;
     private Bitmap bitmap;
     private static String URL_UPLOAD = "http://192.168.1.14/android_register_login/upload.php";
+    public String ppUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,6 +146,7 @@ public class RegisterActivity extends AppCompatActivity {
         //Detects request codes
         if(requestCode==GET_FROM_GALLERY && resultCode == RegisterActivity.RESULT_OK) {
             Uri selectedImage = data.getData();
+            ppUrl = selectedImage.getPath();
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
             Cursor cursor = getContentResolver().query(selectedImage,filePathColumn,null,null,null);
             cursor.moveToFirst();
@@ -215,7 +217,7 @@ public class RegisterActivity extends AppCompatActivity {
                     // TODO ppref is currently set to null, replace as appropriate
                     String sql = "INSERT INTO Beekeeper VALUES ('" + userName.getText() + "' , '"
                             + firstName.getText() + "', '" + email.getText() + "','" + lastName.getText() +
-                            "','" + phoneNumber.getText() + "','" + /*ppref.getText()*/"NULL" + "', '"
+                            "','" + phoneNumber.getText() + "','" + /*ppref.getText()*/ppUrl + "', '"
                             + password.getText() + "','" + address.getText()  + "', '" + zip.getText() + "')";
                     // Attempts to execute the query.
                     stmt = con.createStatement();
