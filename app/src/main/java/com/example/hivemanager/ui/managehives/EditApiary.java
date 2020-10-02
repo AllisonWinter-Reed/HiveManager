@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
@@ -18,12 +19,16 @@ import com.example.hivemanager.Apiary;
 import com.example.hivemanager.MainActivity;
 import com.example.hivemanager.R;
 
+import org.w3c.dom.Text;
+
 public class EditApiary extends Fragment {
 
     private Button saveBtn;
     private EditText address;
     private EditText zipCode;
     private ApiaryAdapter apiaryAdapter;
+    private TextView editApiaryHeader;
+
     private int apiaryPosition;
 
     public EditApiary(ApiaryAdapter apiaryAdapter, int apiaryPosition) {
@@ -44,10 +49,12 @@ public class EditApiary extends Fragment {
         saveBtn = (Button) view.findViewById(R.id.addApiaryButton);
         address = (EditText) view.findViewById(R.id.newApiaryAddress);
         zipCode = (EditText) view.findViewById(R.id.newApiaryZipCode);
+        editApiaryHeader = view.findViewById(R.id.newApiaryHeader);
 
         saveBtn.setText("Save");
         address.setText(MainActivity.getUser().getApiaries().get(apiaryPosition).getAddress());
         zipCode.setText(MainActivity.getUser().getApiaries().get(apiaryPosition).getZip());
+        editApiaryHeader.setText("Edit Apiary");
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -55,17 +62,17 @@ public class EditApiary extends Fragment {
                 Log.d("SAVE CLICKED", "SAVE CLICKED");
 
 
-//                String newAddress = address.getText().toString();
-//                String newZipCode = zipCode.getText().toString();
-//
-//                MainActivity.getUser().editApiary(apiaryPosition, newAddress, newZipCode);
-//                apiaryAdapter.notifyDataSetChanged();
-//
-//                Fragment fragment = new ManageApiaries();
-//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.nav_host_fragment, fragment);
-//                transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-//                transaction.commit();
+                String newAddress = address.getText().toString();
+                String newZipCode = zipCode.getText().toString();
+
+                MainActivity.getUser().editApiary(apiaryPosition, newAddress, newZipCode);
+                apiaryAdapter.notifyDataSetChanged();
+
+                Fragment fragment = new ManageApiaries();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.nav_host_fragment, fragment);
+                transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+                transaction.commit();
             }
         });
 

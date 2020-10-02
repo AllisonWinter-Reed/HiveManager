@@ -40,6 +40,26 @@ public class Hive {
         this.hiveID = hiveID;
     }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void setHoneyStores(int honeyStores) {
+        this.honeyStores = honeyStores;
+    }
+
+    public void setQueenProduction(int queenProduction) {
+        this.queenProduction = queenProduction;
+    }
+
+    public void setLosses(int losses) {
+        this.losses = losses;
+    }
+
+    public void setGains(int gains) {
+        this.gains = gains;
+    }
+
     public Hive(int health, int honeyStores, int queenProduction, int gains, int losses) {
         this.health = health;
         this.honeyStores = honeyStores;

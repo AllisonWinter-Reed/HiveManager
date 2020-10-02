@@ -177,7 +177,19 @@ public class Profile {
 
     }
 
-    public void editApiary(int apiaryPostion, String newAddress, String newZip){
+    public void editApiary(int apiaryPosition, String newAddress, String newZip){
+
+        apiaries.get(apiaryPosition).setAddress(newAddress);
+        apiaries.get(apiaryPosition).setZip(newZip);
+
+        try {
+            DatabaseHelper.editApiary(username, apiaries.get(apiaryPosition).getAddress(), newAddress, newZip);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        apiaries.get(apiaryPosition).setAddress(newAddress);
+        apiaries.get(apiaryPosition).setZip(newZip);
 
     }
 
@@ -247,4 +259,26 @@ public class Profile {
 
     public String getZipcode() {return this.zipcode;}
 
+    public void editHive(int apiaryPosition, int hivePosition, int health, int honeyStores, int queenProduction, int gains, int losses) {
+
+        int hiveID = apiaries.get(apiaryPosition).getHives().get(hivePosition).getHiveID();
+
+        try {
+            DatabaseHelper.editHive(hiveID, String.format("%d",health),
+                    String.format("%d",honeyStores),
+                    String.format("%d",queenProduction),
+                    String.format("%d",gains),
+                    String.format("%d",losses),
+                    apiaries.get(apiaryPosition).getAddress(), apiaries.get(apiaryPosition).getZip());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        apiaries.get(apiaryPosition).getHives().get(hivePosition).setHealth(health);
+        apiaries.get(apiaryPosition).getHives().get(hivePosition).setHoneyStores(honeyStores);
+        apiaries.get(apiaryPosition).getHives().get(hivePosition).setQueenProduction(queenProduction);
+        apiaries.get(apiaryPosition).getHives().get(hivePosition).setGains(gains);
+        apiaries.get(apiaryPosition).getHives().get(hivePosition).setLosses(losses);
+
+    }
 }

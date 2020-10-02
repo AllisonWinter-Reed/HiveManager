@@ -47,6 +47,7 @@ public class HiveAdapter extends RecyclerView.Adapter<HiveAdapter.HiveNote> {
     public interface onItemClickListener {
         void onItemClick(int position);
         void onDeleteClick(int position);
+        void onEditClick(int position);
     }
 
     public void setOnItemClickListener(HiveAdapter.onItemClickListener listener) {
@@ -65,6 +66,7 @@ public class HiveAdapter extends RecyclerView.Adapter<HiveAdapter.HiveNote> {
        private TextView honeyStored;
        private TextView queenProduction;
        private Button deleteHive;
+       private Button editHive;
 
        public HiveNote(View itemView, final onItemClickListener listener) {
            super(itemView);
@@ -73,6 +75,7 @@ public class HiveAdapter extends RecyclerView.Adapter<HiveAdapter.HiveNote> {
            honeyStored = itemView.findViewById(R.id.honeyStores);
            queenProduction = itemView.findViewById(R.id.queenProduction);
            deleteHive = itemView.findViewById(R.id.deleteHive);
+           editHive = itemView.findViewById(R.id.editHive_button);
 
            itemView.setOnClickListener(new View.OnClickListener() {
                @Override
@@ -92,6 +95,17 @@ public class HiveAdapter extends RecyclerView.Adapter<HiveAdapter.HiveNote> {
                        int position = getAdapterPosition();
                        if(position != RecyclerView.NO_POSITION) {
                            listener.onDeleteClick(position);
+                       }
+                   }
+               }
+           });
+           editHive.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   if(listener != null) {
+                       int position = getAdapterPosition();
+                       if(position != RecyclerView.NO_POSITION) {
+                           listener.onEditClick(position);
                        }
                    }
                }

@@ -76,8 +76,13 @@ public class ManageHivesFragment extends Fragment {
             }
             @Override
             public void onDeleteClick(int position) {
+
+                hivePosition = position;
                 deleteItem(position);
             }
+            public void onEditClick(int position) {
+                hivePosition = position;
+            editHive(position);}
         });
 
         addHive.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +98,15 @@ public class ManageHivesFragment extends Fragment {
 
 
         return view;
+    }
+
+    private void editHive(int position) {
+        Fragment fragment = new EditHive(hiveAdapter, apiaryPosition, hivePosition);
+
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.nav_host_fragment, fragment);
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
     }
 
     private void deleteItem(int position) {

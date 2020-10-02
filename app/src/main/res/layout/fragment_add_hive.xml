@@ -25,7 +25,7 @@
             android:layout_marginBottom="40dp"/>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/newHiveHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
