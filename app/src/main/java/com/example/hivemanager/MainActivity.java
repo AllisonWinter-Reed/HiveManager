@@ -139,10 +139,7 @@ public class MainActivity extends AppCompatActivity {
         try {
 
             // Associates apiaries with the user.
-            Log.d("PROBLEM", userName.toString());
             user.getApiaries().addAll(DatabaseHelper.getApiaries(userName.toString()));
-
-            Log.d("PROBLEM", "AFTERAP");
 
             // Associates Hives with each Apiary.
             for (Apiary apiary : user.getApiaries())
@@ -150,9 +147,29 @@ public class MainActivity extends AppCompatActivity {
 
             Log.d("PROBLEM", "AFTERHIVES");
 
+            // Associates Equipment with each Apiary and Hive.
+            for (Apiary apiary : user.getApiaries()) {
+
+                // Adds equipment to the Apiary.
+                apiary.setEquipment(DatabaseHelper.getApiaryEquipment(apiary.getAddress()));
+
+                // Addsd equipment to each Hive in the Apiary.
+                for (Hive hive : apiary.getHives()) {
+                    hive.setEquipment(DatabaseHelper.getHiveEquipment(String.valueOf(hive.getHiveID())));
+
+                }
+            }
+
             // TODO DEBUG REMOVE prints contents of this User's hives
             for (Apiary currApiary : user.getApiaries()) {
                 Log.d("Apiary", "address : " + currApiary.getAddress() + "zipcode : " + currApiary.getZip());
+
+                // Apiary equipment.
+                for (Equipment equipment : currApiary.getEquipment()) {
+                    // Log.d("ApiaryEquipment", equipment.get);
+                }
+
+                // Hives.
                 for (Hive hive : currApiary.getHives()) {
                     Log.d("Hive",
                             "HiveID : " + String.valueOf(hive.getHiveID()) + "\n" +
@@ -165,12 +182,12 @@ public class MainActivity extends AppCompatActivity {
         }
         // If a SQL exception occurs, logs the error message.
         catch (SQLException excpt) {
-            Log.d("PROBLEM:", excpt.getMessage());
+            Log.d("ERROR:", excpt.getMessage());
 
         }
         // If an unexpected exception occurs, logs the error message.
         catch (Exception excpt) {
-            Log.d("PROBLEM:", excpt.getMessage());
+            Log.d("ERROR:", excpt.getMessage());
 
         }
     }

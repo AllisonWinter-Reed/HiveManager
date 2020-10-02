@@ -72,6 +72,11 @@ public class Apiary {
     }
 
     /**
+     * @return equipment the ArrayList of pieces of Equipment for this Apiary.
+     */
+    public ArrayList<Equipment> getEquipment() { return equipment; }
+
+    /**
      * @param addr the new address for this Apiary.
      */
     public void setAddress(String addr) { address = addr; }
