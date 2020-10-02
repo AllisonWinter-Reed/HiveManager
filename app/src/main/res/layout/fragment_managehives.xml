@@ -6,7 +6,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical"
-android:background="@color/colorPrimary"
+android:background="@color/light_cyan"
 tools:context=".MainActivity"
 >
 
@@ -22,7 +22,7 @@ tools:context=".MainActivity"
     </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/addhive_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
@@ -31,8 +31,7 @@ tools:context=".MainActivity"
         android:src="@drawable/ic_baseline_add_24"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="68dp"
-        android:onClick="addHive"
-        app:backgroundTint="@color/light_cyan"/>
+        app:backgroundTint="@color/colorAccent"/>
 
 
 </RelativeLayout>

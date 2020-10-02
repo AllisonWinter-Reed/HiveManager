@@ -40,6 +40,19 @@ public class Hive {
         this.hiveID = hiveID;
     }
 
+    public Hive(int health, int honeyStores, int queenProduction, int gains, int losses) {
+        this.health = health;
+        this.honeyStores = honeyStores;
+        this.queenProduction = queenProduction;
+        this.gains = gains;
+        this.losses = losses;
+        this.inspections = new ArrayList<>();
+        this.hiveID = -1; //-1 means no hiveID has been assigned.
+
+
+    }
+
+
     public void inspectionComplete(Date date, Integer result) {
 
     }
@@ -148,5 +161,9 @@ public class Hive {
     public int getHiveID() {
         return hiveID;
 
+    }
+
+    public void setHiveID(int hiveID) {
+        this.hiveID = hiveID;
     }
 }

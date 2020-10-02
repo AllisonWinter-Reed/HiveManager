@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.example.hivemanager.Apiary;
 import com.example.hivemanager.DatabaseHelper;
 import com.example.hivemanager.MainActivity;
 import com.example.hivemanager.R;
@@ -17,7 +19,11 @@ public class AddApiary extends Fragment {
     private Button addApiaryBtn;
     private EditText address;
     private EditText zipCode;
+    private ApiaryAdapter apiaryAdapter;
 
+    public AddApiary(ApiaryAdapter apiaryAdapter) {
+        this.apiaryAdapter = apiaryAdapter;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,11 +44,15 @@ public class AddApiary extends Fragment {
 
         addApiaryBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick (View v) {
-                try {
-                    DatabaseHelper.addApiary(MainActivity.userName,address.getText().toString(),zipCode.getText().toString());
-                } catch (Exception e) {
-                    //TODO: error msg
-                }
+                Apiary apiary = new Apiary(address.getText().toString(), zipCode.getText().toString());
+                MainActivity.getUser().addApiary(apiary);
+                apiaryAdapter.notifyDataSetChanged();
+
+                Fragment fragment = new ManageApiaries();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.nav_host_fragment, fragment);
+                transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+                transaction.commit();
             }
         });
         // Inflate the layout for this fragment

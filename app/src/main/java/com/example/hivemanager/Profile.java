@@ -2,6 +2,8 @@ package com.example.hivemanager;
 
 import android.provider.ContactsContract;
 
+import com.example.hivemanager.ui.managehives.HiveAdapter;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -102,8 +104,25 @@ public class Profile {
     /**
      * @param hive the Hive to be associated with this Profile.
      */
-    public void addHive(Hive hive) {
-        hives.add(hive);
+    public void addHive(Hive hive, int apiaryPosition, HiveAdapter hiveAdapter) {
+        String apiaryAddress;
+        String apiaryZip;
+        apiaryAddress = MainActivity.getUser().getApiaries().get(apiaryPosition).getAddress();
+        apiaryZip = MainActivity.getUser().getApiaries().get(apiaryPosition).getZip();
+
+        try {
+            Integer hiveID = DatabaseHelper.addHive(String.format("%d",hive.getHealth()),
+                    String.format("%d", hive.getHoneyStores()),
+                    String.format("%d", hive.getQueenProduction()),
+                    String.format("%d", hive.getGains()),
+                    String.format("%d", hive.getLosses()), apiaryAddress, apiaryZip);
+            hive.setHiveID(hiveID);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        apiaries.get(apiaryPosition).addHive(hive);
+
+        hiveAdapter.notifyDataSetChanged();
 
     }
 
@@ -111,6 +130,12 @@ public class Profile {
      * @param apiary the apiary to be associated with this Profile.
      */
     public void addApiary(Apiary apiary) {
+
+        try {
+            DatabaseHelper.addApiary(MainActivity.getUser().getUsername(), apiary.getAddress(), apiary.getZip());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         apiaries.add(apiary);
 
     }
@@ -134,10 +159,13 @@ public class Profile {
 
 
     /**
-     * @param hive the hive to be removed from hives.
+     * @param apiaryPosition the position in the users apiary list of the selected apiary
+     * @param hivePosition the position the apiary array of the selected hive
      */
-    public void deleteHive(Hive hive) {
-        hives.remove(hive);
+    public void deleteHive(int apiaryPosition, int hivePosition) {
+
+        Hive hive = apiaries.get(apiaryPosition).getHives().get(hivePosition);
+
 
         try {
             DatabaseHelper.deleteHive(hive.getHiveID());
@@ -145,19 +173,22 @@ public class Profile {
             e.printStackTrace();
         }
 
+        apiaries.get(apiaryPosition).getHives().remove(hivePosition);
+
     }
 
     /**
-     * @param apiary the apiary to be removed from apiaries.
+     * @param apiaryPosition the position in the users apiary list of the selected apiary
      */
-    public void deleteApiary(Apiary apiary) {
-        apiaries.remove(apiary);
+    public void deleteApiary(int apiaryPosition) {
 
         try {
-            DatabaseHelper.deleteApiary(apiary.getAddress());
+            DatabaseHelper.deleteApiary(apiaries.get(apiaryPosition).getAddress());
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        apiaries.remove(apiaryPosition);
 
     }
 

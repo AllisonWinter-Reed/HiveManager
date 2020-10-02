@@ -21,6 +21,7 @@ import com.example.hivemanager.Apiary;
 import com.example.hivemanager.MainActivity;
 import com.example.hivemanager.R;
 import com.example.hivemanager.ui.hivestatus.HiveStatusFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -40,6 +41,7 @@ public class ManageHivesFragment extends Fragment {
     private RecyclerView hiveRecyclerView;
     private HiveAdapter hiveAdapter;
     private RecyclerView.LayoutManager hiveLayoutManager;
+    private FloatingActionButton addHive;
 
 
     public ManageHivesFragment(Integer position) {
@@ -57,6 +59,7 @@ public class ManageHivesFragment extends Fragment {
         hiveRecyclerView.setHasFixedSize(true);
         hiveLayoutManager = new LinearLayoutManager(getActivity());
         hiveAdapter = new HiveAdapter(MainActivity.getUser().getApiaries().get(apiaryPosition).getHives());
+        addHive = view.findViewById(R.id.addhive_fab);
 
         hiveRecyclerView.setLayoutManager(hiveLayoutManager);
         hiveRecyclerView.setAdapter(hiveAdapter);
@@ -77,19 +80,31 @@ public class ManageHivesFragment extends Fragment {
             }
         });
 
+        addHive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Fragment fragment = new AddHive(apiaryPosition, hiveAdapter);
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.nav_host_fragment, fragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+            }
+        });
+
 
         return view;
     }
 
     private void deleteItem(int position) {
+        final int hivePosition = position;
         new AlertDialog.Builder(getContext())
                 .setTitle("Delete Hive")
                 .setMessage("Are you sure you want to delete this Hive?")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int position) {
-                        MainActivity.getUser().deleteHive(MainActivity.getUser().getApiaries().get(apiaryPosition).getHives().get(position));
-                        hiveAdapter.notifyItemRemoved(position);
+                        MainActivity.getUser().deleteHive(apiaryPosition,hivePosition);
+                        hiveAdapter.notifyDataSetChanged();
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, null)

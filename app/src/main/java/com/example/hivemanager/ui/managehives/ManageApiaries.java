@@ -18,6 +18,7 @@ import com.example.hivemanager.Apiary;
 import com.example.hivemanager.Hive;
 import com.example.hivemanager.MainActivity;
 import com.example.hivemanager.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class ManageApiaries extends Fragment {
     private RecyclerView apiaryRecyclerView;
     private ApiaryAdapter apiaryAdapter;
     private RecyclerView.LayoutManager apiaryLayoutManager;
+    private FloatingActionButton addApiary;
 
 
     @Override
@@ -43,6 +45,7 @@ public class ManageApiaries extends Fragment {
         apiaryRecyclerView.setHasFixedSize(true);
         apiaryLayoutManager = new LinearLayoutManager(getActivity());
         apiaryAdapter = new ApiaryAdapter(MainActivity.getUser().getApiaries());
+        addApiary = view.findViewById(R.id.fab_addApiary);
 
         apiaryRecyclerView.setLayoutManager(apiaryLayoutManager);
         apiaryRecyclerView.setAdapter(apiaryAdapter);
@@ -65,20 +68,32 @@ public class ManageApiaries extends Fragment {
                 editItem(position);
             }
         });
+
+        addApiary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new AddApiary(apiaryAdapter);
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.nav_host_fragment, fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
         return view;
 
 
     }
 
     private void deleteItem(int position) {
+        final int apiaryPosition = position;
         new AlertDialog.Builder(getContext())
                 .setTitle("Delete Apiary")
                 .setMessage("Are you sure you want to delete this Apiary?")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int position) {
-                        MainActivity.getUser().deleteApiary(MainActivity.getUser().getApiaries().get(position));
-                        apiaryAdapter.notifyItemRemoved(position);
+                        MainActivity.getUser().deleteApiary(apiaryPosition);
+                        apiaryAdapter.notifyDataSetChanged();
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, null)
@@ -87,6 +102,15 @@ public class ManageApiaries extends Fragment {
     }
 
     private void editItem(int position) {
+
+        Fragment fragment = new AddApiary(apiaryAdapter);
+
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.nav_host_fragment, fragment);
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
+
+
 
     }
 }
