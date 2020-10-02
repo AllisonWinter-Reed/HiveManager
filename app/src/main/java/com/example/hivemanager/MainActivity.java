@@ -86,4 +86,7 @@ public class MainActivity extends AppCompatActivity {
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
         transaction.commit();
     }
+
+    public void addApiary(View view) {
+    }
 }
