@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager;
     public static Editable userName;
-    private Profile user;
+    private static Profile user;
 
-    Profile getUser() {
+    public static Profile getUser() {
         return user;
     }
 
@@ -66,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
                 navController,
                 appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+        user = new Profile();
+        initApiaries();
 
     }
 
@@ -114,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
 
     // TODO DEBUG REMOVE
     private void initApiaries() {
-        ArrayList<Apiary> apiaries = new ArrayList<Apiary>();
         try {
 
             // Connects to the database.
@@ -140,13 +142,13 @@ public class MainActivity extends AppCompatActivity {
 
                 // Fills the arraylist of Apiaries.
                 while (results.next()) {
-                    apiaries.add(new Apiary(results.getString("Address"),
+                    user.getApiaries().add(new Apiary(results.getString("Address"),
                             results.getString("Zipcode")));
 
                 }
 
                 // Finds all Hives for each apiary.
-                for (Apiary currApiary : apiaries) {
+                for (Apiary currApiary : user.getApiaries()) {
                     sql = "SELECT * " +
                             "FROM Hive " +
                             "WHERE Address = \"" + currApiary.getAddress() + "\")"
@@ -173,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 // TODO DEBUG REMOVE prints contents of this User's hives
-                for (Apiary currApiary : apiaries) {
+                for (Apiary currApiary : user.getApiaries()) {
                     Log.d("Apiary", "address : " + currApiary.getAddress() + "zipcode : " + currApiary.getZip());
                     for (Hive hive : currApiary.getHives()) {
                         Log.d("Hive",
@@ -221,4 +223,5 @@ public class MainActivity extends AppCompatActivity {
         return connection;
 
     }
+
 }

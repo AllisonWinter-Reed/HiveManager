@@ -27,6 +27,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.hivemanager.R;
+import com.example.hivemanager.ui.hivestatus.HiveStatusFragment;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -55,6 +57,10 @@ public class HiveAdapter extends RecyclerView.Adapter<HiveAdapter.HiveNote> {
            queenProduction = itemView.findViewById(R.id.queenProduction);
 
         }
+    }
+
+    public HiveAdapter(ArrayList<Hive> hives) {
+       this.hives = hives;
     }
 
     @NonNull

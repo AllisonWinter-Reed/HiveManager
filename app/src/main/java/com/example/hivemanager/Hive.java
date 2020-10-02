@@ -19,7 +19,7 @@ public class Hive {
     private int gains;
     private int hiveID;
 
-    Hive(int hiveID) { //TODO should we always require at least an ID is entered upon object construction
+    public Hive(int hiveID) { //TODO should we always require at least an ID is entered upon object construction
         health = 0;
         inspectionDates = new ArrayList<>();
         inspectionResults = new ArrayList<>();

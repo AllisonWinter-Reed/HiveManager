@@ -10,6 +10,11 @@
     tools:context=".ui.managehives.ManageApiaries"
     >
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/apiaryRecycle"
             android:layout_width="match_parent"
@@ -27,6 +32,7 @@
             android:layout_alignParentBottom="true"
             android:src="@drawable/ic_baseline_add_24"
             android:layout_margin="16dp" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
 </RelativeLayout>

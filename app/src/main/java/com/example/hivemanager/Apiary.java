@@ -7,7 +7,7 @@ public class Apiary {
     private String address;
     private String zipcode;
 
-    Apiary() {
+    public Apiary() {
         hives = new ArrayList<>();
     }
 
