@@ -94,6 +94,9 @@ public class RegisterActivity extends AppCompatActivity {
                 address.setText("");
                 zip.setText("");
 
+                // Sets the userName.
+                MainActivity.userName = userName.getText();
+
                 // Moves the user to the Main View upon successful registration.
                 Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -146,11 +149,15 @@ public class RegisterActivity extends AppCompatActivity {
                 isSuccess = false;
                 z = excpt.getMessage();
 
+                Log.d("BOPER", excpt.getMessage()); // tODO REMOVE
+
             }
             // If an unexpected exception occurs, returns the error message.
             catch (Exception excpt) {
                 isSuccess = false;
                 z = excpt.getMessage();
+
+                Log.d("BOPER", excpt.getMessage()); // tODO REMOVE
 
             }
 

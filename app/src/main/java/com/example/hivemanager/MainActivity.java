@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager;
     public static Editable userName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
