@@ -427,25 +427,30 @@ public class DatabaseHelper {
 
     }
 
-    public static void editApiary(String username, String oldaddress, String newaddress, String zipcode) throws SQLException {
-        deleteApiary(oldaddress);
-        addApiary(username,newaddress,zipcode);
+    public static void editApiary(String username, String newaddress, String zipcode) throws SQLException {
+        Connection con;
+        Statement stmt;
+
+        con = establishConnection();
+        String sql = "UPDATE Apiary SET Address = '"+ newaddress +"', Zipcode = '"+ zipcode +"' WHERE Username = '"+ username +"'";
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
     }
+
     public static void editHive(int hiveid, String Health, String Honey_stores, String Queen_production, String Gains, String Losses, String Address, String zipcode) throws SQLException {
-        deleteHive(hiveid);
-        addHiveWithHiveId(hiveid, Health,Honey_stores,Queen_production,Gains,Losses,Address,zipcode);
-
-    }
-
-    public static void addHiveWithHiveId(int hiveId, String Health ,String Honey_stores, String Queen_production, String Gains, String Losses, String Address, String zipcode ) throws SQLException {
 
         Connection con;
         Statement stmt;
 
         con = establishConnection();
-        String sql = "INSERT INTO Hive VALUES ('" + hiveId + "','" + Health + "','" + Honey_stores + "','" + Queen_production + "','" + Gains + "','" + Losses + "','" + Address + "','" + zipcode + "')";
+        String sql = "UPDATE Hive SET Health = '"+ Health +"', Honey_stores = '"+ Honey_stores +"', Queen_production = '"+ Queen_production +"', Gains ='"+ Gains +"', Losses = '"+ Losses +"', Address = '"+ Address +"', Zipcode = '"+ zipcode+ "'  WHERE HiveId = '"+ hiveid +"'";
         stmt = con.createStatement();
         stmt.executeUpdate(sql);
+
     }
+
+
+
+
 
 }
