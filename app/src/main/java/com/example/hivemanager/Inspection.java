@@ -1,9 +1,10 @@
 package com.example.hivemanager;
+import java.sql.Date;
 
 public class Inspection {
     private int ID;
     private int hiveID;
-    private String date;
+    private Date date;
     private String result;
 
     /**
@@ -14,7 +15,7 @@ public class Inspection {
      * @param date the date of the Inspection.
      * @param result the result of the Inspection.
      */
-    Inspection(int ID, int hiveID, String date, String result) {
+    Inspection(int ID, int hiveID, Date date, String result) {
         this.ID = ID;
         this.hiveID = hiveID;
         this.date = date;
@@ -45,12 +46,12 @@ public class Inspection {
     /**
      * @param date the new date for this Inspection.
      */
-    public void setDate(String date) { this.date = date; }
+    public void setDate(Date date) { this.date = date; }
 
     /**
      * @return date the date for this Inspection.
      */
-    public String getDate() { return this.date; }
+    public Date getDate() { return this.date; }
 
     /**
      * @param result the new result for this Inspection.

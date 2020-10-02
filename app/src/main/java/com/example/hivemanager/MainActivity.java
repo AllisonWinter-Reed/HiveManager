@@ -177,10 +177,6 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             }
-
-
-            // TODO DEBUG REMOVE prints inspections.
-
         }
         // If a SQL exception occurs, logs the error message.
         catch (SQLException excpt) {
