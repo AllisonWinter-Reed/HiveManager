@@ -45,7 +45,7 @@ public class ApiaryAdapter extends RecyclerView.Adapter<ApiaryAdapter.ApiaryNote
 
         Apiary holderA = mApiary.get(position);
 
-        holder.apiaryName.setText(String.format("Apiary %d", position));
+        holder.apiaryName.setText(String.format("Apiary %d", position + 1));
         holder.apiaryAddress.setText(holderA.getAddress());
         holder.numberHives.setText(String.format("Number of Hives: %d", holderA.getHives().size()));
 
@@ -53,6 +53,7 @@ public class ApiaryAdapter extends RecyclerView.Adapter<ApiaryAdapter.ApiaryNote
 
     @Override
     public int getItemCount() {
-        return mApiary.size(); //TODO
+        return mApiary.size();
+        //TODO
     }
 }
