@@ -209,6 +209,9 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 // Attempts to perform a query if connection is successful.
                 else {
+
+                   // DatabaseHelper.createUser(userName.getText().toString(),firstName.getText().toString(),email.getText().toString() ,lastName.getText().toString()
+                            //,phoneNumber.getText().toString(), password.getText().toString() , address.getText().toString(), zip.getText().toString(), "NULL" );
                     // Query format string.
                     // TODO ppref is currently set to null, replace as appropriate
                     String sql = "INSERT INTO Beekeeper VALUES ('" + userName.getText() + "' , '"

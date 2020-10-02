@@ -427,12 +427,12 @@ public class DatabaseHelper {
 
     }
 
-    public static void editApiary(String username, String newaddress, String zipcode) throws SQLException {
+    public static void editApiary(String username, String oldaddress, String newaddress, String zipcode) throws SQLException {
         Connection con;
         Statement stmt;
 
         con = establishConnection();
-        String sql = "UPDATE Apiary SET Address = '"+ newaddress +"', Zipcode = '"+ zipcode +"' WHERE Username = '"+ username +"'";
+        String sql = "UPDATE Apiary SET Address = '"+ newaddress +"', Zipcode = '"+ zipcode +"' WHERE Address = '"+ oldaddress +"'";
         stmt = con.createStatement();
         stmt.executeUpdate(sql);
     }
@@ -444,6 +444,17 @@ public class DatabaseHelper {
 
         con = establishConnection();
         String sql = "UPDATE Hive SET Health = '"+ Health +"', Honey_stores = '"+ Honey_stores +"', Queen_production = '"+ Queen_production +"', Gains ='"+ Gains +"', Losses = '"+ Losses +"', Address = '"+ Address +"', Zipcode = '"+ zipcode+ "'  WHERE HiveId = '"+ hiveid +"'";
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
+
+    }
+
+    public static void createUser(String username, String first_name, String email, String lastname, String phonenumber,String password, String address, String zipcode, String ppref) throws SQLException {
+        Connection con;
+        Statement stmt;
+
+        con = establishConnection();
+        String sql = "INSERT INTO Beekeeper VALUES ('" + username + "','" + first_name + "','" + email + "','" + lastname + "','" + phonenumber + "','" + password + "','" + address + "','" + zipcode + "','NULL')";
         stmt = con.createStatement();
         stmt.executeUpdate(sql);
 
