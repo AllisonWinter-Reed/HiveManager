@@ -1,6 +1,7 @@
 package com.example.hivemanager;
 
 import android.os.StrictMode;
+import android.text.Editable;
 import android.util.Log;
 
 import java.sql.*;
@@ -278,7 +279,7 @@ public class DatabaseHelper {
     }
 
     //adds an apiary into the database, CANNOT ADD INTO APIARY IF THERE IS NO USER WITH THE SAME USERNAME
-    public static void addApiary(String username, String address,  String zipcode) throws SQLException {
+    public static void addApiary(String username, String address, String zipcode) throws SQLException {
         Statement stmt;
         Connection con = establishConnection();
 
