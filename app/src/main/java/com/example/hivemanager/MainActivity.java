@@ -139,14 +139,13 @@ public class MainActivity extends AppCompatActivity {
     private void initApiaries() {
         try {
 
+
             // Associates apiaries with the user.
             user.getApiaries().addAll(DatabaseHelper.getApiaries(userName.toString()));
 
             // Associates Hives with each Apiary.
             for (Apiary apiary : user.getApiaries())
                 apiary.setHives(DatabaseHelper.getHivesAddr(apiary.getAddress()));
-
-            Log.d("PROBLEM", "AFTERHIVES");
 
             // Associates Equipment with each Apiary and Hive.
             for (Apiary apiary : user.getApiaries()) {
