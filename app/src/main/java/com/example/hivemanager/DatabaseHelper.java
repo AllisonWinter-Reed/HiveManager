@@ -427,11 +427,10 @@ public class DatabaseHelper {
 
     }
 
-    public static void editApiary(String username, String address, String zipcode) throws SQLException {
-        deleteApiary(address);
-        addApiary(username,address,zipcode);
+    public static void editApiary(String username, String oldaddress, String newaddress, String zipcode) throws SQLException {
+        deleteApiary(oldaddress);
+        addApiary(username,newaddress,zipcode);
     }
-
     public static void editHive(int hiveid, String Health, String Honey_stores, String Queen_production, String Gains, String Losses, String Address, String zipcode) throws SQLException {
         deleteHive(hiveid);
         addHiveWithHiveId(hiveid, Health,Honey_stores,Queen_production,Gains,Losses,Address,zipcode);
@@ -448,4 +447,5 @@ public class DatabaseHelper {
         stmt = con.createStatement();
         stmt.executeUpdate(sql);
     }
+
 }
