@@ -3,11 +3,7 @@ import java.io.*;
 import java.lang.*;
 import java.util.*;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.VolleyError;
+
 import android.app.ProgressDialog;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
