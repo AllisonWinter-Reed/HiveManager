@@ -24,6 +24,8 @@ public class ApiaryAdapter extends RecyclerView.Adapter<ApiaryAdapter.ApiaryNote
 
     public interface onItemClickListener {
         void onItemClick(int position);
+        void onDeleteClick(int position);
+        void onEditClick(int position);
     }
 
     public void setOnItemClickListener(onItemClickListener listener) {
@@ -37,6 +39,7 @@ public class ApiaryAdapter extends RecyclerView.Adapter<ApiaryAdapter.ApiaryNote
         private TextView apiaryAddress;
         private TextView numberHives;
         private Button deleteApiaryButton;
+        private Button editApiaryButton;
 
         public ApiaryNote(@NonNull View itemView, final onItemClickListener listener) {
             super(itemView);
@@ -44,6 +47,7 @@ public class ApiaryAdapter extends RecyclerView.Adapter<ApiaryAdapter.ApiaryNote
             apiaryAddress = itemView.findViewById(R.id.apiaryLocation);
             numberHives = itemView.findViewById(R.id.numberHives);
             deleteApiaryButton = itemView.findViewById(R.id.deleteApiary_button);
+            editApiaryButton = itemView.findViewById(R.id.editApiary_button);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -52,6 +56,30 @@ public class ApiaryAdapter extends RecyclerView.Adapter<ApiaryAdapter.ApiaryNote
                         int position = getAdapterPosition();
                         if(position != RecyclerView.NO_POSITION) {
                             listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
+
+            deleteApiaryButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION) {
+                            listener.onDeleteClick(position);
+                        }
+                    }
+                }
+            });
+
+            editApiaryButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION) {
+                            listener.onEditClick(position);
                         }
                     }
                 }

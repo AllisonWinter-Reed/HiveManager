@@ -72,7 +72,7 @@
                 android:paddingBottom="10dp">
 
                 <Button
-                    android:id="@+id/directions_button"
+                    android:id="@+id/editApiary_button"
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:layout_marginRight="10dp"

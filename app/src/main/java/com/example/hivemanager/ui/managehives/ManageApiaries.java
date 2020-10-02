@@ -1,6 +1,8 @@
 package com.example.hivemanager.ui.managehives;
 import com.example.hivemanager.Apiary;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -54,9 +56,37 @@ public class ManageApiaries extends Fragment {
                 transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
                 transaction.commit();
             }
+            @Override
+            public void onDeleteClick(int position) {
+                deleteItem(position);
+            }
+            @Override
+            public void onEditClick(int position) {
+                editItem(position);
+            }
         });
         return view;
 
+
+    }
+
+    private void deleteItem(int position) {
+        new AlertDialog.Builder(getContext())
+                .setTitle("Delete Apiary")
+                .setMessage("Are you sure you want to delete this Apiary?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int position) {
+                        //TODO connect to database and delete and below line
+                        apiaryAdapter.notifyItemRemoved(position);
+                    }
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
+
+    private void editItem(int position) {
 
     }
 }

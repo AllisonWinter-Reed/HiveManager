@@ -1,5 +1,7 @@
 package com.example.hivemanager.ui.managehives;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -69,9 +71,29 @@ public class ManageHivesFragment extends Fragment {
                 transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
                 transaction.commit();
             }
+            @Override
+            public void onDeleteClick(int position) {
+                deleteItem(position);
+            }
         });
 
 
         return view;
+    }
+
+    private void deleteItem(int position) {
+        new AlertDialog.Builder(getContext())
+                .setTitle("Delete Hive")
+                .setMessage("Are you sure you want to delete this Hive?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int position) {
+                        //TODO connect to database and delete and below line
+                        hiveAdapter.notifyItemRemoved(position);
+                    }
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 }
