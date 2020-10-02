@@ -346,4 +346,26 @@ public class DatabaseHelper {
         stmt = con.createStatement();
         stmt.executeUpdate(sql);
     }
+
+    public static void editApiary(String username, String address, String zipcode) throws SQLException {
+        deleteApiary(address);
+        addApiary(username,address,zipcode);
+    }
+
+    public static void editHive(int hiveid, String Health, String Honey_stores, String Queen_production, String Gains, String Losses, String Address, String zipcode) throws SQLException {
+        deleteHive(hiveid);
+        addHiveWithHiveId(hiveid, Health,Honey_stores,Queen_production,Gains,Losses,Address,zipcode);
+
+    }
+
+    public static void addHiveWithHiveId(int hiveId, String Health ,String Honey_stores, String Queen_production, String Gains, String Losses, String Address, String zipcode ) throws SQLException {
+
+        Connection con;
+        Statement stmt;
+
+        con = establishConnection();
+        String sql = "INSERT INTO Hive VALUES ('" + hiveId + "','" + Health + "','" + Honey_stores + "','" + Queen_production + "','" + Gains + "','" + Losses + "','" + Address + "','" + zipcode + "')";
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
+    }
 }

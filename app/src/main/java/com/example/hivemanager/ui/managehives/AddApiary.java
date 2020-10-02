@@ -31,7 +31,7 @@ public class AddApiary extends Fragment {
 
         addApiaryBtn = (Button) view.findViewById(R.id.addApiaryButton);
         address = (EditText) view.findViewById(R.id.newApiaryAddress);
-        
+
 
         zipCode = (EditText) view.findViewById(R.id.newApiaryZipCode);
 
