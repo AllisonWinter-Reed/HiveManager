@@ -8,8 +8,10 @@ import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.provider.ContactsContract;
 import android.text.Editable;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,10 +30,22 @@ import com.example.hivemanager.ui.managehives.ManageHivesFragment;
 import com.example.hivemanager.ui.profile.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager;
     public static Editable userName;
+    private Profile user;
+
+    Profile getUser() {
+        return user;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 navController,
                 appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-
-
 
     }
 
@@ -98,5 +110,115 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addApiary(View view) {
+    }
+
+    // TODO DEBUG REMOVE
+    private void initApiaries() {
+        ArrayList<Apiary> apiaries = new ArrayList<Apiary>();
+        try {
+
+            // Connects to the database.
+            String sql;
+            Statement stmt;
+            ResultSet results;
+            Connection con = establishConnection();
+
+            // Exits if connection fails.
+            // TODO replace this with Samraaj database helper.
+            // TODO exception handling? But it should not fail when the helper is done...
+            if (con == null);
+                // Attempts to perform a query if connection is successful.
+            else {
+
+                // Finds all Apiaries.
+                sql = "SELECT * " +
+                        "FROM Apiary " +
+                        "WHERE Username = \"" + userName.toString() + "\")"
+                ;
+                stmt = con.createStatement();
+                results = stmt.executeQuery(sql);
+
+                // Fills the arraylist of Apiaries.
+                while (results.next()) {
+                    apiaries.add(new Apiary(results.getString("Address"),
+                            results.getString("Zipcode")));
+
+                }
+
+                // Finds all Hives for each apiary.
+                for (Apiary currApiary : apiaries) {
+                    sql = "SELECT * " +
+                            "FROM Hive " +
+                            "WHERE Address = \"" + currApiary.getAddress() + "\")"
+                    ;
+                    stmt = con.createStatement();
+                    results = stmt.executeQuery(sql);
+
+                    // Fills the arraylist of Hives.
+                    // TODO null values
+                    while (results.next()) {
+                        currApiary.addHive(new Hive(
+                                Integer.parseInt(results.getString("HiveId")),
+                                Integer.parseInt(results.getString("Health")),
+                                null, null, // TODO inspections not in database
+                                Integer.parseInt(results.getString("Honey_stores")),
+                                Integer.parseInt(results.getString("Queen_Production")),
+                                null, // TODO equipment
+                                null, // TODO two equipment variables?
+                                Integer.parseInt(results.getString("Losses")),
+                                Integer.parseInt(results.getString("Gains"))));
+                        // TODO no zipcode in Hive
+
+                    }
+                }
+
+                // TODO DEBUG REMOVE prints contents of this User's hives
+                for (Apiary currApiary : apiaries) {
+                    Log.d("Apiary", "address : " + currApiary.getAddress() + "zipcode : " + currApiary.getZip());
+                    for (Hive hive : currApiary.getHives()) {
+                        Log.d("Hive",
+                                "HiveID : " + String.valueOf(hive.getHiveID()) + "\n" +
+                                        "health : " + String.valueOf(hive.getHealth()) + "\nhoneyStores : " + String.valueOf(hive.getHoneyStores()) +
+                                        "\nQueen Production : " + String.valueOf(hive.getQueenProduction()) + "\nLosses : " + String.valueOf(hive.getLosses())
+                                        + "\ngains : " + String.valueOf(hive.getGains()));
+                    }
+                }
+            }
+        }
+        // If a SQL exception occurs, logs the error message.
+        catch (SQLException excpt) {
+            // TODO DEBUG REMOVE
+            Log.d("EXCEPTION:", excpt.getMessage());
+
+        }
+        // If an unexpected exception occurs, logs the error message.
+        catch (Exception excpt) {
+            // TODO DEBUG REMOVE
+            Log.d("EXCEPTION:", excpt.getMessage());
+
+        }
+    }
+
+    /**
+     * TODO remove when helper created
+     *
+     * @return
+     */
+    private Connection establishConnection() {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        Connection connection = null;
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://uwhivemanager506.cmnpa3ypkmwq.us-east-2.rds.amazonaws.com:3306/hive_manager", "admin", "Hivemanager123");
+
+        } catch (Exception e) {
+            Log.e("SQL Connection Error : ", e.getMessage());
+
+        }
+
+        return connection;
+
     }
 }
