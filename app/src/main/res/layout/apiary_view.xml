@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -39,7 +39,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/hiveName"
+                        android:id="@+id/apiaryName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Apiary 1"
@@ -90,10 +90,16 @@
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
                     android:text="Manage Hives" />
-
             </LinearLayout>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="addApiary"
+                />
         </LinearLayout>
 
+
+
     </androidx.cardview.widget.CardView>
-</LinearLayout>
+</RelativeLayout>

@@ -94,6 +94,9 @@ public class RegisterActivity extends AppCompatActivity {
                 address.setText("");
                 zip.setText("");
 
+                // Sets the userName.
+                MainActivity.userName = userName.getText();
+
                 // Moves the user to the Main View upon successful registration.
                 Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                 startActivity(intent);

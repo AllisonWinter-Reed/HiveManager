@@ -9,7 +9,7 @@
         android:id="@+id/navigation_home"
         android:name="com.example.hivemanager.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/activity_home" />
 
     <fragment
         android:id="@+id/navigation_profile"
@@ -18,14 +18,8 @@
         tools:layout="@layout/fragment_profile" />
 
     <fragment
-        android:id="@+id/navigation_hivestatus"
-        android:name="com.example.hivemanager.ui.hivestatus.HiveStatusFragment"
-        android:label="@string/title_hivestatus"
-        tools:layout="@layout/fragment_hivestatus" />
-
-    <fragment
-        android:id="@+id/navigation_managehives"
-        android:name="com.example.hivemanager.ui.managehives.ManageHivesFragment"
-        android:label="@string/title_managehives"
-        tools:layout="@layout/fragment_managehives"/>
+        android:id="@+id/navigation_apiaries"
+        android:name="com.example.hivemanager.ui.managehives.ManageApiaries"
+        android:label="@string/title_apiaries"
+        tools:layout="@layout/fragment_manage_apiaries"/>
 </navigation>
