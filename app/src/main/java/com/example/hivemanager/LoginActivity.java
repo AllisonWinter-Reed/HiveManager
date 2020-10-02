@@ -47,6 +47,8 @@ public class LoginActivity extends AppCompatActivity {
         status = (TextView)findViewById(R.id.logstatus);
         registerhere = (TextView)findViewById(R.id.tvregisterhere);
 
+
+
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
