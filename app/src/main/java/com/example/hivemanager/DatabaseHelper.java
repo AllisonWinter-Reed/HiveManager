@@ -243,8 +243,8 @@ public class DatabaseHelper {
         // Fills the ArrayList of Inspections.
         while (results.next()) {
             inspections.add(new Inspection(results.getInt("InspectionId"),
-                    results.getInt("HiveId"), results.getString("Inspection_notes"),
-                    results.getString("Inspection_date")));
+                    results.getInt("HiveId"), results.getDate("Inspection_date"),
+                    results.getString("Inspection_notes")));
 
         }
 
