@@ -18,12 +18,6 @@
         tools:layout="@layout/fragment_profile" />
 
     <fragment
-        android:id="@+id/navigation_hivestatus"
-        android:name="com.example.hivemanager.ui.hivestatus.HiveStatusFragment"
-        android:label="@string/title_hivestatus"
-        tools:layout="@layout/fragment_hivestatus" />
-
-    <fragment
         android:id="@+id/navigation_managehives"
         android:name="com.example.hivemanager.ui.managehives.ManageHivesFragment"
         android:label="@string/title_managehives"
