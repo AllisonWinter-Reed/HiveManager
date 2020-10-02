@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                         status.setText("Login Success");
                         if (status.getText() == "Login Success") {
 
-                            Intent intent = new Intent(LoginActivity.this, HomeFragment.class);
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                         }
                     }
