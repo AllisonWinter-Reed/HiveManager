@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Apiary {
     private ArrayList<Hive> hives;
+    private ArrayList<Equipment> equipment;
     private String address;
     private String zipcode;
 
