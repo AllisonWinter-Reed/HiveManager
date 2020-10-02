@@ -7,7 +7,7 @@ public class DatabaseHelper {
 
 
     //connects to Database
-    public Connection establishConnection() {
+    public static Connection establishConnection() {
 
         Connection connection = null;
 
@@ -21,10 +21,8 @@ public class DatabaseHelper {
         return connection;
     }
 
-    //returns an ArrayList of all the user fields in the format
-    // [username , firstname , email , lastname , phone_number , ppr , password , address,  zipcode]
-
-    public ArrayList getUserData(String userName) throws SQLException {
+    //returns an ArrayList of all the user fields in the format[username,firstname,email,lastname,phone_number,ppr,password,address,zipcode]
+    public static ArrayList getUserData(String userName) throws SQLException {
 
         Connection con;
         Statement stmt;
@@ -67,7 +65,7 @@ public class DatabaseHelper {
 
 
     //return a list of hives with the same address i.e. same Apiary
-    public ArrayList getHives(String addr) throws SQLException {
+    public static ArrayList getHives(String addr) throws SQLException {
 
         Connection conn;
         Statement stmt;
@@ -92,10 +90,8 @@ public class DatabaseHelper {
 
     }
 
-    //returns a list of information of the given hive in the format
-    //[HiveID,Health,Honey_Stores,Queen_Production,Gains,Losses,Address,Zipcode]
 
-    public ArrayList getHiveInfo(int hiveID) throws SQLException {
+    public static ArrayList getHiveInfo(int hiveID) throws SQLException {
         Connection con;
         Statement stmt;
 
@@ -132,9 +128,5 @@ public class DatabaseHelper {
         return hiveInfo;
 
     }
-
-
-
-
 
 }

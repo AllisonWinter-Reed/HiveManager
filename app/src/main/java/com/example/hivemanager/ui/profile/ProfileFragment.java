@@ -1,5 +1,6 @@
 package com.example.hivemanager.ui.profile;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +11,17 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.hivemanager.R;
 
 public class ProfileFragment extends Fragment {
+
+    public ProfileFragment(){
+
+    }
 
      public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -25,9 +31,9 @@ public class ProfileFragment extends Fragment {
              @Override
              public void onClick(View view) {
                  EditProfileFragment editProfileFragment = new EditProfileFragment();
-                 FragmentManager manager = getChildFragmentManager();
-                 manager.beginTransaction().replace(R.id.frag_container_profile, editProfileFragment,
-                         editProfileFragment.getTag()).commit();
+                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                 transaction.replace(R.id.nav_host_fragment, editProfileFragment);
+                 transaction.commit();
              }
          });
          return view;

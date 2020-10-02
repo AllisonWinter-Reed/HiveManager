@@ -28,6 +28,7 @@ import com.example.hivemanager.ui.home.HomeFragment;
 import com.example.hivemanager.ui.managehives.AddApiary;
 import com.example.hivemanager.ui.managehives.ManageApiaries;
 import com.example.hivemanager.ui.managehives.ManageHivesFragment;
+import com.example.hivemanager.ui.profile.EditProfileFragment;
 import com.example.hivemanager.ui.profile.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -118,6 +119,13 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.nav_host_fragment, fragment);
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
         transaction.commit();
+    }
+
+    public void editProfile(View view) {
+        Fragment fragment = new EditProfileFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().add(R.id.nav_host_fragment, fragment).commit();
+
     }
 
     // TODO DEBUG REMOVE
