@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
             // Associates Hives with each Apiary.
             for (Apiary apiary : user.getApiaries())
-                apiary.setHives(DatabaseHelper.getHives(apiary.getAddress()));
+                apiary.setHives(DatabaseHelper.getHivesAddr(apiary.getAddress()));
 
             Log.d("PROBLEM", "AFTERHIVES");
 
@@ -167,16 +167,22 @@ public class MainActivity extends AppCompatActivity {
 
                 // Apiary equipment.
                 for (Equipment equipment : currApiary.getEquipment()) {
-                    // Log.d("ApiaryEquipment", equipment.get);
+                    Log.d("ApiaryEquipment", equipment.getName());
                 }
 
                 // Hives.
                 for (Hive hive : currApiary.getHives()) {
                     Log.d("Hive",
-                            "HiveID : " + String.valueOf(hive.getHiveID()) + "\n" +
+                            "HiveID : " + String.valueOf(hive.getHiveID()) + "\n"
+                                    /*+
                                     "health : " + String.valueOf(hive.getHealth()) + "\nhoneyStores : " + String.valueOf(hive.getHoneyStores()) +
                                     "\nQueen Production : " + String.valueOf(hive.getQueenProduction()) + "\nLosses : " + String.valueOf(hive.getLosses())
-                                    + "\ngains : " + String.valueOf(hive.getGains()));
+                                    + "\ngains : " + String.valueOf(hive.getGains())*/);
+
+                    // Hive equipment.
+                    for (Equipment equipment : hive.getEquipment()) {
+                        Log.d("ApiaryEquipment", equipment.getName());
+                    }
 
                 }
             }
