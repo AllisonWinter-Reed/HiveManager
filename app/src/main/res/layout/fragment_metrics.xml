@@ -28,6 +28,7 @@
             >
 
             <TextView
+                android:id="@+id/honeyStores_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/value_honey_stores"
@@ -57,6 +58,7 @@
             android:background="@color/color_hive_status_background">
 
             <TextView
+                android:id="@+id/queenProduction_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/value_queen_production"
@@ -86,11 +88,12 @@
             android:background="@color/color_hive_status_background">
 
             <TextView
+                android:id="@+id/gains_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/value_gains"
                 android:textColor="@color/text_hive_status"
-                android:background="@color/color_hive_status_background"
+                android:background="@color/colorFragmentBackground"
                 android:layout_margin="15dp"
                 android:padding="10dp"
                 android:textSize="20sp"
@@ -115,6 +118,7 @@
             android:background="@color/color_hive_status_background">
 
             <TextView
+                android:id="@+id/losses_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/value_losses"
