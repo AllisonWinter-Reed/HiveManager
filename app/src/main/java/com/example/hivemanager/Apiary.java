@@ -17,7 +17,8 @@ public class Apiary {
     }
 
     public Apiary(String addr, String zip) {
-        hives = new ArrayList<>();
+        hives = new ArrayList<Hive>();
+        equipment = new ArrayList<Equipment>();
         address = addr;
         zipcode = zip;
 
@@ -26,10 +27,7 @@ public class Apiary {
     /**
      * @param hive the Hive to add to this Apiary.
      */
-    public void addHive(Hive hive) {
-        hives.add(hive);
-
-    }
+    public void addHive(Hive hive) { hives.add(hive); }
 
     /**
      * @return the list of Hives within this Apiary.
@@ -41,6 +39,30 @@ public class Apiary {
      */
     public void removeHive(Hive hive) {
         hives.remove(hive);
+
+    }
+
+    /**
+     * @param equip a piece of equipment to be added to this Hive.
+     */
+    public void addEquipment(Equipment equip) {
+        equipment.add(equip);
+
+    }
+
+    /**
+     * @param equip a piece of equipment to be removed from this Hive.
+     */
+    public void removeEquipment(Equipment equip) {
+        equipment.remove(equip);
+
+    }
+
+    /**
+     * @param equip a filled ArrayList of equipment to be added to this Hive.
+     */
+    public void setEquipment(ArrayList<Equipment> equip) {
+        equipment = equip;
 
     }
 

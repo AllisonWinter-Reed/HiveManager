@@ -52,18 +52,26 @@ public class Hive {
     }
 
     /**
-     * @param equipment pieces of equipment to be added to the equipmentInventory.
+     * @param equipment pieces of equipment to be added to hiveEquipment.
      */
-    public void addEquipment(ArrayList<Equipment> equipment) {
-        hiveEquipment.addAll(equipment);
+    public void setEquipment(ArrayList<Equipment> equipment) {
+        hiveEquipment = equipment;
 
     }
 
     /**
-     * @param equipment pieces of equipment to be removed from the equipmentInventory.
+     * @param equipment a piece of equipment to be added to hiveEquipment.
      */
-    public void removeEquipment(ArrayList<Equipment> equipment) {
-        hiveEquipment.removeAll(equipment);
+    public void addEquipment(Equipment equipment) {
+        hiveEquipment.add(equipment);
+
+    }
+
+    /**
+     * @param equipment a piece of equipment to be removed from hiveEquipment.
+     */
+    public void removeEquipment(Equipment equipment) {
+        hiveEquipment.remove(equipment);
 
     }
 
