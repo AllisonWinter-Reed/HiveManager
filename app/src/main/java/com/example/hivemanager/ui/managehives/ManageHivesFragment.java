@@ -31,8 +31,14 @@ import java.sql.DriverManager;
 public class ManageHivesFragment extends Fragment {
 
     private ArrayList<Hive> mHives;
+    private Integer position;
 
     private RecyclerView hiveRecyclerView;
+
+    public ManageHivesFragment(Integer position) {
+        Log.d("POSITION", String.format("%d", position));
+        this.position = position;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -43,7 +49,9 @@ public class ManageHivesFragment extends Fragment {
         hiveRecyclerView = view.findViewById(R.id.hiveRecycle);
         hiveRecyclerView.setHasFixedSize(true);
         hiveRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        hiveRecyclerView.setAdapter(new HiveAdapter(mHives));
+        Log.d("ManageHives", String.format("%d",MainActivity.getUser().getApiaries().size()));
+        Log.d("ManageHives", String.format("%d",MainActivity.getUser().getApiaries().get(position).getHives().size()));
+        hiveRecyclerView.setAdapter(new HiveAdapter(MainActivity.getUser().getApiaries().get(position).getHives()));
         return view;
     }
 }

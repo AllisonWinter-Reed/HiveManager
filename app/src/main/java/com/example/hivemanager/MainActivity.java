@@ -82,7 +82,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openManageHives(View view) {
-        Fragment fragment = new ManageHivesFragment();
+        Integer position = (Integer) view.getTag();
+        Fragment fragment = new ManageHivesFragment(position);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.nav_host_fragment, fragment);
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
@@ -161,10 +162,10 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 // Finds all Hives for each apiary.
-                for (Apiary currApiary : user.getApiaries()) {
+                for (int i = 0; i < user.getApiaries().size(); ++i) {
                     sql = "SELECT * " +
                             "FROM Hive " +
-                            "WHERE Address = \"" + currApiary.getAddress() + "\""
+                            "WHERE Address = \"" + user.getApiaries().get(i).getAddress() + "\""
                     ;
                     stmt = con.createStatement();
                     results = stmt.executeQuery(sql);
@@ -172,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
                     // Fills the arraylist of Hives.
                     // TODO null values
                     while (results.next()) {
-                        currApiary.addHive(new Hive(
+                        user.getApiaries().get(i).addHive(new Hive(
                                 Integer.parseInt(results.getString("HiveId")),
                                 Integer.parseInt(results.getString("Health")),
                                 null, null, // TODO inspections not in database
