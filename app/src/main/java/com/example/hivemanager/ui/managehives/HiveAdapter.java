@@ -34,9 +34,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class HiveAdapter extends RecyclerView.Adapter<HiveAdapter.HiveNote> {
-    ArrayList<Hive> Hives;
+    static ArrayList<Hive> hives;
 
     //pass and connect to the database somehow
 
@@ -59,72 +60,13 @@ public class HiveAdapter extends RecyclerView.Adapter<HiveAdapter.HiveNote> {
     @NonNull
     @Override
     public HiveNote onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        try {
-
-            // Connects to the database TODO remove.
-            Statement stmt;
-            Connection con = establishConnection();
-
-            // Exits if connection fails.
-            // TODO replace this with Samraaj database helper.
-            // TODO exception handling? But it should not fail when the helper is done...
-            if (con == null);
-            // Attempts to perform a query if connection is successful.
-            else {
-
-                // TODO there should be a better way of doing this
-                String name = MainActivity.userName.toString();
-
-                // Finds all Hives.
-                String sql = "SELECT * " +
-                        "FROM Hive " +
-                        "WHERE Address IN (" +
-                        "SELECT Address " +
-                        "FROM Apiary " +
-                        "WHERE Username = " + "\"test\"" + ")"
-                ;
-                stmt = con.createStatement();
-                ResultSet results = stmt.executeQuery(sql);
-                results.next();
-
-                String str = "";
-                str = results.getString("Address");
-                Log.d("BOPER", str);
-
-                /* TODO DEBUG REMOVE
-                Statement st;
-                // Finds all Hives.
-                String pql = "SELECT * " +
-                        "FROM Hive " +
-                        "WHERE Address IN (" +
-                        "SELECT Address " +
-                        "FROM Apiary " +
-                        "WHERE Username = " + "\"test\"" + ")"
-                        ;
-                st = con.createStatement();
-                ResultSet results = st.executeQuery(pql);
-                results.next();
-
-                String str = "";
-                str = results.getString("Address");
-                Log.d("BOPER", str);*/
-
-            }
-        }
-        // If a SQL exception occurs, returns the error message.
-        catch (SQLException excpt) {
-            // TODO
-            Log.d("BOPER", excpt.getMessage());
-
-        }
-        // If an unexpected exception occurs, returns the error message.
-        catch (Exception excpt) {
-            // TODO
-
-        }
-
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.hive_view, parent, false);
         return new HiveNote(itemView);
+
+    }
+
+    static public void initHives(ArrayList<Hive> inputHives) {
+       hives = inputHives;
 
     }
 
@@ -143,28 +85,5 @@ public class HiveAdapter extends RecyclerView.Adapter<HiveAdapter.HiveNote> {
     public int getItemCount() {
        ///TODO return hive count size (pull from database?)
         return 0;
-    }
-
-    /**
-     * TODO remove when helper created
-     *
-     * @return
-     */
-    public Connection establishConnection() {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        Connection connection = null;
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://uwhivemanager506.cmnpa3ypkmwq.us-east-2.rds.amazonaws.com:3306/hive_manager", "admin", "Hivemanager123");
-
-        } catch (Exception e) {
-            Log.e("SQL Connection Error : ", e.getMessage());
-
-        }
-
-        return connection;
-
     }
 }
