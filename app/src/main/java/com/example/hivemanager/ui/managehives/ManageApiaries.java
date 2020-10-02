@@ -103,7 +103,7 @@ public class ManageApiaries extends Fragment {
 
     private void editItem(int position) {
 
-        Fragment fragment = new AddApiary(apiaryAdapter);
+        Fragment fragment = new EditApiary(apiaryAdapter, position);
 
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.nav_host_fragment, fragment);

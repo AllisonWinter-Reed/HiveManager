@@ -11,7 +11,7 @@ public class Profile {
     private String username;
     private String password; //not sure if we want this...
     private String firstname;
-    private String lastname; // TODO nothing with firstname/lastname yet.
+    private String lastname;
     private String phone;
     private String email;
     private String profilePhoto; //TODO change when profile photo storage is figured out
@@ -176,6 +176,11 @@ public class Profile {
         apiaries.get(apiaryPosition).getHives().remove(hivePosition);
 
     }
+
+    public void editApiary(int apiaryPostion, String newAddress, String newZip){
+
+    }
+
 
     /**
      * @param apiaryPosition the position in the users apiary list of the selected apiary
