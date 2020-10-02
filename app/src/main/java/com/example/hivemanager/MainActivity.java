@@ -129,13 +129,13 @@ public class MainActivity extends AppCompatActivity {
 //        transaction.commit();
 //    }
 
-//    public void openManageApiaries(View view) {
-//        Fragment fragment = new ManageApiaries();
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.replace(R.id.nav_host_fragment, fragment);
-//        transaction.addToBackStack(null);
-//        transaction.commit();
-//    }
+    public void openManageApiaries(View view) {
+        Fragment fragment = new ManageApiaries();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.nav_host_fragment, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 
 //    public void addApiaryFrag(View view) {
 //        Fragment fragment = new AddApiary();
