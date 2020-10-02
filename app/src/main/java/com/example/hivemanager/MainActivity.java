@@ -13,6 +13,7 @@ import android.provider.ContactsContract;
 import android.text.Editable;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = new HiveStatusFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.nav_host_fragment, fragment);
-        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = new ManageHivesFragment(position);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.nav_host_fragment, fragment);
-        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = new ProfileFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.nav_host_fragment, fragment);
-        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 
@@ -115,15 +116,15 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = new ManageApiaries();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.nav_host_fragment, fragment);
-        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 
-    public void addApiary(View view) {
+    public void addApiaryFrag(View view) {
         Fragment fragment = new AddApiary();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.nav_host_fragment, fragment);
-        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 
@@ -143,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
             // Associates Hives with each Apiary.
             for (Apiary apiary : user.getApiaries())
-                apiary.setHives(DatabaseHelper.getHives(apiary.getAddress()));
+                apiary.setHives(DatabaseHelper.getHivesAddr(apiary.getAddress()));
 
             Log.d("PROBLEM", "AFTERHIVES");
 
@@ -166,16 +167,22 @@ public class MainActivity extends AppCompatActivity {
 
                 // Apiary equipment.
                 for (Equipment equipment : currApiary.getEquipment()) {
-                    // Log.d("ApiaryEquipment", equipment.get);
+                    Log.d("ApiaryEquipment", equipment.getName());
                 }
 
                 // Hives.
                 for (Hive hive : currApiary.getHives()) {
                     Log.d("Hive",
-                            "HiveID : " + String.valueOf(hive.getHiveID()) + "\n" +
+                            "HiveID : " + String.valueOf(hive.getHiveID()) + "\n"
+                                    /*+
                                     "health : " + String.valueOf(hive.getHealth()) + "\nhoneyStores : " + String.valueOf(hive.getHoneyStores()) +
                                     "\nQueen Production : " + String.valueOf(hive.getQueenProduction()) + "\nLosses : " + String.valueOf(hive.getLosses())
-                                    + "\ngains : " + String.valueOf(hive.getGains()));
+                                    + "\ngains : " + String.valueOf(hive.getGains())*/);
+
+                    // Hive equipment.
+                    for (Equipment equipment : hive.getEquipment()) {
+                        Log.d("ApiaryEquipment", equipment.getName());
+                    }
 
                 }
             }
