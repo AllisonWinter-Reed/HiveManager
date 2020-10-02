@@ -23,6 +23,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.hivemanager.ui.hivestatus.HiveStatusFragment;
 import com.example.hivemanager.ui.hivestatus.HealthFragment;
 import com.example.hivemanager.ui.home.HomeFragment;
+import com.example.hivemanager.ui.managehives.ManageApiaries;
 import com.example.hivemanager.ui.managehives.ManageHivesFragment;
 import com.example.hivemanager.ui.profile.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_profile, R.id.navigation_managehives)
+                R.id.navigation_home, R.id.navigation_profile, R.id.navigation_apiaries)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this,
@@ -82,6 +83,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void openHealthTab(View view) {
         Fragment fragment = new HealthFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.nav_host_fragment, fragment);
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
+    }
+
+    public void openManageApiaries(View view) {
+        Fragment fragment = new ManageApiaries();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.nav_host_fragment, fragment);
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack

@@ -3,9 +3,9 @@
 
 
     <item
-        android:id="@+id/navigation_managehives"
-        android:icon="@drawable/hive"
-        android:title="@string/title_managehives"/>
+        android:id="@+id/navigation_apiaries"
+        android:icon="@drawable/apiary"
+        android:title="@string/title_apiaries"/>
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"

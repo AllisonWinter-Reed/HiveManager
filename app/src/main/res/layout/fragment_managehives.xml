@@ -11,10 +11,7 @@ tools:context=".ui.managehives.ManageHivesFragment"
 >
 
 
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-    android:id="@+id/refreshLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/hiveRecycle"
@@ -24,6 +21,5 @@ tools:context=".ui.managehives.ManageHivesFragment"
 
     </androidx.recyclerview.widget.RecyclerView>
 
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>

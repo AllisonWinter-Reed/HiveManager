@@ -18,8 +18,8 @@
         tools:layout="@layout/fragment_profile" />
 
     <fragment
-        android:id="@+id/navigation_managehives"
-        android:name="com.example.hivemanager.ui.managehives.ManageHivesFragment"
-        android:label="@string/title_managehives"
-        tools:layout="@layout/fragment_managehives"/>
+        android:id="@+id/navigation_apiaries"
+        android:name="com.example.hivemanager.ui.managehives.ManageApiaries"
+        android:label="@string/title_apiaries"
+        tools:layout="@layout/fragment_manage_apiaries"/>
 </navigation>
