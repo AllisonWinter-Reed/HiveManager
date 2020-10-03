@@ -454,11 +454,25 @@ public class DatabaseHelper {
         Statement stmt;
 
         con = establishConnection();
-        String sql = "INSERT INTO Beekeeper VALUES ('" + username + "','" + first_name + "','" + email + "','" + lastname + "','" + phonenumber + "','" + password + "','" + address + "','" + zipcode + "','NULL')";
+        String sql = "INSERT INTO Beekeeper VALUES ('" + username + "','" + first_name + "','" + email + "','" + lastname + "','" + phonenumber + "','" + password + "','" + address + "','" + zipcode + "', '"+ppref+"')";
         stmt = con.createStatement();
         stmt.executeUpdate(sql);
 
     }
+
+    public static void editUser(String username, String first_name, String email, String lastname, String phonenumber, String address, String zipcode) throws SQLException {
+
+        Connection con;
+        Statement stmt;
+
+        con = establishConnection();
+        String sql = "UPDATE Beekeeper SET First_name = '"+ first_name +"', Email = '"+ email +"', Last_name = '"+ lastname +"', Phone_number ='"+ phonenumber +"', Address = '"+ address +"', Zipcode = '"+ zipcode+ "'  WHERE Username = '"+ username +"'";
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
+
+    }
+
+
 
 
 
