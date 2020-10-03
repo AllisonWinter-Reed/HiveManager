@@ -46,7 +46,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileN
 
         public ProfileNote(@NonNull View itemView, final ProfileAdapter.onItemClickListener listener) {
             super(itemView);
-            addPhoto = itemView.findViewById(R.id.addImage);
+            addPhoto = itemView.findViewById(R.id.profile_pic);
 //            username = itemView.findViewById(R.id.etUsernameProfile);
             firstname = itemView.findViewById(R.id.etFirstNameProfile);
             lastname = itemView.findViewById(R.id.etLastNameProfile);

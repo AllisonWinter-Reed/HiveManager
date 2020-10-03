@@ -34,6 +34,7 @@ import com.example.hivemanager.ui.managehives.AddHive;
 import com.example.hivemanager.ui.managehives.ManageApiaries;
 import com.example.hivemanager.ui.managehives.ManageHivesFragment;
 import com.example.hivemanager.ui.profile.EditProfileFragment;
+import com.example.hivemanager.ui.profile.ProfileAdapter;
 import com.example.hivemanager.ui.profile.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

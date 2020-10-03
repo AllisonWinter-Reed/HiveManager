@@ -43,7 +43,7 @@ public class EditProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_editprofile, container, false);
 
-        addPhoto = (ImageView) view.findViewById(R.id.addImage);
+        addPhoto = (ImageView) view.findViewById(R.id.profile_pic);
         // TODO: Save button
         // TODO: firstname.setText(...) etc.
         addPhoto.setOnClickListener(new View.OnClickListener() {
