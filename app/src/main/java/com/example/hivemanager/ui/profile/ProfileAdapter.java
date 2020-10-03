@@ -48,12 +48,12 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileN
             super(itemView);
             addPhoto = itemView.findViewById(R.id.profile_pic);
 //            username = itemView.findViewById(R.id.etUsernameProfile);
-            firstname = itemView.findViewById(R.id.etFirstNameProfile);
-            lastname = itemView.findViewById(R.id.etLastNameProfile);
-            address = itemView.findViewById(R.id.etAddressProfile);
-            zipcode = itemView.findViewById(R.id.etZipProfile);
-            phonenumber = itemView.findViewById(R.id.etPhoneNumberProfile);
-            email = itemView.findViewById(R.id.etEmailProfile);
+            firstname = itemView.findViewById(R.id.editFirstNameProfile);
+            lastname = itemView.findViewById(R.id.editLastNameProfile);
+            address = itemView.findViewById(R.id.editAddressProfile);
+            zipcode = itemView.findViewById(R.id.editZipProfile);
+            phonenumber = itemView.findViewById(R.id.editPhoneNumberProfile);
+            email = itemView.findViewById(R.id.editEmailProfile);
 //            password = itemView.findViewById(R.id.etPasswordProfile);
             editProfileButton = itemView.findViewById(R.id.button_editProfile);
 
