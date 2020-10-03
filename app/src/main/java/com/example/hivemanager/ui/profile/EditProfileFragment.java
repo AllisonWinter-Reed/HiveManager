@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -26,6 +27,7 @@ import java.io.IOException;
 public class EditProfileFragment extends Fragment {
 
     private ImageView addPhoto;
+    private TextView username;
     private EditText firstName;
     private EditText lastName;
     private EditText address;
@@ -44,6 +46,7 @@ public class EditProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_editprofile, container, false);
 
+        username = (TextView) view.findViewById(R.id.etUsernameProfile);
         firstName = (EditText) view.findViewById(R.id.etFirstNameProfile);
         lastName = (EditText) view.findViewById(R.id.etLastNameProfile);
         address = (EditText) view.findViewById(R.id.etAddressProfile);
@@ -52,6 +55,7 @@ public class EditProfileFragment extends Fragment {
         email = (EditText) view.findViewById(R.id.etEmailProfile);
         addPhoto = (ImageView) view.findViewById(R.id.profile_pic);
 
+        username.setText(MainActivity.getUser().getUsername());
         firstName.setHint(MainActivity.getUser().getFirstname());
         lastName.setHint(MainActivity.getUser().getLastname());
         address.setHint(MainActivity.getUser().getAddress());
