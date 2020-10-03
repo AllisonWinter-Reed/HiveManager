@@ -52,12 +52,12 @@ public class EditProfileFragment extends Fragment {
         email = (EditText) view.findViewById(R.id.etEmailProfile);
         addPhoto = (ImageView) view.findViewById(R.id.profile_pic);
 
-        firstName.setText(MainActivity.getUser().getFirstname());
-        lastName.setText(MainActivity.getUser().getLastname());
-        address.setText(MainActivity.getUser().getAddress());
-        zip.setText(MainActivity.getUser().getAddress());
-        phone.setText(MainActivity.getUser().getPhone());
-        email.setText(MainActivity.getUser().getEmail());
+        firstName.setHint(MainActivity.getUser().getFirstname());
+        lastName.setHint(MainActivity.getUser().getLastname());
+        address.setHint(MainActivity.getUser().getAddress());
+        zip.setHint(MainActivity.getUser().getAddress());
+        phone.setHint(MainActivity.getUser().getPhone());
+        email.setHint(MainActivity.getUser().getEmail());
         addPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
