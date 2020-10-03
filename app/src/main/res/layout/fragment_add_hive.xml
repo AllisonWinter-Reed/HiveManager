@@ -21,8 +21,8 @@
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:src="@drawable/hive"
-            android:layout_marginTop="70dp"
-            android:layout_marginBottom="40dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"/>
 
     <TextView
         android:id="@+id/newHiveHeader"
