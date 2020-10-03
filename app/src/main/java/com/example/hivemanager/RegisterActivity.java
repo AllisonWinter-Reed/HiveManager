@@ -31,7 +31,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 public class RegisterActivity extends AppCompatActivity {
-    EditText userName,firstName,lastName,email,phoneNumber,password,address,zip;
+    EditText userName, firstName, lastName, email, phoneNumber, password, address, zip;
     ImageView ppref;
     Button registerbtn;
     TextView status, backToLogin;
@@ -46,17 +46,17 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        userName = (EditText)findViewById(R.id.etUsernameRegister);
-        firstName = (EditText)findViewById(R.id.etFirstName);
-        lastName = (EditText)findViewById(R.id.etLastName);
-        email = (EditText)findViewById(R.id.etEmail);
-        phoneNumber = (EditText)findViewById(R.id.etPhoneNumber);
-        password = (EditText)findViewById(R.id.etPassword);
-        address = (EditText)findViewById(R.id.etAddress);
-        zip = (EditText)findViewById(R.id.etZip);
-        ppref = (ImageView)findViewById(R.id.etPPReference);
-        registerbtn = (Button)findViewById((R.id.bRegister));
-        status = (TextView)findViewById(R.id.regstatus);
+        userName = (EditText) findViewById(R.id.etUsernameRegister);
+        firstName = (EditText) findViewById(R.id.etFirstName);
+        lastName = (EditText) findViewById(R.id.etLastName);
+        email = (EditText) findViewById(R.id.etEmail);
+        phoneNumber = (EditText) findViewById(R.id.etPhoneNumber);
+        password = (EditText) findViewById(R.id.etPassword);
+        address = (EditText) findViewById(R.id.etAddress);
+        zip = (EditText) findViewById(R.id.etZip);
+        ppref = (ImageView) findViewById(R.id.etPPReference);
+        registerbtn = (Button) findViewById((R.id.bRegister));
+        status = (TextView) findViewById(R.id.regstatus);
         backToLogin = (TextView) findViewById(R.id.tvToLogin);
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,12 +68,13 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 {
-                    Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
             }
         });
     }
+
     public void registerProfilePic(View view) {
         startActivityForResult(new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI), GET_FROM_GALLERY);
     }
@@ -140,11 +141,11 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //Detects request codes
-        if(requestCode==GET_FROM_GALLERY && resultCode == RegisterActivity.RESULT_OK) {
+        if (requestCode == GET_FROM_GALLERY && resultCode == RegisterActivity.RESULT_OK) {
             Uri selectedImage = data.getData();
             ppUrl = selectedImage.getPath();
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
-            Cursor cursor = getContentResolver().query(selectedImage,filePathColumn,null,null,null);
+            Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
             cursor.moveToFirst();
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             String picturePath = cursor.getString(columnIndex);
@@ -163,14 +164,15 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-
-    public class registerUser extends AsyncTask<String,String,String> {
-        String z  ="";
+    public class registerUser extends AsyncTask<String, String, String> {
+        String z = "";
         Boolean isSuccess = false;
+
         @Override
         protected void onPreExecute() {
             status.setText("Registering");
         }
+
         @Override
         protected void onPostExecute(String s) {
             // Upon successful registration, empties text and moves the user to the Main View.
@@ -185,10 +187,18 @@ public class RegisterActivity extends AppCompatActivity {
                 address.setText("");
                 zip.setText("");
                 // Sets the userName.
-                MainActivity.userName = userName.getText().toString();
-                // Moves the user to the Main View upon successful registration.
-                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        MainActivity.userName = userName.getText().toString();
+                        Log.d("USERNAME", MainActivity.userName); //TODO delete
+                    }
+                });
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
+
+
             }
             // If registration is unsuccessful, prints an appropriate error message.
             else {
@@ -197,7 +207,10 @@ public class RegisterActivity extends AppCompatActivity {
                     // Otherwise, writes "Unexpected Error".
                 else status.setText("Unexpected Error");
             }
+
+
         }
+
         @Override
         protected String doInBackground(String... strings) {
             try {
@@ -210,8 +223,8 @@ public class RegisterActivity extends AppCompatActivity {
                 // Attempts to perform a query if connection is successful.
                 else {
 
-                   DatabaseHelper.createUser(userName.getText().toString(),firstName.getText().toString(),email.getText().toString() ,lastName.getText().toString()
-                            ,phoneNumber.getText().toString(), password.getText().toString() , address.getText().toString(), zip.getText().toString(), "NULL" );
+                    DatabaseHelper.createUser(userName.getText().toString(), firstName.getText().toString(), email.getText().toString(), lastName.getText().toString()
+                            , phoneNumber.getText().toString(), password.getText().toString(), address.getText().toString(), zip.getText().toString(), "NULL");
 
 
                     // If the query is successful, will proceed to Home screen.
@@ -232,18 +245,20 @@ public class RegisterActivity extends AppCompatActivity {
             // Returns status info.
             return z;
         }
-    }
-    @SuppressLint("NewApi")
-    public Connection establishConnection() {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        Connection connection = null;
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://uwhivemanager506.cmnpa3ypkmwq.us-east-2.rds.amazonaws.com:3306/hive_manager", "admin", "Hivemanager123");
-        } catch (Exception e) {
-            Log.e("SQL Connection Error : ", e.getMessage());
+
+
+        @SuppressLint("NewApi")
+        public Connection establishConnection() {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+            Connection connection = null;
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                connection = DriverManager.getConnection("jdbc:mysql://uwhivemanager506.cmnpa3ypkmwq.us-east-2.rds.amazonaws.com:3306/hive_manager", "admin", "Hivemanager123");
+            } catch (Exception e) {
+                Log.e("SQL Connection Error : ", e.getMessage());
+            }
+            return connection;
         }
-        return connection;
     }
 }
