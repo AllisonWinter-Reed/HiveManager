@@ -48,7 +48,7 @@
                     android:padding="@dimen/tablePadding_addHive"/>
 
                 <TextView
-                    android:id="@+id/etUsernameProfile"
+                    android:id="@+id/editUsernameProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:ems="10"
@@ -74,7 +74,7 @@
                     android:padding="@dimen/tablePadding_addHive"/>
 
                 <EditText
-                    android:id="@+id/etFirstNameProfile"
+                    android:id="@+id/editFirstNameProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:ems="10"
@@ -98,7 +98,7 @@
                     android:text="Last name: "
                     android:padding="@dimen/tablePadding_addHive" />
                 <EditText
-                    android:id="@+id/etLastNameProfile"
+                    android:id="@+id/editLastNameProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -123,7 +123,7 @@
                     android:padding="@dimen/tablePadding_addHive"/>
 
                 <EditText
-                    android:id="@+id/etAddressProfile"
+                    android:id="@+id/editAddressProfile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
@@ -174,7 +174,7 @@
                     android:padding="@dimen/tablePadding_addHive"/>
 
                 <EditText
-                    android:id="@+id/etZipProfile"
+                    android:id="@+id/editZipProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -200,7 +200,7 @@
                     android:padding="@dimen/tablePadding_addHive"/>
 
                 <EditText
-                    android:id="@+id/etPhoneNumberProfile"
+                    android:id="@+id/editPhoneNumberProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -226,7 +226,7 @@
                     android:padding="@dimen/tablePadding_addHive"/>
 
                 <EditText
-                    android:id="@+id/etEmailProfile"
+                    android:id="@+id/editEmailProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"

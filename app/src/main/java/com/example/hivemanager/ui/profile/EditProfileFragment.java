@@ -52,17 +52,18 @@ public class EditProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_editprofile, container, false);
 
-        username = (TextView) view.findViewById(R.id.username_label);
-        firstName = (EditText) view.findViewById(R.id.etFirstNameProfile);
-        lastName = (EditText) view.findViewById(R.id.etLastNameProfile);
-        address = (EditText) view.findViewById(R.id.etAddressProfile);
-        zip = (EditText) view.findViewById(R.id.etZipProfile);
-        phone = (EditText) view.findViewById(R.id.etPhoneNumberProfile);
-        email = (EditText) view.findViewById(R.id.etEmailProfile);
+        username = (TextView) view.findViewById(R.id.editUsernameProfile);
+        firstName = (EditText) view.findViewById(R.id.editFirstNameProfile);
+        lastName = (EditText) view.findViewById(R.id.editLastNameProfile);
+        address = (EditText) view.findViewById(R.id.editAddressProfile);
+        zip = (EditText) view.findViewById(R.id.editZipProfile);
+        phone = (EditText) view.findViewById(R.id.editPhoneNumberProfile);
+        email = (EditText) view.findViewById(R.id.editEmailProfile);
         addPhoto = (ImageView) view.findViewById(R.id.profile_pic);
         saveButton = (Button) view.findViewById(R.id.bSaveProfile);
         saveButton.setText("Save");
 
+        username.setText(MainActivity.getUser().getUsername());
         firstName.setHint(MainActivity.getUser().getFirstname());
         lastName.setHint(MainActivity.getUser().getLastname());
         address.setHint(MainActivity.getUser().getAddress());
