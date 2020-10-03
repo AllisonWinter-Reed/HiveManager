@@ -1,6 +1,9 @@
 package com.example.hivemanager;
 
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.provider.ContactsContract;
+import android.widget.ImageView;
 
 import com.example.hivemanager.ui.managehives.HiveAdapter;
 
@@ -14,7 +17,7 @@ public class Profile {
     private String lastname;
     private String phone;
     private String email;
-    private String profilePhoto; //TODO change when profile photo storage is figured out
+    private Bitmap profilePhoto; //TODO change when profile photo storage is figured out
     private ArrayList<Hive> hives;
     private ArrayList<Apiary> apiaries;
     private ArrayList<Profile> friends;
@@ -57,7 +60,7 @@ public class Profile {
         return email;
     }
 
-    public String getProfilePhoto() {
+    public Bitmap getProfilePhoto() {
         return profilePhoto;
     }
 
@@ -74,7 +77,7 @@ public class Profile {
     }
 
     Profile(String username, String password, String firstname, String lastname, String phone,
-            String email, String profilePhoto, ArrayList<Hive> hives, ArrayList<Apiary> apiaries,
+            String email, Bitmap profilePhoto, ArrayList<Hive> hives, ArrayList<Apiary> apiaries,
             ArrayList<Profile> friends, String address, String zipcode) {
         this.username = username;
         this.password = password;
@@ -230,7 +233,7 @@ public class Profile {
         this.email = email;
     }
 
-    public void setProfilePhoto(String profilePhoto) {
+    public void setProfilePhoto(Bitmap profilePhoto) {
         this.profilePhoto = profilePhoto;
     }
 

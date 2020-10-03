@@ -5,20 +5,20 @@
     android:layout_height="match_parent"
     android:background="@color/light_cyan"
     android:clickable="true"
-    android:gravity="center_horizontal">
+    android:gravity="center">
 
     <ImageView
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:src="@drawable/apiary"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"/>
+        android:src="@drawable/hive"
+
+        android:layout_marginBottom="40dp"/>
 
     <TextView
-        android:id="@+id/newApiaryHeader"
+        android:id="@+id/newInspectionHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Apiary"
+        android:text="New Inspection"
         android:textSize="24sp"
         android:layout_marginBottom="20dp"
         android:gravity="center"
@@ -26,7 +26,6 @@
         android:textStyle="bold"/>
 
     <TableLayout
-        android:id="@+id/addApiaryTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -47,17 +46,17 @@
                 android:textColor="@color/colorText"
                 android:padding="@dimen/tablePadding_addHive"
                 android:textSize="@dimen/textSize_addHive"
-                android:text="Street Name: "
+                android:text="Date: "
                 />
             <EditText
-                android:id="@+id/newApiaryAddress"
+                android:id="@+id/inspectionDate_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:layout_weight="4"
                 android:textSize="@dimen/textSize_addHive"
                 android:background="@drawable/hive_status_box"
-                android:hint="@string/address" />
+                android:hint="e.g. DD-MM-YYYY" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -73,44 +72,19 @@
                 android:textColor="@color/colorText"
                 android:padding="@dimen/tablePadding_addHive"
                 android:textSize="@dimen/textSize_addHive"
-                android:text="City: "
+                android:text="Results: "
                 />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_weight="4"
-                android:textSize="@dimen/textSize_addHive"
-                android:text="@string/madison_wi" />
-        </TableRow>
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/table_row_top_bottom_margins"
-            android:layout_marginBottom="@dimen/table_row_top_bottom_margins">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_weight="1"
-                android:textColor="@color/colorText"
-                android:inputType="number"
-                android:padding="@dimen/tablePadding_addHive"
-                android:textSize="@dimen/textSize_addHive"
-                android:text="Zip Code: "
-                />
             <EditText
-                android:id="@+id/newApiaryZipCode"
+                android:id="@+id/inspectionMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:layout_weight="4"
+                android:inputType="textLongMessage"
                 android:textSize="@dimen/textSize_addHive"
-                android:inputType="number"
                 android:background="@drawable/hive_status_box"
-                android:hint="@string/zip_code" />
-
+                android:hint="The beehive looked healthy today." />
         </TableRow>
 
 
@@ -118,7 +92,7 @@
 
     </TableLayout>
     <Button
-        android:id="@+id/addApiaryButton"
+        android:id="@+id/addInspection_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

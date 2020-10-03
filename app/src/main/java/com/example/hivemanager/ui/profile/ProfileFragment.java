@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ import com.example.hivemanager.R;
 
 public class ProfileFragment extends Fragment {
 
+    private ImageView et_profilePic;
     private TextView et_userName;
     private TextView et_email;
     private TextView et_phone;
@@ -35,12 +37,14 @@ public class ProfileFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
          View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
+         et_profilePic = view.findViewById(R.id.profile_pic);
          et_userName = view.findViewById(R.id.profile_name);
          et_email = view.findViewById(R.id.profile_email);
          et_phone = view.findViewById(R.id.profile_phone);
          et_address = view.findViewById(R.id.profile_address);
 
          et_userName.setText(String.format("%s %s", MainActivity.getUser().getFirstname(), MainActivity.getUser().getLastname()));
+         et_profilePic.setImageBitmap(MainActivity.getUser().getProfilePhoto());
          et_email.setText(MainActivity.getUser().getEmail());
          et_phone.setText(MainActivity.getUser().getPhone());
          et_address.setText(String.format("%s \nMadison, WI %s", MainActivity.getUser().getAddress(), MainActivity.getUser().getZipcode()));

@@ -114,7 +114,7 @@ public class DatabaseHelper {
             Blob blob = rs.getBlob("profile_pic");
             byte b[]=blob.getBytes(1,(int)blob.length());
             Bitmap bmp = BitmapFactory.decodeByteArray(b, 0,b.length);
-            //user.setProfilePhoto(bmp);
+            user.setProfilePhoto(bmp);
 
 
         }
