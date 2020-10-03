@@ -1,6 +1,7 @@
 package com.example.hivemanager.ui.profile;
 
 import android.app.FragmentManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ public class ProfileFragment extends Fragment {
     private TextView et_email;
     private TextView et_phone;
     private TextView et_address;
+    private Bitmap ppBitmap;
 
     public ProfileFragment(){
 
@@ -42,6 +44,9 @@ public class ProfileFragment extends Fragment {
          et_email = view.findViewById(R.id.profile_email);
          et_phone = view.findViewById(R.id.profile_phone);
          et_address = view.findViewById(R.id.profile_address);
+
+         et_profilePic = view.findViewById(R.id.profile_pic);
+
 
          et_userName.setText(String.format("%s %s", MainActivity.getUser().getFirstname(), MainActivity.getUser().getLastname()));
          et_profilePic.setImageBitmap(MainActivity.getUser().getProfilePhoto());
