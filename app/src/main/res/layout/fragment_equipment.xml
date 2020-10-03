@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/color_hive_status_background"
     tools:context=".ui.hivestatus.EquipmentFragment"
     android:orientation="vertical">
@@ -12,35 +13,40 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/header_hive_equipment"
-            android:textColor="@color/text_hive_status"
-            android:background="@color/color_hive_status_background"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="15dp"/>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/color_hive_status_background">
-
+            android:layout_height="wrap_content">
             <TextView
-                android:id="@+id/hiveEquipment_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="List of Equipment"
+                android:text="Hive Equipment"
+                android:layout_weight="1"
                 android:textColor="@color/text_hive_status"
-                android:background="@color/colorFragmentBackground"
-                android:layout_margin="15dp"
-                android:padding="10dp"
+                android:background="@color/color_hive_status_background"
+                android:padding="15dp"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
+            <ImageView
+                android:id="@+id/addInventory_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:src="@drawable/ic_baseline_add_24"
+                app:tint="@color/colorPrimaryDark"
+                />
 
-        </FrameLayout>
+        </TableRow>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/inventoryRecycle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/inventory_view"
+
+            android:layout_marginBottom="75dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
 
 

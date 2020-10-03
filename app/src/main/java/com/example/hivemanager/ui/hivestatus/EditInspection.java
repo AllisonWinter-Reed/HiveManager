@@ -76,7 +76,7 @@ public class EditInspection extends Fragment {
                 MainActivity.getUser().getApiaries().get(apiaryPosition).getHives().get(hivePosition).editInspection(inspectionPosition, dateS, resultS);
                 inspectionAdapter.notifyDataSetChanged();
 
-                Fragment fragment = new HealthFragment(apiaryPosition, hivePosition);
+                Fragment fragment = new HiveStatusFragment(apiaryPosition, hivePosition);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, fragment);
                 transaction.addToBackStack(null);  // if written, this transaction will be added to backstack

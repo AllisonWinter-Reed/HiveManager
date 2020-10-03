@@ -251,4 +251,44 @@ public class Hive {
     }
 
 
+    public void deleteEquipment(int equipmentPosition) {
+        try {
+            DatabaseHelper.deleteEquipment(hiveEquipment.get(equipmentPosition).getID());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        hiveEquipment.remove(equipmentPosition);
+
+
+    }
+
+    public void addInventory(String equipmentS, int apiaryPosition) {
+
+        int equipmentID = -1;
+        try {
+            equipmentID = DatabaseHelper.addEquipment(String.format("%d",hiveID)
+                    , MainActivity.getUser().getApiaries().get(apiaryPosition).getAddress(), equipmentS);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        hiveEquipment.add(new Equipment(equipmentID, equipmentS));
+
+
+    }
+
+    public void editInventory(int equipmentPosition, String equipmentNameS, int apiaryPosition) {
+        try {
+            DatabaseHelper.editInspection(hiveEquipment.get(equipmentPosition).getID(), hiveID, MainActivity.getUser().getApiaries().get(apiaryPosition).getAddress(), equipmentNameS);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        hiveEquipment.get(equipmentPosition).setName(equipmentNameS);
+
+
+    }
 }
