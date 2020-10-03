@@ -133,6 +133,7 @@ public class EditProfileFragment extends Fragment {
             Bitmap bitmap = null;
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getActivity().getContentResolver(), selectedImage);
+                addPhoto.setImageBitmap(bitmap);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
