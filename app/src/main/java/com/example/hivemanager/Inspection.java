@@ -15,12 +15,19 @@ public class Inspection {
      * @param date the date of the Inspection.
      * @param result the result of the Inspection.
      */
-    Inspection(int ID, int hiveID, Date date, String result) {
+    public Inspection(int ID, int hiveID, Date date, String result) {
         this.ID = ID;
         this.hiveID = hiveID;
         this.date = date;
         this.result = result;
 
+    }
+
+    public Inspection(Date date, String result, int hiveID) {
+        this.date = date;
+        this.result = result;
+        this.hiveID = hiveID;
+        this.ID = -1;
     }
 
     /**

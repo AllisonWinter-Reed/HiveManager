@@ -278,4 +278,5 @@ public class Profile {
         apiaries.get(apiaryPosition).getHives().get(hivePosition).setLosses(losses);
 
     }
+
 }
