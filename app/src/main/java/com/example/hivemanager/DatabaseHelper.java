@@ -8,6 +8,8 @@ import android.util.Log;
 
 import java.io.InputStream;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class DatabaseHelper {
@@ -480,6 +482,46 @@ public class DatabaseHelper {
         String sql = "UPDATE Beekeeper SET First_name = '"+ first_name +"', Email = '"+ email +"', Last_name = '"+ lastname +"', Phone_number ='"+ phonenumber +"', Address = '"+ address +"', Zipcode = '"+ zipcode+ "'  WHERE Username = '"+ username +"'";
         stmt = con.createStatement();
         stmt.executeUpdate(sql);
+
+    }
+
+    public static int addInspection(int hiveID, String inspection_notes, String inspection_date) throws ParseException, SQLException {
+
+
+        Connection con1;
+        Connection con2;
+        Statement stmt1;
+        Statement stmt2;
+
+
+        con1 = establishConnection();
+        String sql1 = "SELECT MAX(InspectionId) FROM Inspections";
+        stmt1 = con1.createStatement();
+        ResultSet rs = stmt1.executeQuery(sql1);
+
+        int currMax = 0;
+
+        while (rs.next()) {
+            currMax = rs.getInt(1);
+        }
+
+        int newIndex;
+        newIndex = currMax + 1;
+
+        SimpleDateFormat sdf = new SimpleDateFormat(("dd-MM-yyyy"));
+        java.util.Date date = sdf.parse(inspection_date);
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+
+
+
+        String sql = "INSERT INTO Inspections VALUES ('"+ newIndex +"','" + hiveID + "','" + inspection_notes + "','" + sqlDate + "')";
+        con2 = establishConnection();
+        stmt2 = con2.createStatement();
+        stmt2.executeUpdate(sql);
+
+
+        return newIndex;
 
     }
 
