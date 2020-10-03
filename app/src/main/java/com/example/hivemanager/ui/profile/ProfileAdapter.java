@@ -95,7 +95,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileN
 
         Profile holderP = mProfile.get(position);
 
-       // holder.addPhoto.setImageBitmap(Bitmap, holderP.getProfilePhoto()));               TODO?????
+      //  holder.addPhoto.setImageBitmap(Bitmap, holderP.getProfilePhoto()));               //TODO?????
         holder.firstname.setText(String.format("First Name %d", holderP.getFirstname()));
         holder.lastname.setText(String.format("Last Name %d", holderP.getLastname()));
         holder.address.setText(String.format("Address %d", holderP.getAddress()));
