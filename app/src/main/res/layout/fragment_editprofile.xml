@@ -78,7 +78,6 @@
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:layout_weight="4"
-                    android:inputType="number"
                     android:background="@drawable/hive_status_box"
                     android:padding="@dimen/tablePadding_addHive"/>
             </TableRow>
@@ -103,7 +102,6 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:layout_weight="4"
-                    android:inputType="number"
                     android:background="@drawable/hive_status_box"
                     android:padding="@dimen/tablePadding_addHive" />
             </TableRow>
@@ -129,7 +127,6 @@
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:layout_weight="4"
-                    android:inputType="number"
                     android:background="@drawable/hive_status_box"
                     android:padding="@dimen/tablePadding_addHive"/>
             </TableRow>
@@ -155,7 +152,6 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:layout_weight="4"
-                    android:inputType="number"
                     android:padding="@dimen/tablePadding_addHive"
                     android:text="@string/madison_wi"/>
 <!--                    android:background="@drawable/hive_status_box"-->
