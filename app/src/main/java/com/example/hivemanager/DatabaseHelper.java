@@ -114,7 +114,7 @@ public class DatabaseHelper {
             Blob blob = rs.getBlob("profile_pic");
             byte b[]=blob.getBytes(1,(int)blob.length());
             Bitmap bmp = BitmapFactory.decodeByteArray(b, 0,b.length);
-            user.setProfilePhoto(bmp);
+            //user.setProfilePhoto(bmp);
 
 
         }
@@ -525,7 +525,7 @@ public class DatabaseHelper {
 
     }
 
-    
+
 
     public static void editInspection(int inspectionID, int Hiveid, String inspection_notes, String inspection_date) throws SQLException, ParseException {
 
@@ -538,6 +538,17 @@ public class DatabaseHelper {
 
         con = establishConnection();
         String sql = "UPDATE Inspections SET HiveId = '"+ Hiveid +"', Inspection_notes = '"+ inspection_notes +"', Inspection_date = '"+ sqlDate +"' WHERE InspectionId = '"+ inspectionID +"'";
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
+
+    }
+
+    public static void deleteInspection(int inspectionID) throws SQLException {
+        Connection con;
+        Statement stmt;
+
+        con = establishConnection();
+        String sql = "DELETE FROM Inspections WHERE InspectionId = '"+ inspectionID +"'";
         stmt = con.createStatement();
         stmt.executeUpdate(sql);
 
