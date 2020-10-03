@@ -53,7 +53,8 @@
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:layout_weight="4"
-                    android:padding="@dimen/tablePadding_addHive"/>
+                    android:padding="@dimen/tablePadding_addHive"
+                    android:text="username" />
                 <!--                    android:background="@drawable/hive_status_box"-->
             </TableRow>
             <TableRow
