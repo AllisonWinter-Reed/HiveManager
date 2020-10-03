@@ -525,6 +525,24 @@ public class DatabaseHelper {
 
     }
 
+    
+
+    public static void editInspection(int inspectionID, int Hiveid, String inspection_notes, String inspection_date) throws SQLException, ParseException {
+
+        Connection con;
+        Statement stmt;
+
+        SimpleDateFormat sdf = new SimpleDateFormat(("dd-MM-yyyy"));
+        java.util.Date date = sdf.parse(inspection_date);
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+        con = establishConnection();
+        String sql = "UPDATE Inspections SET HiveId = '"+ Hiveid +"', Inspection_notes = '"+ inspection_notes +"', Inspection_date = '"+ sqlDate +"' WHERE InspectionId = '"+ inspectionID +"'";
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
+
+    }
+
 
 
 
