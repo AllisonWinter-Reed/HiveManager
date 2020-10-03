@@ -1,9 +1,12 @@
 package com.example.hivemanager;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.StrictMode;
 import android.text.Editable;
 import android.util.Log;
 
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -85,6 +88,7 @@ public class DatabaseHelper {
     public static Profile initUser(String userName) throws SQLException {
         Profile user = new Profile();
         Statement stmt;
+        //Blob blob;
         Connection con = establishConnection();
 
         String sql = "SELECT * FROM Beekeeper WHERE Username = '" + userName.toString() + "'";
@@ -101,8 +105,15 @@ public class DatabaseHelper {
            // user.setProfilePhoto(rs.getString("ProfilePicReference")); //TODO ask about this
             user.setAddress(rs.getString("Address"));
             user.setZipcode(rs.getString("Zipcode"));
+            InputStream input =rs.getBinaryStream("profile_pic");
 
-            //String password = rs.getString("password");
+            //get blob, then turn it into byte array, then turn into bitmap
+            //set bitmap to
+            Blob blob = rs.getBlob("profile_pic");
+            byte b[]=blob.getBytes(1,(int)blob.length());
+            Bitmap bmp = BitmapFactory.decodeByteArray(b, 0,b.length);
+            user.setProfilePhoto(bmp);
+
 
         }
         return user;
