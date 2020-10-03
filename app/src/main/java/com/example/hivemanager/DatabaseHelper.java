@@ -558,6 +558,18 @@ public class DatabaseHelper {
 
     }
 
+    public static void editEquipment(int equipmentId, int HiveID, String Address, String Equipment_name) throws SQLException {
+        Connection con;
+        Statement stmt;
+
+
+        con = establishConnection();
+        String sql = "UPDATE Equipment SET HiveId = '"+ HiveID +"', Address = '"+ Address +"', Equipment_name = '"+ Equipment_name +"' WHERE equipmentId = '"+ equipmentId +"'";
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
+
+    }
+
 
 
 
