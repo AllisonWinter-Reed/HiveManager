@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frag_editProfile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorFragmentBackground"
+    android:background="@color/light_cyan"
     android:clickable="true"
     android:gravity="center"
     tools:context=".ui.profile.EditProfileFragment">
@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/addImage"
+        android:id="@+id/profile_pic"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:layout_marginTop="10dp"
@@ -24,81 +24,220 @@
         android:textSize="25sp"
         android:onClick="registerProfilePic"/>
 
-    <EditText
-        android:id="@+id/etUsernameProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Username"
-        android:textSize="20sp"
-        android:padding="10dp"
-        android:layout_marginTop="10dp" />
+        <TableLayout
+            android:id="@+id/editProfileTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/table_row_top_bottom_margins"
+                android:layout_marginBottom="@dimen/table_row_top_bottom_margins">
+                <TextView
+                    android:id="@+id/username_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize_addHive"
+                    android:layout_weight="1"
+                    android:text="Username: "
+                    android:padding="@dimen/tablePadding_addHive"/>
 
-    <EditText
-        android:id="@+id/etFirstNameProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="First Name"
-        android:textSize="20sp"
-        android:padding="10dp"/>
+                <TextView
+                    android:id="@+id/etUsernameProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:layout_weight="4"
+                    android:padding="@dimen/tablePadding_addHive"/>
+                <!--                    android:background="@drawable/hive_status_box"-->
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/table_row_top_bottom_margins"
+                android:layout_marginBottom="@dimen/table_row_top_bottom_margins">
+                <TextView
+                    android:id="@+id/firstName_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize_addHive"
+                    android:layout_weight="1"
+                    android:text="First name: "
+                    android:padding="@dimen/tablePadding_addHive"/>
 
-    <EditText
-        android:id="@+id/etLastNameProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Last Name"
-        android:textSize="20sp"
-        android:padding="10dp" />
+                <EditText
+                    android:id="@+id/etFirstNameProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:layout_weight="4"
+                    android:inputType="number"
+                    android:background="@drawable/hive_status_box"
+                    android:padding="@dimen/tablePadding_addHive"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/table_row_top_bottom_margins"
+                android:layout_marginBottom="@dimen/table_row_top_bottom_margins">
+                <TextView
+                    android:id="@+id/lastName_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize_addHive"
+                    android:layout_weight="1"
+                    android:text="Last name: "
+                    android:padding="@dimen/tablePadding_addHive" />
+                <EditText
+                    android:id="@+id/etLastNameProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:layout_weight="4"
+                    android:inputType="number"
+                    android:background="@drawable/hive_status_box"
+                    android:padding="@dimen/tablePadding_addHive" />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/table_row_top_bottom_margins"
+                android:layout_marginBottom="@dimen/table_row_top_bottom_margins">
+                <TextView
+                    android:id="@+id/address_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize_addHive"
+                    android:layout_weight="1"
+                    android:text="Address: "
+                    android:padding="@dimen/tablePadding_addHive"/>
 
-    <EditText
-        android:id="@+id/etAddressProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/address"
-        android:textSize="20sp"
-        android:padding="10dp" />
+                <EditText
+                    android:id="@+id/etAddressProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:layout_weight="4"
+                    android:inputType="number"
+                    android:background="@drawable/hive_status_box"
+                    android:padding="@dimen/tablePadding_addHive"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/table_row_top_bottom_margins"
+                android:layout_marginBottom="@dimen/table_row_top_bottom_margins">
+                <TextView
+                    android:id="@+id/cityState_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize_addHive"
+                    android:layout_weight="1"
+                    android:text="City, State: "
+                    android:padding="@dimen/tablePadding_addHive"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:padding="10dp"
-        android:text="@string/madison_wi"/>
+                <TextView
+                    android:id="@+id/cityState_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:layout_weight="4"
+                    android:inputType="number"
+                    android:padding="@dimen/tablePadding_addHive"
+                    android:text="@string/madison_wi"/>
+<!--                    android:background="@drawable/hive_status_box"-->
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/table_row_top_bottom_margins"
+                android:layout_marginBottom="@dimen/table_row_top_bottom_margins">
+                <TextView
+                    android:id="@+id/zipCode_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize_addHive"
+                    android:layout_weight="1"
+                    android:text="Zip code: "
+                    android:padding="@dimen/tablePadding_addHive"/>
 
-    <EditText
-        android:id="@+id/etZipProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/zip_code"
-        android:textSize="20sp"
-        android:padding="10dp"/>
+                <EditText
+                    android:id="@+id/etZipProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:layout_weight="4"
+                    android:inputType="number"
+                    android:background="@drawable/hive_status_box"
+                    android:padding="@dimen/tablePadding_addHive"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/table_row_top_bottom_margins"
+                android:layout_marginBottom="@dimen/table_row_top_bottom_margins">
+                <TextView
+                    android:id="@+id/phone_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize_addHive"
+                    android:layout_weight="1"
+                    android:text="Phone: "
+                    android:padding="@dimen/tablePadding_addHive"/>
 
-    <EditText
-        android:id="@+id/etPhoneNumberProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:hint="Phone Number"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+                <EditText
+                    android:id="@+id/etPhoneNumberProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:layout_weight="4"
+                    android:inputType="phone"
+                    android:background="@drawable/hive_status_box"
+                    android:padding="@dimen/tablePadding_addHive"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/table_row_top_bottom_margins"
+                android:layout_marginBottom="@dimen/table_row_top_bottom_margins">
+                <TextView
+                    android:id="@+id/email_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize_addHive"
+                    android:layout_weight="1"
+                    android:text="Email: "
+                    android:padding="@dimen/tablePadding_addHive"/>
 
-    <EditText
-        android:id="@+id/etEmailProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        android:textSize="20sp"
-        android:padding="10dp" />
-
-    <EditText
-        android:id="@+id/etPasswordProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:textSize="20sp"
-        android:padding="10dp"/>
+                <EditText
+                    android:id="@+id/etEmailProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:layout_weight="4"
+                    android:background="@drawable/hive_status_box"
+                    android:padding="@dimen/tablePadding_addHive"/>
+            </TableRow>
+        </TableLayout>
 
         <Button
             android:id="@+id/bSaveProfile"
@@ -111,4 +250,4 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>
