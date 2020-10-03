@@ -29,7 +29,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/tablePadding_addHive"
-                    android:layout_marginTopBottom="@dimen/table_row_top_bottom_margins"
+                    android:layout_marginTop="@dimen/table_row_top_bottom_margins"
+                    android:layout_marginBottom="@dimen/table_row_top_bottom_margins"
                     android:orientation="vertical"
                     android:layout_weight="5">
 

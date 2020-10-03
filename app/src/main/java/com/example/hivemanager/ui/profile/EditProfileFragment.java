@@ -34,10 +34,6 @@ public class EditProfileFragment extends Fragment {
     private ProfileAdapter profileAdapter;
     private int profilePosition;    // ...
 
-    public EditProfileFragment(ProfileAdapter profileAdapter) {
-        this.profileAdapter = profileAdapter;
-    }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
