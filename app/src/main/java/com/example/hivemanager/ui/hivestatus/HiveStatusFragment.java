@@ -45,14 +45,14 @@ public class HiveStatusFragment extends Fragment {
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                 switch(position) {
                     case 0:
-                        tab.setText("Health");
+                        tab.setText("Hive Data");
                         break;
                     case 1:
-                        tab.setText("Equipment");
+                        tab.setText("Hive Equipment");
                         break;
-                    case 2:
-                        tab.setText("Metrics");
-                        break;
+//                    case 2:
+//                        tab.setText("Metrics");
+//                        break;
                 }
 
             }

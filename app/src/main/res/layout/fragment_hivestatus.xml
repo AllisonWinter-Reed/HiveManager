@@ -24,7 +24,7 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Health"
+            android:text="Hive Data"
             android:onClick="openHealthTab"
             tools:ignore="OnClick"
             />
@@ -35,10 +35,6 @@
             android:layout_height="wrap_content"
             android:text="Equipment" />
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Production" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2

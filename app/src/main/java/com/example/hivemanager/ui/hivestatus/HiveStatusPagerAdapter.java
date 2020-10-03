@@ -22,8 +22,8 @@ public class HiveStatusPagerAdapter extends FragmentStateAdapter {
        switch(position) {
            case 1:
                return new EquipmentFragment(apiaryPosition, hivePosition);
-           case 2:
-               return new MetricsFragment(apiaryPosition, hivePosition);
+//           case 2:
+//               return new MetricsFragment(apiaryPosition, hivePosition);
            default:
                return new HealthFragment(apiaryPosition, hivePosition);
 
@@ -32,7 +32,7 @@ public class HiveStatusPagerAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 2;
     }
 
 

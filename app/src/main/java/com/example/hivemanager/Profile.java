@@ -179,9 +179,6 @@ public class Profile {
 
     public void editApiary(int apiaryPosition, String newAddress, String newZip){
 
-        apiaries.get(apiaryPosition).setAddress(newAddress);
-        apiaries.get(apiaryPosition).setZip(newZip);
-
         try {
             DatabaseHelper.editApiary(username, apiaries.get(apiaryPosition).getAddress(), newAddress, newZip);
         } catch (SQLException e) {

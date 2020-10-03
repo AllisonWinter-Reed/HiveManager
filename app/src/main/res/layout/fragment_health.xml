@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_hive_status_background"
-    tools:context=".ui.hivestatus.HealthFragment">
+    tools:context=".ui.hivestatus.HealthFragment"
+    android:layout_marginBottom="50dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -41,10 +42,43 @@
 
         </FrameLayout>
 
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Inspection Results"
+            android:text="@string/header_honey_stores"
+            android:textColor="@color/text_hive_status"
+            android:background="@color/color_hive_status_background"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="15dp"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_hive_status_background"
+            >
+
+            <TextView
+                android:id="@+id/honeyStores_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/value_honey_stores"
+                android:textColor="@color/text_hive_status"
+                android:background="@color/colorFragmentBackground"
+                android:layout_margin="15dp"
+                android:padding="10dp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Queen Production"
             android:textColor="@color/text_hive_status"
             android:background="@color/color_hive_status_background"
             android:padding="15dp"
@@ -57,10 +91,10 @@
             android:background="@color/color_hive_status_background">
 
             <TextView
-                android:id="@+id/inspections_value"
+                android:id="@+id/queenProduction_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Inspection Date and Notes"
+                android:text="@string/value_queen_production"
                 android:padding="10dp"
                 android:textColor="@color/text_hive_status"
                 android:background="@color/colorFragmentBackground"
@@ -70,6 +104,87 @@
 
 
         </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/header_gains"
+            android:textColor="@color/text_hive_status"
+            android:background="@color/color_hive_status_background"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="15dp"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_hive_status_background">
+
+            <TextView
+                android:id="@+id/gains_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/value_gains"
+                android:textColor="@color/text_hive_status"
+                android:background="@color/colorFragmentBackground"
+                android:layout_margin="15dp"
+                android:padding="10dp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/header_losses"
+            android:textColor="@color/text_hive_status"
+            android:background="@color/color_hive_status_background"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="15dp"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_hive_status_background"
+
+>
+
+            <TextView
+                android:id="@+id/losses_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/value_losses"
+                android:textColor="@color/text_hive_status"
+                android:background="@color/colorFragmentBackground"
+                android:layout_margin="15dp"
+                android:padding="10dp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+
+
+        </FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Inspection Results"
+            android:textColor="@color/text_hive_status"
+            android:background="@color/color_hive_status_background"
+            android:padding="15dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/inspectionRecycle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/inspection_view">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -42,35 +42,7 @@
 
         </FrameLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/header_inventory_equipment"
-            android:textColor="@color/text_hive_status"
-            android:background="@color/color_hive_status_background"
-            android:padding="15dp"
-            android:textSize="20sp"
-            android:textStyle="bold" />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/color_hive_status_background">
-
-            <TextView
-                android:id="@+id/inventoryEquipment_value"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="List of Equipment"
-                android:padding="10dp"
-                android:textColor="@color/text_hive_status"
-                android:background="@color/colorFragmentBackground"
-                android:layout_margin="15dp"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-
-        </FrameLayout>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
