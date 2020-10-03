@@ -80,7 +80,7 @@ public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.Equi
     @NonNull
     @Override
     public EquipmentAdapter.EquipmentNote onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.inspection_view, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.inventory_view, parent, false);
         return new EquipmentNote(itemView, mListener);
     }
 

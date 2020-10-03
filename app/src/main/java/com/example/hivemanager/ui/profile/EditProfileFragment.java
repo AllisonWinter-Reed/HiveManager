@@ -1,6 +1,8 @@
 package com.example.hivemanager.ui.profile;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -93,11 +95,23 @@ public class EditProfileFragment extends Fragment {
                     e.printStackTrace();
                 }
 
-                Fragment fragment = new ProfileFragment();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.nav_host_fragment, fragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
+                new AlertDialog.Builder(getContext())
+                        .setTitle("Save Changes")
+                        .setMessage("These changes will be applied next time you log in")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int position) {
+                                Fragment fragment = new ProfileFragment();
+                                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                transaction.replace(R.id.nav_host_fragment, fragment);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+
+
             }
         });
         return view;
