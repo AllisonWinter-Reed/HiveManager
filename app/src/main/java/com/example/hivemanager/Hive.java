@@ -1,6 +1,11 @@
 package com.example.hivemanager;
 
+import android.provider.ContactsContract;
+
 import java.lang.reflect.Array;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -113,20 +118,77 @@ public class Hive {
 
     }
 
-    /**
-     * @param inspection the inspection to be added.
-     */
-    public void addInspection(Inspection inspection) { inspections.add(inspection); }
 
     /**
      * @param inspection the inspection to be deleted.
      */
-    public void deleteInspection(Inspection inspection) { inspections.remove(inspection); }
+    public void deleteInspection(int inspection) {
+
+        try {
+            DatabaseHelper.deleteInspection(inspections.get(inspection).getID());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        inspections.remove(inspection);
+    }
+
+    public void editInspection(int inspection, String date, String result) {
+        try {
+            DatabaseHelper.editInspection(inspections.get(inspection).getID(), hiveID, result, date);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat(("dd-MM-yyyy"));
+        Date dateN = null;
+        try {
+            dateN = sdf.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        java.sql.Date sqlDate = new java.sql.Date(dateN.getTime());
+
+
+        inspections.get(inspection).setDate(sqlDate);
+        inspections.get(inspection).setResult(result);
+
+    }
+
+    public void addInspection(String dateS, String resultS) {
+        SimpleDateFormat sdf = new SimpleDateFormat(("dd-MM-yyyy"));
+        Date date = null;
+        try {
+            date = sdf.parse(dateS);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        int inspectionID = -1;
+
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+        try {
+            inspectionID = DatabaseHelper.addInspection(hiveID, resultS, dateS);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        inspections.add(new Inspection(inspectionID, hiveID, sqlDate, resultS));
+
+
+    }
 
     /**
      * @param inspections the new results of inspections.
      */
-    public void setInspections(ArrayList<Inspection> inspections) { this.inspections = inspections; }
+    public void setInspections(ArrayList<Inspection> inspections) {
+        this.inspections = inspections;
+    }
 
     /**
      * @return inspections the results of inspections.
@@ -135,6 +197,7 @@ public class Hive {
         return inspections;
 
     }
+
 
     /**
      * @return honeyStores the stores of honey.
@@ -186,4 +249,6 @@ public class Hive {
     public void setHiveID(int hiveID) {
         this.hiveID = hiveID;
     }
+
+
 }

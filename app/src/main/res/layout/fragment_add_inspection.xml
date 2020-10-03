@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_cyan"
+    android:clickable="true"
+    android:gravity="center">
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/hive"
+
+        android:layout_marginBottom="40dp"/>
+
+    <TextView
+        android:id="@+id/newInspectionHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Inspection"
+        android:textSize="24sp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:textColor="@color/colorText"
+        android:textStyle="bold"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/table_row_top_bottom_margins"
+            android:layout_marginBottom="@dimen/table_row_top_bottom_margins">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:textColor="@color/colorText"
+                android:padding="@dimen/tablePadding_addHive"
+                android:textSize="@dimen/textSize_addHive"
+                android:text="Date: "
+                />
+            <EditText
+                android:id="@+id/inspectionDate_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_weight="4"
+                android:textSize="@dimen/textSize_addHive"
+                android:background="@drawable/hive_status_box"
+                android:hint="e.g. DD-MM-YYYY" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/table_row_top_bottom_margins"
+            android:layout_marginBottom="@dimen/table_row_top_bottom_margins">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:textColor="@color/colorText"
+                android:padding="@dimen/tablePadding_addHive"
+                android:textSize="@dimen/textSize_addHive"
+                android:text="Results: "
+                />
+
+            <EditText
+                android:id="@+id/inspectionMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_weight="4"
+                android:inputType="textLongMessage"
+                android:textSize="@dimen/textSize_addHive"
+                android:background="@drawable/hive_status_box"
+                android:hint="The beehive looked healthy today." />
+        </TableRow>
+
+
+
+
+    </TableLayout>
+    <Button
+        android:id="@+id/addInspection_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="@dimen/textsize_button"
+        android:textColor="@color/colorText"
+        android:text="Add"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="addApiaryToDB"/>
+
+</LinearLayout>

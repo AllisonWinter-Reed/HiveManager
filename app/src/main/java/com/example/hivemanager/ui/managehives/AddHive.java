@@ -64,6 +64,8 @@ public class AddHive extends Fragment {
 
                 if(health < 0 || health > 100) {
                     tHealth.setTextColor(getResources().getColor(R.color.end_red));
+
+                    //TODO handle incorrect input
                 }
 
                 MainActivity.getUser().addHive(new Hive(health, honeyStores, queenProduction, gains, losses), apiaryPosition, hiveAdapter);
