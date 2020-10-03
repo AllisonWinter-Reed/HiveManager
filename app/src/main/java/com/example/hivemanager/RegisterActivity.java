@@ -39,7 +39,6 @@ public class RegisterActivity extends AppCompatActivity {
     Statement stmt;
     public static final int GET_FROM_GALLERY = 3;
     private Bitmap bitmap;
-    private static String URL_UPLOAD = "http://192.168.1.14/android_register_login/upload.php";
     public String ppUrl;
 
     @Override
@@ -79,64 +78,6 @@ public class RegisterActivity extends AppCompatActivity {
         startActivityForResult(new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI), GET_FROM_GALLERY);
     }
 
-//
-//    private void chooseFile() {
-//        Intent intent = new Intent();
-//        intent.setType("image/*");
-//        intent.setAction(Intent.ACTION_GET_CONTENT);
-//        startActivityForResult(Intent.createChooser(intent,"Select picture"),1);
-//    }
-//
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode,resultCode,data);
-//        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
-//            Uri filePath = data.getData();
-//            try {
-//                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),filePath);
-//            } catch (IOException e) {
-//                //TODO: error msg
-//            }
-//            //uploadPicture(getID,);
-//        }
-//    }
-//
-//    private void uploadPicture(final String id, final String photo) {
-//        final ProgressDialog progressDialog = new ProgressDialog(this);
-//        progressDialog.setMessage("Uploading...");
-//        progressDialog.show();
-//
-//        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_UPLOAD,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                @Override
-//                    public void onErrorResponse(VolleyError error) {
-//
-//                    }
-//                })
-//        {
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                return super.getParams();
-//            }
-//        };
-//    }
-//
-//    public String getStringImage(Bitmap bitmap) {
-//        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-//        bitmap.compress(Bitmap.CompressFormat.JPEG, 100,byteArrayOutputStream);
-//
-//        byte[] imageByteArray = byteArrayOutputStream.toByteArray();
-//        String encodedImage = Base64.encodeToString(imageByteArray,Base64.DEFAULT);
-//
-//        return encodedImage;
-//    }
-
-    //kinda works, keep GET_FROM_GALLERY
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
