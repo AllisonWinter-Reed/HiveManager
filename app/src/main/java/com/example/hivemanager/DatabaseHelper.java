@@ -397,12 +397,13 @@ public class DatabaseHelper {
     /**
      * Places a piece of equipment into the database.
      *
-     * @param hiveID the hive that this equipment is attached to.
-     * @param address the address where this equipment is stored.
-     * @param name the name of this piece of equipment.
+     * @param hiveID the hive that this Equipment is attached to.
+     * @param address the address where this Equipment is stored.
+     * @param name the name of this piece of Equipment.
+     * @return the ID of this piece of Equipment in the database.
      * @throws SQLException if a SQL query fails.
      */
-    public static void addEquipment(String hiveID, String address, String name) throws SQLException {
+    public static int addEquipment(String hiveID, String address, String name) throws SQLException {
         int maxID;
         String sql;
         Statement stmt;
@@ -420,6 +421,9 @@ public class DatabaseHelper {
                 "Values (" + maxID + ", " + hiveID + ", \"" + address + "\", \"" + name + "\")";
         stmt = con.createStatement();
         stmt.executeUpdate(sql);
+
+        // Returns the ID for this piece of Equipment.
+        return maxID;
 
     }
 
@@ -549,6 +553,18 @@ public class DatabaseHelper {
 
         con = establishConnection();
         String sql = "DELETE FROM Inspections WHERE InspectionId = '"+ inspectionID +"'";
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
+
+    }
+
+    public static void editEquipment(int equipmentId, int HiveID, String Address, String Equipment_name) throws SQLException {
+        Connection con;
+        Statement stmt;
+
+
+        con = establishConnection();
+        String sql = "UPDATE Equipment SET HiveId = '"+ HiveID +"', Address = '"+ Address +"', Equipment_name = '"+ Equipment_name +"' WHERE equipmentId = '"+ equipmentId +"'";
         stmt = con.createStatement();
         stmt.executeUpdate(sql);
 
