@@ -84,7 +84,7 @@ public class EditProfileFragment extends Fragment {
                 String newLastName = lastName.getText().toString();
                 String newAddress = address.getText().toString();
                 String newZip = zip.getText().toString();
-                String newPhone = zip.getText().toString();
+                String newPhone = phone.getText().toString();
                 String newEmail = email.getText().toString();
 
                 try {
@@ -93,7 +93,7 @@ public class EditProfileFragment extends Fragment {
                     e.printStackTrace();
                 }
 
-                Fragment fragment = new EditProfileFragment();
+                Fragment fragment = new ProfileFragment();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, fragment);
                 transaction.addToBackStack(null);

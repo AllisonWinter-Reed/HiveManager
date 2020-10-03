@@ -477,7 +477,7 @@ public class DatabaseHelper {
 
     }
 
-    public static void editUser(String username, String first_name, String email, String lastname, String phonenumber, String address, String zipcode) throws SQLException {
+    public static void editUser(String username, String first_name, String lastname, String address, String zipcode, String phonenumber, String email) throws SQLException {
 
         Connection con;
         Statement stmt;
