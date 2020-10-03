@@ -3,19 +3,18 @@ package com.example.hivemanager.ui.profile;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-//import com.example.hivemanager.ProfileActivity;
 import com.example.hivemanager.R;
 import com.example.hivemanager.RegisterActivity;
 
@@ -25,14 +24,32 @@ import java.io.IOException;
 
 public class EditProfileFragment extends Fragment {
 
-    public EditProfileFragment() {
+    private ImageView addPhoto;
+    private EditText firstname; //TODO
+    private EditText lastname;  //TODO
+    private EditText address;   // ...
+    private EditText zipcode;
+    private EditText phonenumber;
+    private EditText email;
+    private ProfileAdapter profileAdapter;
+    private int profilePosition;    // ...
 
+    public EditProfileFragment(ProfileAdapter profileAdapter) {
+        this.profileAdapter = profileAdapter;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_editprofile, container, false);
-        ImageView addPhoto = (ImageView) view.findViewById(R.id.addImage);
+
+        addPhoto = (ImageView) view.findViewById(R.id.addImage);
+        // TODO: Save button
+        // TODO: firstname.setText(...) etc.
         addPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,10 +76,8 @@ public class EditProfileFragment extends Fragment {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getActivity().getContentResolver(), selectedImage);
             } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
