@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     android:background="@color/light_cyan"
     android:clickable="true"
-    android:gravity="center">
+    android:gravity="center_horizontal">
 
     <ImageView
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:src="@drawable/apiary"
-
-        android:layout_marginBottom="40dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:id="@+id/newApiaryHeader"
@@ -82,7 +82,6 @@
                 android:padding="10dp"
                 android:layout_weight="4"
                 android:textSize="@dimen/textSize_addHive"
-                android:background="@drawable/hive_status_box"
                 android:text="@string/madison_wi" />
         </TableRow>
         <TableRow
@@ -96,6 +95,7 @@
                 android:textStyle="bold"
                 android:layout_weight="1"
                 android:textColor="@color/colorText"
+                android:inputType="number"
                 android:padding="@dimen/tablePadding_addHive"
                 android:textSize="@dimen/textSize_addHive"
                 android:text="Zip Code: "
@@ -107,6 +107,7 @@
                 android:padding="10dp"
                 android:layout_weight="4"
                 android:textSize="@dimen/textSize_addHive"
+                android:inputType="number"
                 android:background="@drawable/hive_status_box"
                 android:hint="@string/zip_code" />
 
